@@ -151,16 +151,16 @@
 						</li>
 					</ul>
 				</li>
-				<li class="tender_management">
+				<li class="project_management">
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
-					<span class="title">Tender Management</span>
+					<span class="title">project Management</span>
 					<span class="arrow"></span>
 					</a>
 					<ul class="sub-menu">
-						<li class="list_of_tender">
-							<a href="http://localhost/bims/tendermanagement.html">
-							List Of Tenders</a>
+						<li class="list_of_project">
+							<a href="http://localhost/bims/projectmanagement.html">
+							List Of Projects</a>
 						</li>
 						<li class="bids_submitted">
 							<a href="#">
@@ -177,7 +177,7 @@
 					<ul class="sub-menu">
 						<li class="active">
 							<a href="http://localhost/bims/bidopening.html">
-							Tenders</a>
+							Projects</a>
 						</li>
 					</ul>
 				</li>
@@ -318,7 +318,7 @@
 			<!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Tender Management
+			Project Management
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -358,7 +358,7 @@
 					<div class="portlet box" style="background-color: #364150;">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-cogs"></i>Tender details
+								<i class="fa fa-cogs"></i>Project details
 							</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse" data-original-title="" title="">

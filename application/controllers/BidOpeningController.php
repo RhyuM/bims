@@ -27,7 +27,7 @@ class BidOpeningController extends CI_Controller
             );
         }
         
-        $this->load->view('BAC/bid-opening/tenders_view', $data);
+        $this->load->view('BAC/bid-opening/projects_view', $data);
         
     }
     

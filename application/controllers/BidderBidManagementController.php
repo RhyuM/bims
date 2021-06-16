@@ -17,7 +17,7 @@ class BidderBidManagementController extends CI_Controller
 
     public function index()
     {
-        $this->load->view('BIDDER/bid-management/list_of_tenders_view');
+        $this->load->view('BIDDER/bid-management/list_of_projects_view');
     }
     
 
@@ -38,6 +38,7 @@ class BidderBidManagementController extends CI_Controller
                     <td>'.$projects->projects_type.'</td>
                     <td>'. $projects->opening_date .'</td>
                     <td>'.$projects->approve_budget_cost.'</td>
+                    <td> <a href=/'.$projects->ITB_path.' rel="noopener noreferrer" target="_blank">PDF</a></td>
                     <td>'. $projects->projects_status.'</td>
                     ';
                 }

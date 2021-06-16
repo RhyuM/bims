@@ -76,16 +76,16 @@
 						</li>
 					</ul>
 				</li>
-				<li class="tender_management">
+				<li class="project_management">
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
-					<span class="title">Tender Management</span>
+					<span class="title">Project Management</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li class="list_of_tender">
-							<a href="http://localhost/bims/tendermanagement.html">
-							List Of Tenders</a>
+						<li class="list_of_project">
+							<a href="http://localhost/bims/projectmanagement.html">
+							List Of Projects</a>
 						</li>
 						<li class="bids_submitted">
 							<a href="#">
@@ -102,7 +102,7 @@
 					<ul class="sub-menu">
 						<li>
 							<a href="http://localhost/bims/bidopening.html">
-							Tenders</a>
+							Projects</a>
 						</li>
 					</ul>
 				</li>
@@ -307,7 +307,7 @@
 								 0
 							</div>
 							<div class="desc">
-								 Tenders to be open today
+								 Projects to be open today
 							</div>
 						</div>
 						<a class="more" href="javascript:;">

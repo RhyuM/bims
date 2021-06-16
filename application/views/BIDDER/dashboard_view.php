@@ -56,7 +56,7 @@
 							My Account</a>
 						</li>
 						<li class="">
-							<a href="#">
+							<a href="/bims/usermanagement/my-documents">
 							My Documents</a>
 						</li>
 					</ul>
@@ -70,11 +70,11 @@
 					<ul class="sub-menu">
 						<li class="">
 							<a href="#">
-							Search Active Tenders</a>
+							Search Active Projects</a>
 						</li>
 						<li class="">
-							<a href="/bims/bidderbidmanagement/list-of-tenders">
-							New Tenders</a>
+							<a href="/bims/bidderbidmanagement/list-of-projects">
+							New Projects</a>
 						</li>
 						<li class="">
 							<a href="#">
@@ -296,7 +296,7 @@
 								 0
 							</div>
 							<div class="desc">
-								 Tenders to be open today
+								 Projects to be open today
 							</div>
 						</div>
 						<a class="more" href="javascript:;">

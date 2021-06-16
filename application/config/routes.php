@@ -69,11 +69,12 @@ $route['invitation-to-bid'] = 'HomeController/invitation_to_bid';
 $route['bidopening'] = 'BidOpeningController';
 $route['bidOpening/bid_openers/(:any)'] = 'BidOpeningController/bid_openers/$1';
 
-$route['tendermanagement'] = 'TenderManagementController/index';
-$route['tendermanagement/create'] = 'TenderManagementController/create';
+$route['projectmanagement'] = 'ProjectManagementController/index';
+$route['projectmanagement/create'] = 'ProjectManagementController/create';
 
 $route['usermanagement/certified-bidder'] = 'UserManagementController/index';
 $route['usermanagement/new-entry'] = 'UserManagementController/index2';
 
 // bidder
-$route['bidderbidmanagement/list-of-tenders'] = 'BidderBidManagementController/index';
+$route['bidderbidmanagement/list-of-projects'] = 'BidderBidManagementController/index';
+$route['usermanagement/my-documents'] = 'BidderUserManagementController/index';
