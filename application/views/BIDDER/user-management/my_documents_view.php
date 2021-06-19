@@ -1,4 +1,4 @@
- <?php 
+<?php 
 	$this->load->view('BIDDER/layouts/head');
 	$this->load->view('BIDDER/layouts/header');
 	// $this->load->view('BAC/layouts/sidebar');
@@ -336,7 +336,127 @@
 													</tr>
 												</thead>
 												<tbody class="table_data" >
-													
+												<tr>
+													<td class="sorting_1">1</td>
+													<td class="Tech_description">DTI</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="DTI">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">2</td>
+													<td class="Tech_description">Valid and current Mayor’s permit/municipal license</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Valid and current Mayor’s permit/municipal license">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">3</td>
+													<td class="Tech_description">Tax Clearance</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Tax Clearance">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">4</td>
+													<td class="Tech_description">Statement Completed Government and Private Construction Contract</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Statement Completed Government and Private Construction Contract">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">5</td>
+													<td class="Tech_description">Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">6</td>
+													<td class="Tech_description">Valid PCAB license</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Valid PCAB license">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">7</td>
+													<td class="Tech_description">Audited financial statements and current assets and liabilities</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Audited financial statements and current assets and liabilities">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">8</td>
+													<td class="Tech_description">Net Financial Contracting Capacity (NFCC)</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Net Financial Contracting Capacity (NFCC)">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">9</td>
+													<td class="Tech_description">Bid Security/Bid Securing Declaration</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Bid Security/Bid Securing Declaration">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">10</td>
+													<td class="Tech_description">Contractor’s Organizational Chart for the contract</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Contractor’s Organizational Chart for the contract">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">11</td>
+													<td class="Tech_description">List of Qualification of Key Personnel Proposed to be Assigned to the Contract</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="List of Qualification of Key Personnel Proposed to be Assigned to the Contract">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">12</td>
+													<td class="Tech_description">List of Equipment, Owned or Leased and/or under purchased agreements</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="List of Equipment, Owned or Leased and/or under purchased agreements">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">13</td>
+													<td class="Tech_description">Omnibus Sworn Statement</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Omnibus Sworn Statement">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">14</td>
+													<td class="Tech_description">Affidavit of Site Inspection</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Affidavit of Site Inspection">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">15</td>
+													<td class="Tech_description">PhilGEPS Registration Certificate</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="PhilGEPS Registration Certificate">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">16</td>
+													<td class="Tech_description">Safety and Health Program</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Safety and Health Program">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">17</td>
+													<td class="Tech_description">Income Tax Return (ITR)</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Income Tax Return (ITR)">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">18</td>
+													<td class="Tech_description">Construction Method</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Construction Method">upload</a></td>
+												</tr>
+												<tr>
+													<td class="sorting_1">19</td>
+													<td class="Tech_description">Equipment Utilization Schedule</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Equipment Utilization Schedule">upload</a></td>
+												</tr>
+												
+												<tr>
+													<td class="sorting_1">20</td>
+													<td class="Tech_description">Manpower Utilization Schedule</td>
+													<td>empty!</td>
+													<td><a class="upload_btn" data-d_id="Manpower Utilization Schedule">upload</a></td>
+												</tr>
 
 												</tbody>
 											</table>
@@ -352,7 +472,47 @@
 				</div>
 			</div>
 
-			
+			<!-- modal for upload project -->
+			<div id="upload_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="text-align: center;">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 style="font-weight: 600;" class="modal-title">Upload Technical Documents</h4>
+						</div>
+						<div class="modal-body">
+							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+								
+								<form class="form-horizontal contact-form" id="upload_docs">
+									<div class="form-body" style="margin-bottom: 20px;">
+										<div class="input-block">
+											<label for="">Description</label>
+											<p class="description_text"></p>
+											<input type="hidden" name="techdesc" class="hide_dec"/>
+											<input type="file" class="form-control" name="file" required>
+										</div>
+									</div>
+							
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-12" style="text-align: center;">
+												<button type="submit"  class="btn green">Submit</button>
+												<a  type="button" data-dismiss="modal" class="btn default">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</form>
+
+							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+						</div>
+						<!-- <div class="modal-footer">
+							<button type="button" data-dismiss="modal" class="btn default">Close</button>
+							<button type="button" class="btn green">Save changes</button>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<!-- modal end -->
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
@@ -368,14 +528,44 @@
 <script>
         jQuery(document).ready(function() {
 
-			$.ajax({
-				type  : 'get',
-				url   : '<?php echo base_url('BidderUserManagementController/ajax_table_documents_show')?>',
-				async : true,
-				success : function(data){
+
+			$('#upload_docs').on('submit',function(e){
+				e.preventDefault();
+
+				$.ajax({
+					url: "<?php echo base_url(); ?>BidderUserManagementController/inserttechdocs",
+					type: "POST",
+					// data: regdata,
+					data:new FormData(this),
+					processData:false,
+					contentType:false,
+					cache:false,
+					async:false,
+					success: function(response){
+						alert($('input[type=file]').val());
+						
+					}
+				});
+
+			})
+
+			// $.ajax({
+			// 	type  : 'get',
+			// 	url   : '<?php echo base_url('BidderUserManagementController/ajax_table_documents_show')?>',
+			// 	async : true,
+			// 	success : function(data){
 					
-					$('.table_data').html(data);
-				}
+			// 		$('.table_data').html(data);
+			// 	}
+			// });
+
+
+			// show modal and assign value to inputs
+			$('.table_data').on('click','.upload_btn',function(){
+
+				$('#upload_modal').modal('toggle');
+				$(".description_text").text($(this).data('d_id'));
+				$(".hide_dec").val($(this).data('d_id'));
 			});
-        });
+		});
 	</script>

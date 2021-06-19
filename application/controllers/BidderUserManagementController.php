@@ -21,138 +21,34 @@ class BidderUserManagementController extends CI_Controller
     }
     
 
-    public function ajax_table_documents_show()
+    public function inserttechdocs()
     {
-        // $sql="select * from projects where delete_status != 1"; 
-        // $query = $this->db->query($sql);
+        $config['upload_path']="./assets/uploads/technical-docs/";
+        $config['allowed_types']='pdf';
+        $this->load->library('upload',$config);
 
-        $table_data ="";
-            
-                    $table_data .= '<tr>
-                            <td class="sorting_1">1</td>
-                            <td>DTI</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">2</td>
-                            <td>Valid and current Mayor’s permit/municipal license</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">3</td>
-                            <td>Tax Clearance</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">4</td>
-                            <td>Statement Completed Government and Private Construction Contract</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">5</td>
-                            <td>Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">6</td>
-                            <td>Valid PCAB license</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">7</td>
-                            <td>Audited financial statements and current assets and liabilities</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">8</td>
-                            <td>Net Financial Contracting Capacity (NFCC)</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">9</td>
-                            <td>Bid Security/Bid Securing Declaration</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">10</td>
-                            <td>Contractor’s Organizational Chart for the contract</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">11</td>
-                            <td>List of Qualification of Key Personnel Proposed to be Assigned to the Contract</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">12</td>
-                            <td>List of Equipment, Owned or Leased and/or under purchased agreements</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">13</td>
-                            <td>Omnibus Sworn Statement </td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">14</td>
-                            <td>Affidavit of Site Inspection</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">15</td>
-                            <td>PhilGEPS Registration Certificate</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">16</td>
-                            <td>Safety and Health Program</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">17</td>
-                            <td>Income Tax Return (ITR)</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">18</td>
-                            <td>Construction Method </td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        <tr>
-                            <td class="sorting_1">19</td>
-                            <td>Equipment Utilization Schedule</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td class="sorting_1">20</td>
-                            <td>Manpower Utilization Schedule</td>
-                            <td>empty!</td>
-                            <td><a>upload</a></td>
-                        </tr>';
+        if($this->upload->do_upload("file")){
+            $data = array('upload_data' => $this->upload->data());
 
-        echo $table_data;
+            $technical_documents_data = array(		
+                'description' => $this->input->post('techdesc'),
+                'users_user_id' => $this->session->userdata('user_id'),
+            );
+
+            $this->db->insert('technical_documents',$technical_documents_data);
+            $last_id = $this->db->insert_id();
+
+
+            $technical_file_data = array(		
+                'technical_documents_technical_documents_id' =>  $last_id,
+                'file_path' => "/assets/uploads/technical-docs/".$data['upload_data']['file_name'],
+            );
+            $this->db->insert('technical_file',$technical_file_data);
+        }
+        echo 'Success';
         die;
     }
+    
     public function create()
     {
 

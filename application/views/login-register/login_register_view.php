@@ -50,6 +50,9 @@
 	a:hover{
 		color: #4db3a5;
 	}
+	form.login-form {
+		color: #ff3333;
+	}
 </style>
 <div class="main-container">
 	<div class="sub">
@@ -75,7 +78,7 @@
 						<div class="form-group">
 							<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 							<label class="control-label visible-ie8 visible-ie9">Username</label>
-							<input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="off" placeholder="Email" name="email" required/>
+							<input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="on" placeholder="Email" name="email" required/>
 						</div>
 						<div class="form-group">
 							<label class="control-label visible-ie8 visible-ie9">Password</label>

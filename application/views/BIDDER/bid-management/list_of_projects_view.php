@@ -1,4 +1,4 @@
- <?php 
+<?php 
 	$this->load->view('BIDDER/layouts/head');
 	$this->load->view('BIDDER/layouts/header');
 	// $this->load->view('BAC/layouts/sidebar');
@@ -331,6 +331,7 @@
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Approved Budget Cost</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Invitation To Bid</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Status</th>
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Action</th>
 										</tr>
 									</thead>
 									<tbody class="table_data" >

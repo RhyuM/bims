@@ -451,8 +451,10 @@
 	});
 </script>
 <script>
-	jQuery(document).ready(function() {
+		jQuery(window).load(function() {
 		// get data ajax
+
+		
 		$.ajax({
 			type  : 'get',
 			url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
@@ -460,54 +462,68 @@
 			success : function(data){
 				console.log("ok");
 				$('.openers_data').html(data);
+				jQuery('#decryptForm').on('submit',function(e){
+					e.preventDefault();
+					// var decryptData = $('#decrypt_user').val();
+					var p_opener_id = $('#project_openers_id').val();
+					var opener_id = $('#opener_id').val();
+					var project_id = $('#project_id').val();
+
+					// console.log(opener_id);
+					// console.log(project_id);
+					var ajaxurl = "<?php echo site_url();?>BidOpeningController/decrypt_project";
+
+					var data = { 
+								project_openers_id: p_opener_id,
+								decrypt_status: 1,
+								users_user_id: opener_id,
+								projects_projects_id: project_id
+							};
+
+					jQuery.post(ajaxurl, data, function(response) {
+
+						jQuery('.decrypt .refresh_icon').addClass("fa fa-spinner fa-spin");
+						
+						$.ajax({
+							type  : 'get',
+							url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
+							async : true,
+							success : function(data){
+								setTimeout(function(){
+									jQuery('.decrypt .refresh_icon').removeClass("fa fa-spinner fa-spin");
+									swal("Unlock!", "Project has been Unlock!", "success");
+									$('.openers_data').html(data);
+								}, 3000);	
+								
+							}
+						});
+					}).fail(function(xhr, status, error) {
+							console.log(status);
+							console.log(error);
+					});
+				});
 			}
 		});
+
+		setInterval(function(){ 
+			$.ajax({
+				type  : 'get',
+				url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
+				async : true,
+				success : function(data){
+					setTimeout(function(){
+						// jQuery('.decrypt .refresh_icon').removeClass("fa fa-spinner fa-spin");
+						// swal("Unlock!", "Project has been Unlock!", "success");
+						$('.openers_data').html(data);
+					}, 3000);	
+					
+				}
+			});
+		}, 5000);
 		console.log("ok2");
 
-		jQuery(window).load(function() {
 			// //FORM 
-			jQuery('#decryptForm').submit('click',function(e){
-				e.preventDefault();
-				// var decryptData = $('#decrypt_user').val();
-				var p_opener_id = $('#project_openers_id').val();
-				var opener_id = $('#opener_id').val();
-				var project_id = $('#project_id').val();
-
-				// console.log(opener_id);
-				// console.log(project_id);
-				var ajaxurl = "<?php echo site_url();?>BidOpeningController/decrypt_project";
-
-				var data = { 
-							project_openers_id: p_opener_id,
-							decrypt_status: 1,
-							users_user_id: opener_id,
-							projects_projects_id: project_id
-						};
-
-				jQuery.post(ajaxurl, data, function(response) {
-
-					jQuery('.decrypt .refresh_icon').addClass("fa fa-spinner fa-spin");
-
-					$.ajax({
-						type  : 'get',
-						url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
-						async : true,
-						success : function(data){
-							setTimeout(function(){
-								jQuery('.decrypt .refresh_icon').removeClass("fa fa-spinner fa-spin");
-								swal("Unlock!", "Project has been Unlock!", "success");
-								$('.openers_data').html(data);
-							}, 5000);	
-							
-						}
-					});
-				}).fail(function(xhr, status, error) {
-						console.log(status);
-						console.log(error);
-				});
-			});
 			
-		});
 		// refresh every 5 seconds
 		// setInterval(function(){ 
 		// 	$.ajax({
@@ -529,7 +545,7 @@
 
 		setTimeout(function(){
 			jQuery('.buttonload .refresh_icon').removeClass("fa fa-refresh fa-spin")
-		}, 5000);
+		}, 1000);
 	});
 </script>
 		

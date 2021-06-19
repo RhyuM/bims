@@ -40,27 +40,44 @@ class BidderBidManagementController extends CI_Controller
                     <td>'.$projects->approve_budget_cost.'</td>
                     <td> <a href=/'.$projects->ITB_path.' rel="noopener noreferrer" target="_blank">PDF</a></td>
                     <td>'. $projects->projects_status.'</td>
+                    <td><a type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">open</a></td>
                     ';
                 }
 
         echo $table_data;
         die;
     }
-    public function create()
+    public function bid_now($id) 
     {
-
-     
-    }
-
-    public function update()
-    {
-        		
+        $row = $this->db->query('select * from projects where projects_id = "'.$id.'"  ')->row();
         
-    }
+        // $sql='Select * from project_openers
+        //         left join users on project_openers.users_user_id = users.user_id
+        //         and projects_projects_id = "'.$id.'" ';
 
-    public function delete()
-    {
+        
+        // $query = $this->db->query($sql);
+      
+        if ($row) {
+            $data = array(
+                // 'users_bid_opener' => $query->result(),
+
+                'projects_id' => $row->projects_id,
+                'projects_description' => $row->projects_description,
+                'projects_type' => $row->projects_type,
+                'opening_date' => $row->opening_date,
+                'approve_budget_cost' => $row->approve_budget_cost,
+                'projects_status' => $row->projects_status,
+                
+                'session_user_id'=>   $this->session->userdata('user_id')
+            );
+
+            $this->load->view('BIDDER/bid-management/bid_view', $data);
      
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('bidopening'));
+        }
     }
    
 }
