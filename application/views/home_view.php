@@ -11,7 +11,7 @@
           <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>we are ready to help you</h6>
+                  <h6>We are ready to help you</h6>
                   <h4>Lorem Ipsum Dolor<br>&amp; Amet</h4>
                   <p>This finance HTML template is 100% free of charge provided by TemplateMo for everyone. You can download, edit and use this layout for your business website.</p>
                   <a href="contact.html" class="filled-button">contact us</a>
