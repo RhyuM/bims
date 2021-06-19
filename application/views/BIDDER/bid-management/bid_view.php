@@ -8,6 +8,26 @@
 	.portlet-title {
 		background-color: #003924!important;
 	}
+    .description_text{
+		font-size: 14px;
+	}
+	.file_input{
+		width: 50%;
+		margin: auto;
+	}
+    .input-block{
+		text-align: center;
+	}
+    .toLeft{
+        float: left;
+    }
+    .toRight{
+        float: right;
+    }
+    .projectShow{
+        width: 50%;
+        margin: auto;
+    }
  </style>
  
 
@@ -125,120 +145,8 @@
  <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
 		<div class="page-content">
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">Modal title</h4>
-						</div>
-						<div class="modal-body">
-							 Widget settings form goes here
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn blue">Save changes</button>
-							<button type="button" class="btn default" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<!-- /.modal -->
-			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- BEGIN STYLE CUSTOMIZER -->
-			<div class="theme-panel hidden-xs hidden-sm">
-				<div class="toggler">
-				</div>
-				<div class="toggler-close">
-				</div>
-				<div class="theme-options">
-					<div class="theme-option theme-colors clearfix">
-						<span>
-						THEME COLOR </span>
-						<ul>
-							<li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default">
-							</li>
-							<li class="color-darkblue tooltips" data-style="darkblue" data-container="body" data-original-title="Dark Blue">
-							</li>
-							<li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue">
-							</li>
-							<li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey">
-							</li>
-							<li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light">
-							</li>
-							<li class="color-light2 tooltips" data-style="light2" data-container="body" data-html="true" data-original-title="Light 2">
-							</li>
-						</ul>
-					</div>
-					<div class="theme-option">
-						<span>
-						Layout </span>
-						<select class="layout-option form-control input-sm">
-							<option value="fluid" selected="selected">Fluid</option>
-							<option value="boxed">Boxed</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Header </span>
-						<select class="page-header-option form-control input-sm">
-							<option value="fixed" selected="selected">Fixed</option>
-							<option value="default">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Top Menu Dropdown</span>
-						<select class="page-header-top-dropdown-style-option form-control input-sm">
-							<option value="light" selected="selected">Light</option>
-							<option value="dark">Dark</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Mode</span>
-						<select class="sidebar-option form-control input-sm">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Menu </span>
-						<select class="sidebar-menu-option form-control input-sm">
-							<option value="accordion" selected="selected">Accordion</option>
-							<option value="hover">Hover</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Style </span>
-						<select class="sidebar-style-option form-control input-sm">
-							<option value="default" selected="selected">Default</option>
-							<option value="light">Light</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Position </span>
-						<select class="sidebar-pos-option form-control input-sm">
-							<option value="left" selected="selected">Left</option>
-							<option value="right">Right</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Footer </span>
-						<select class="page-footer-option form-control input-sm">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<!-- END STYLE CUSTOMIZER -->
+			
+			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
 			Bid Management
@@ -251,31 +159,49 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 				</ul>
-				<div class="page-toolbar">
-					<div class="btn-group pull-right">
-						<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-						Actions <i class="fa fa-angle-down"></i>
-						</button>
-						<ul class="dropdown-menu pull-right" role="menu">
-							<li>
-								<a href="#">Action</a>
-							</li>
-							<li>
-								<a href="#">Another action</a>
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-								<a href="#">Separated link</a>
-							</li>
-						</ul>
-					</div>
-				</div>
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
             <div class="row">
 				<div class="col-md-12">
+
+                    <div class="portlet box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-cogs"></i>Project details
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                            
+
+                                <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                                    <div class="table-scrollable">
+                                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Projects Description</th>
+                                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">Project Type</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Bid Opening Date &amp; Time</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Approve Budget Cost</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><?php echo $projects_description; ?></td>
+                                                    <td><?php echo $projects_type; ?></td>
+                                                    <td><?php echo $opening_date; ?></td>
+                                                    <td><?php echo $approve_budget_cost ?></td>
+                                                    
+                                                </tr> 
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
 					<div class="portlet box grey-cascade">
 						<div class="portlet-title">
@@ -299,24 +225,7 @@
 									<div class="col-md-6">
 									</div>
 									<div class="col-md-6">
-										<div class="btn-group pull-right">
-											<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-right">
-												<li>
-													<a href="javascript:;">
-													Print </a>
-												</li>
-												<li>
-													<a href="javascript:;">
-													Save as PDF </a>
-												</li>
-												<li>
-													<a href="javascript:;">
-													Export to Excel </a>
-												</li>
-											</ul>
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -332,32 +241,47 @@
 									</thead>
 									<tbody class="table_data" >
 										<tr>
-											<td class="Tech_description">Financial Bid Form</td>
+											<td class="financial_description">Financial Bid Form</td>
 											<td><p>empty!</p><p>empty!</p></td>
-											<td>
-												<button class="upload_btn" data-d_id="DTI">Add New File</button>
-												<button class="upload_btn" data-d_id="DTI">Edit</button>
+											<td style="vertical-align: middle;">
+												<button class="upload_btn" data-d_id="Financial Bid Form">Add New File</button>
+												<button class="upload_btn" data-d_id="Financial Bid Form">Edit</button>
 											</td>
 										</tr>
 										<tr>
-											<td class="Tech_description">Bill Of Quantities</td>
+											<td class="financial_description">Bill Of Quantities</td>
 											<td>empty!</td>
-											<td><a class="upload_btn" data-d_id="DTI">Add New File</a></td>
+											<td style="vertical-align: middle;">
+												<button class="upload_btn" data-d_id="Bill Of Quantities">Add New File</button>
+												<button class="upload_btn" data-d_id="Bill Of Quantities">Edit</button>
+											</td>
 										</tr>
 										<tr>
-											<td class="Tech_description">Detailed Estimates</td>
+											<td class="financial_description">Detailed Estimates</td>
 											<td>empty!</td>
-											<td><a class="upload_btn" data-d_id="DTI">Add New File</a></td>
+											<td style="vertical-align: middle;">
+												<button class="upload_btn" data-d_id="Detailed Estimates">Add New File</button>
+												<button class="upload_btn" data-d_id="Detailed Estimates">Edit</button>
+											</td>
 										</tr>
 										<tr>
-											<td class="Tech_description">Cash Flow By Quarter</td>
+											<td class="financial_description">Cash Flow By Quarter</td>
 											<td>empty!</td>
-											<td><a class="upload_btn" data-d_id="DTI">Add New File</a></td>
+											<td style="vertical-align: middle;">
+												<button class="upload_btn" data-d_id="Cash Flow By Quarter">Add New File</button>
+												<button class="upload_btn" data-d_id="Cash Flow By Quarter">Edit</button>
+											</td>
 										</tr>
+
+                                        
 									</tbody>
+                                    
 								</table>
 
 							</div>
+                            <div class="continue" style="text-align: center; margin-top: 30px;  margin-bottom: 20px;">
+                                <button>SUBMIT BID</button>
+                            <div>
 							<!-- <div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 15 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div> -->
 						</div>
 					</div>
@@ -365,7 +289,47 @@
 				</div>
 			</div>
 
-			
+			<!-- modal for upload project -->
+			<div id="upload_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="text-align: center;">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 style="font-weight: 600;" class="modal-title">Upload Financial Documents</h4>
+						</div>
+						<div class="modal-body">
+							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+								
+								<form class="form-horizontal contact-form" id="upload_docs">
+									<div class="form-body" style="margin-bottom: 20px;">
+										<div class="input-block">
+                                            <label style="font-weight: 600;">Description</label>
+											<p class="description_text"></p>
+											<input type="hidden" name="financialdesc" class="hide_dec"/>
+                                            <input type="hidden" name="projects_id" value="<?php echo $projects_id; ?>"/>
+                                            
+											<input type="file" class="file_input form-control" name="file" required>
+										</div>
+									</div>
+							
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-12" style="text-align: center;">
+												<button type="submit"  class="btn green">Submit</button>
+												<a  type="button" data-dismiss="modal" class="btn default">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</form>
+
+							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+						</div>
+
+						</div> 
+					</div>
+				</div>
+			</div>
+			<!-- modal end -->
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
@@ -392,8 +356,27 @@
 			// 	}
 			// });
 
+            $('#upload_docs').on('submit',function(e){
+				e.preventDefault();
+
+				$.ajax({
+					url: "<?php echo base_url(); ?>BidderBidManagementController/insertFinancialDocs",
+					type: "POST",
+					// data: regdata,
+					data:new FormData(this),
+					processData:false,
+					contentType:false,
+					cache:false,
+					async:false,
+					success: function(response){
+						alert($('input[type=file]').val());
+						
+					}
+				});
+			});
+
 			// show modal and assign value to inputs
-			$('.table_data').on('click','.add_btn',function(){
+			$('.table_data').on('click','.upload_btn',function(){
 				$('#upload_modal').modal('toggle');
 				$(".description_text").text($(this).data('d_id'));
 				$(".hide_dec").val($(this).data('d_id'));
