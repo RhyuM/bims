@@ -18,6 +18,10 @@
 	.input-block{
 		text-align: center;
 	}
+	.table-scrollable {
+		overflow-y: scroll;
+		max-height: 534px!important;
+	}
  </style>
  
 
@@ -148,26 +152,6 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 				</ul>
-				<div class="page-toolbar">
-					<div class="btn-group pull-right">
-						<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-						Actions <i class="fa fa-angle-down"></i>
-						</button>
-						<ul class="dropdown-menu pull-right" role="menu">
-							<li>
-								<a href="#">Action</a>
-							</li>
-							<li>
-								<a href="#">Another action</a>
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-								<a href="#">Separated link</a>
-							</li>
-						</ul>
-					</div>
-				</div>
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
@@ -204,7 +188,24 @@
 
 							<div class="row">
 									<div class="col-md-12">
-										<div id="sample_1_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable">
+										<!-- <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="dataTables_length" id="sample_1_length">
+														<label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records
+														</label>
+													</div>
+												</div>
+											<div class="col-md-6 col-sm-6">
+											
+												<div id="sample_1_filter" class="dataTables_filter">
+													<label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label>
+												</div>
+											</div>
+										</div> -->
+									<div class="table-scrollable">
+											
+											
 											<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 												<thead>
 													<tr role="row">
@@ -224,7 +225,7 @@
 												<tr>
 													<td class="sorting_1">2</td>
 													<td class="tech_description">Valid and current Mayor’s permit/municipal license</td>
-													<td>empty!</td>
+													<td class>empty!</td>
 													<td><a class="upload_btn" data-d_id="Valid and current Mayor’s permit/municipal license">upload</a></td>
 												</tr>
 												<tr>

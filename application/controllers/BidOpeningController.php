@@ -37,7 +37,7 @@ class BidOpeningController extends CI_Controller
         $row = $this->db->query('select * from projects where projects_id = "'.$id.'"  ')->row();
         
         $sql='Select * from project_openers
-                left join users on project_openers.users_user_id = users.user_id
+                inner join users on project_openers.users_user_id = users.user_id
                 and projects_projects_id = "'.$id.'" ';
 
         
@@ -70,7 +70,7 @@ class BidOpeningController extends CI_Controller
     {
 
         $sql='Select * from project_openers
-                left join users on project_openers.users_user_id = users.user_id
+                inner join users on project_openers.users_user_id = users.user_id
                 where projects_projects_id = "'.$id.'" ';
 
         

@@ -260,14 +260,16 @@
 							</li>
 							<li>
 								<a href="#">Separated link</a>
+								
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			<!-- <div class="row">
+			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
 					<div class="dashboard-stat blue-madison">
 						<div class="visual">
@@ -322,7 +324,7 @@
 						</a>
 					</div>
 				</div>
-			</div> -->
+			</div>
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>

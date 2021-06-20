@@ -172,8 +172,6 @@
                                 </div>
                             </div>
                             <div class="portlet-body">
-                            
-
                                 <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
                                     <div class="table-scrollable">
                                         <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
@@ -191,8 +189,7 @@
                                                     <td><?php echo $projects_description; ?></td>
                                                     <td><?php echo $projects_type; ?></td>
                                                     <td><?php echo $opening_date; ?></td>
-                                                    <td><?php echo $approve_budget_cost ?></td>
-                                                    
+                                                    <td>₱ <?php echo $approve_budget_cost ?></td>
                                                 </tr> 
                                             </tbody>
                                             
@@ -208,16 +205,7 @@
 							<div class="caption">
 								<i class="fa fa-globe"></i>Financial Documents
 							</div>
-							<div class="tools">
-								<a href="javascript:;" class="collapse" data-original-title="" title="">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
-								</a>
-								<a href="javascript:;" class="reload" data-original-title="" title="">
-								</a>
-								<a href="javascript:;" class="remove" data-original-title="" title="">
-								</a>
-							</div>
+							
 						</div>
 						<div class="portlet-body">
 							<div class="table-toolbar">
@@ -229,7 +217,8 @@
 									</div>
 								</div>
 							</div>
-							<div id="sample_1_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable">
+						
+							<div class="table-scrollable">
 								<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 									<thead>
 										<tr role="row">
@@ -242,7 +231,7 @@
 									<tbody class="table_data" >
 										<tr>
 											<td class="financial_description">Financial Bid Form</td>
-											<td><p>empty!</p><p>empty!</p></td>
+											<td class="financial_bid_file"><p>empty!</p></td>
 											<td style="vertical-align: middle;">
 												<button class="upload_btn" data-d_id="Financial Bid Form">Add New File</button>
 												<button class="upload_btn" data-d_id="Financial Bid Form">Edit</button>
@@ -282,7 +271,6 @@
                             <div class="continue" style="text-align: center; margin-top: 30px;  margin-bottom: 20px;">
                                 <button>SUBMIT BID</button>
                             <div>
-							<!-- <div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 15 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div> -->
 						</div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->
