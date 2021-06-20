@@ -11,10 +11,11 @@
           <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>We are ready to help you</h6>
-                  <h4>Lorem Ipsum Dolor<br>&amp; Amet</h4>
-                  <p>This finance HTML template is 100% free of charge provided by TemplateMo for everyone. You can download, edit and use this layout for your business website.</p>
-                  <a href="contact.html" class="filled-button">contact us</a>
+                 
+                  <h4><strng>Mission</strong></h4>
+                  <p>Procurement Service is the trusted and preferred procurement partner of the public sector in the Philippines providing smart procurement solutions.
+
+</p>  <a href="contact.html" class="filled-button">contact us</a>
                 </div>
             </div>
           </div>
@@ -24,9 +25,8 @@
             <div class="img-fill">
                 <div class="text-content">
                   <h6>we are here to support you</h6>
-                  <h4>Lorem Ipsum Dolor<br>&amp; Amet</h4>
-                  <p>You are allowed to use this template for your company websites. You are NOT allowed to re-distribute this template ZIP file on any template download website. Please contact TemplateMo for more detail.</p>
-                  <a href="services.html" class="filled-button">our services</a>
+                  <h4>Manticao Bidding Staff</h4>
+                  <p>With honor to our onganization we shall deliver bidding with no doubt</p>  <a href="services.html" class="filled-button">our services</a>
                 </div>
             </div>
           </div>
@@ -66,15 +66,15 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Lorem Ipsum  <em>Dolor</em></h2>
-              <span>Aliquam id urna imperdiet libero mollis hendrerit</span>
+              <h2>Municipal Planning And Developement  <em>Staff</em></h2>
+              <span>The higly qualified personnel</span>
             </div>
           </div>
           <div class="col-md-4">
             <div class="service-item">
-              <img src="<?php echo base_url()."assets/";?>custom/assets/images/service_01.jpg" alt="">
+              <img src="<?php echo base_url()."assets/";?>custom/assets/images/staff/pic1.jpg" style="heigth" alt="">
               <div class="down-content">
-                <h4>Lorem Ipsum</h4>
+                <h4  style="text-align:center">BAC Secretary<br> ( BACSEC ) </h4>
                 <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
                 <a href="" class="filled-button">Read More</a>
               </div>
@@ -82,9 +82,9 @@
           </div>
           <div class="col-md-4">
             <div class="service-item">
-              <img src="<?php echo base_url()."assets/";?>custom/assets/images/service_02.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem Ipsum</h4>
+              <img src="<?php echo base_url()."assets/";?>custom/assets/images/staff/pic2.jpg" alt="">
+              <div class="down-ycontent">
+                <h4 style="text-align:center;padding-top:28px">Bids And Awards Comittee <br> ( BAC )  </h4>
                 <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
                 <a href="" class="filled-button">Read More</a>
               </div>
@@ -94,7 +94,7 @@
             <div class="service-item">
               <img src="<?php echo base_url()."assets/";?>custom/assets/images/service_03.jpg" alt="">
               <div class="down-content">
-                <h4>Lorem Ipsum</h4>
+                <h4 style="text-align:center">Techncial Working Group <br> ( TWG )</h4>
                 <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
                 <a href="" class="filled-button">Read More</a>
               </div>
