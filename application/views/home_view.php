@@ -12,10 +12,10 @@
             <div class="img-fill">
                 <div class="text-content">
                  
-                  <h4><strng>Mission</strong></h4>
+                  <h6>Our Mission</h6>
                   <p>Procurement Service is the trusted and preferred procurement partner of the public sector in the Philippines providing smart procurement solutions.
 
-</p>  <a href="contact.html" class="filled-button">contact us</a>
+</p>  <a href="http://localhost/bims/contact" class="filled-button">contact us</a>
                 </div>
             </div>
           </div>
@@ -24,8 +24,8 @@
           <div class="item item-2">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>we are here to support you</h6>
-                  <h4>Manticao Bidding Staff</h4>
+                  
+                  <h6>Manticao Bidding Staff</h6>
                   <p>With honor to our onganization we shall deliver bidding with no doubt</p>  <a href="services.html" class="filled-button">our services</a>
                 </div>
             </div>
@@ -35,10 +35,10 @@
           <div class="item item-3">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>we have a solid background</h6>
-                  <h4>Lorem Ipsum Dolor<br>&amp; Amet</h4>
-                  <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate mi. Sed nec cursus augue. Phasellus lacinia ac sapien vitae dapibus. Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</p>
-                  <a href="about.html" class="filled-button">learn more</a>
+                 
+                  <h6>Our Vission</h6>
+                  <p> Procure quality government requirements efficiently and economically from reputable sources, provide excellent customer service responsive to the needs of its stakeholders, foster integrity and a fair, transparent, and competitive environment in procurement, develop its human capital as the country’s leading procurement and supply chain professionals, ensure stable, progressive, and sustainable operations and Introduce and sustain smart and innovative products and procurement solutions.</p>     
+                   <a href="http://localhost/bims/about" class="filled-button">learn more</a>
                 </div>
             </div>
           </div>
@@ -52,10 +52,10 @@
         <div class="row">
           <div class="col-md-8">
             <h4>Request a call back right now ?</h4>
-            <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>
+          
           </div>
           <div class="col-md-4">
-            <a href="contact.html" class="border-button">Contact Us</a>
+            <a hre="http://localhost/bims/about" class="border-button" >Contact Us</a>
           </div>
         </div>
       </div>
@@ -116,6 +116,7 @@
               <a href="" class="filled-button">Read More</a>
             </div>
           </div>
+          <!--
           <div class="col-md-6 align-self-center">
             <div class="row">
               <div class="col-md-6">
@@ -140,6 +141,7 @@
                 <div class="count-area-content">
                   <div class="count-digit">26</div>
                   <div class="count-title">Awards Won</div>
+-->
                 </div>
               </div>
             </div>
@@ -234,7 +236,7 @@
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Request a <em>call back</em></h2>
-              <span>Etiam suscipit ante a odio consequat</span>
+             
             </div>
           </div>
           <div class="col-md-12">
