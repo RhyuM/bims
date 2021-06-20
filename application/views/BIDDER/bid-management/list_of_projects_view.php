@@ -8,6 +8,10 @@
 	.portlet-title {
 		background-color: #003924!important;
 	}
+	a.btn.img_button {
+		background: #af9500;
+		color: #fff;
+	}
  </style>
  
 
@@ -200,17 +204,17 @@
 
 
 <script>
-        jQuery(document).ready(function() {
+	jQuery(document).ready(function() {
 
-			// get data from project table
-			$.ajax({
-				type  : 'get',
-				url   : '<?php echo base_url('BidderBidManagementController/ajax_table_projects_show')?>',
-				async : true,
-				success : function(data){
-					
-					$('.table_data').html(data);
-				}
-			});
-        });
-	</script>
+		// get data from project table
+		$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidderBidManagementController/ajax_table_projects_show')?>',
+			async : true,
+			success : function(data){
+				
+				$('.table_data').html(data);
+			}
+		});
+	});
+</script>

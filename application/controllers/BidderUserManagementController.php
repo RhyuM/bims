@@ -24,7 +24,7 @@ class BidderUserManagementController extends CI_Controller
     public function inserttechdocs()
     {
         $config['upload_path']="./assets/uploads/technical-docs/";
-        $config['allowed_types']='pdf';
+        $config['allowed_types']='pdf|jpg|png';
         $this->load->library('upload',$config);
 
         if($this->upload->do_upload("file")){
@@ -41,7 +41,7 @@ class BidderUserManagementController extends CI_Controller
 
             $technical_file_data = array(		
                 'technical_documents_technical_documents_id' =>  $last_id,
-                'file_path' => "/assets/uploads/technical-docs/".$data['upload_data']['file_name'],
+                'file_path' => "assets/uploads/technical-docs/".$data['upload_data']['file_name'],
             );
             $this->db->insert('technical_file',$technical_file_data);
         }

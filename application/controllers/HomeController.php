@@ -36,7 +36,7 @@ class HomeController extends CI_Controller {
                                     
                     <td class="sorting_1">'.$start++.'</td>
                     <td>'.$projects->projects_description.'</td>
-					<td> <a href=/'.$projects->ITB_path.' rel="noopener noreferrer" target="_blank">CLICK TO DOWNLOAD</a></td>';
+					<td> <a href='.base_url()."/".$projects->ITB_path.' rel="noopener noreferrer" target="_blank">CLICK TO DOWNLOAD</a></td>';
                 }
        
         echo $table_data;
