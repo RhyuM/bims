@@ -38,9 +38,9 @@ class BidderBidManagementController extends CI_Controller
                     <td>'.$projects->projects_type.'</td>
                     <td>'. $projects->opening_date .'</td>
                     <td>Php'.$projects->approve_budget_cost.'</td>
-                    <td> <a href=/'.$projects->ITB_path.' rel="noopener noreferrer" target="_blank"><button>CLICK TO DOWNLOAD</button></a></td>
+                    <td> <a class="btn img_button"href='.base_url().$projects->ITB_path.' rel="noopener noreferrer" target="_blank">CLICK TO DOWNLOAD</a></td>
                     <td>'. $projects->projects_status.'</td>
-                    <td><a type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">BID</a></td>
+                    <td><a class="btn img_button"type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">BID NOW</a></td>
                     ';
                 }
 
@@ -48,45 +48,48 @@ class BidderBidManagementController extends CI_Controller
         die;
     }
 
-    public function financial_bid_Form_file_show()
-    {
-        $sql="select * from financial_documents where description = 'Financial Bid Form'"; 
-
-        
-        $query = $this->db->query($sql);
-
-        $financial_bid_file ="";
-            
-                $start = 1;
-                foreach ($query->result() as $projects)
-                {
-                    $financial_bid_file .= '<tr class="gradeX odd" role="row" id="'.$projects->projects_id.'">
-                                    
-                    <td class="sorting_1">'.$start++.'</td>
-                    <td>'.$projects->projects_description.'</td>
-                    <td>'.$projects->projects_type.'</td>
-                    <td>'. $projects->opening_date .'</td>
-                    <td>Php'.$projects->approve_budget_cost.'</td>
-                    <td> <a href=/'.$projects->ITB_path.' rel="noopener noreferrer" target="_blank"><button>CLICK TO DOWNLOAD</button></a></td>
-                    <td>'. $projects->projects_status.'</td>
-                    <td><a type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">BID</a></td>
-                    ';
-                }
-
-        echo $financial_bid_file;
-        die;
-    }
-
     
     public function bid_now($id) 
     {
+        $users_id = $this->session->userdata('user_id');
+
         $row = $this->db->query('select * from projects where projects_id = "'.$id.'"  ')->row();
         
         $sql='select * from financial_documents where projects_projects_id = "'.$id.'"
-            and users_users_id = "'.$this->session->userdata('user_id').'"'; 
+            and users_user_id = "'.$users_id.'"'; 
+        
+        $query = $this->db->query($sql);
+        
+        $financial_bid_form_id = '';
+        $bill_of_quantities_id = '';
+        $detailed_estimates_id = '';
+        $cash_flow_by_quarter_id = '';
+
+        foreach($query->result() as $financial_docs){
+            if($financial_docs->description == 'Financial Bid Form')
+            {
+                $financial_bid_form_id = $financial_docs->financial_documents_id;
+            }
+            else if($financial_docs->description == 'Bill Of Quantities')
+            {
+                $bill_of_quantities_id = $financial_docs->financial_documents_id;
+            }
+            else if($financial_docs->description == 'Detailed Estimates')
+            {
+                $detailed_estimates_id = $financial_docs->financial_documents_id;
+            }
+            else if($financial_docs->description == 'Cash Flow By Quarter')
+            {
+                $cash_flow_by_quarter_id = $financial_docs->financial_documents_id;
+            }
+        }
 
         $data = array(
-            'financial_documents' => $query->result(),
+
+            'financial_bid_form_id' =>  $financial_bid_form_id,
+            'bill_of_quantities_id' =>  $bill_of_quantities_id,
+            'detailed_estimates_id' =>  $detailed_estimates_id,
+            'cash_flow_by_quarter_id' =>  $cash_flow_by_quarter_id,
 
             'projects_id' => $row->projects_id,
             'projects_description' => $row->projects_description,
@@ -98,13 +101,111 @@ class BidderBidManagementController extends CI_Controller
             'session_user_id'=>   $this->session->userdata('user_id')
         );
 
+        
+        // $this->financial_bid_form_file_show($id);
         $this->load->view('BIDDER/bid-management/bid_view', $data);
         
+        
     }
+
+    public function financial_bid_form_file_show($id)
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql=' SELECT * FROM financial_documents
+                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
+                where description = "Financial Bid Form" 
+                and users_user_id ="'.$users_user_id.'"
+                and projects_projects_id ="'.$id.'" ';
+
+        $query = $this->db->query($sql);
+
+        $financial_bid_file ="";
+            
+                foreach ($query->result() as $financial_file)
+                {
+                    $financial_bid_file .= '<a class="btn img_button"href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+                }
+
+        echo $financial_bid_file;
+        die;
+    }
+
+    public function bill_of_quantities_file_show($id)
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql=' SELECT * FROM financial_documents
+                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
+                where description = "Bill Of Quantities" 
+                and users_user_id ="'.$users_user_id.'"
+                and projects_projects_id ="'.$id.'" ';
+
+        $query = $this->db->query($sql);
+
+        $financial_bid_file ="";
+            
+                foreach ($query->result() as $financial_file)
+                {
+                    $financial_bid_file .= '<a class="btn img_button"href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+                }
+
+        echo $financial_bid_file;
+        die;
+    }
+
+    public function detailed_estimates_file_show($id)
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql=' SELECT * FROM financial_documents
+                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
+                where description = "Detailed Estimates" 
+                and users_user_id ="'.$users_user_id.'"
+                and projects_projects_id ="'.$id.'" ';
+
+        $query = $this->db->query($sql);
+
+        $financial_bid_file ="";
+            
+                foreach ($query->result() as $financial_file)
+                {
+                    $financial_bid_file .= '<a class="btn img_button"href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br> ';
+                }
+
+        echo $financial_bid_file;
+        die;
+    }
+
+    public function cash_flow_by_quarter_file_show($id)
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql=' SELECT * FROM financial_documents
+                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
+                where description = "Cash Flow By Quarter" 
+                and users_user_id ="'.$users_user_id.'"
+                and projects_projects_id ="'.$id.'" ';
+
+        $query = $this->db->query($sql);
+
+        $financial_bid_file ="";
+            
+                foreach ($query->result() as $financial_file)
+                {
+                    $financial_bid_file .= '<a class="btn img_button"class="btn" href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+                }
+
+        echo $financial_bid_file;
+        die;
+    }
+
+
     public function insertFinancialDocs()
     {
         $config['upload_path']="./assets/uploads/financial-docs/";
-        $config['allowed_types']='pdf';
+        $config['allowed_types']='pdf|jpg|png';
+        // $config['max_size'] = 100;
         $this->load->library('upload',$config);
 
         if($this->upload->do_upload("file")){
@@ -121,7 +222,7 @@ class BidderBidManagementController extends CI_Controller
             $projects_projects_id = $this->input->post('projects_id');
 
 
-            $sql='  SELECT * FROM financial_documents
+            $sql=' SELECT * FROM financial_documents
                     where description = "'. $description.'" 
                     and users_user_id ="'.$users_user_id.'"
                     and projects_projects_id ="'.$projects_projects_id.'"';
@@ -134,7 +235,7 @@ class BidderBidManagementController extends CI_Controller
             {
                 $financial_file_data = array(		
                     'financial_documents_financial_documents_id' =>  $row->financial_documents_id,
-                    'file_path' => "/assets/uploads/financial-docs/".$data['upload_data']['file_name'],
+                    'file_path' => "assets/uploads/financial-docs/".$data['upload_data']['file_name'],
                 );
                
                 $this->db->insert('financial_file',$financial_file_data);
@@ -146,10 +247,11 @@ class BidderBidManagementController extends CI_Controller
     
                 $financial_file_data = array(		
                     'financial_documents_financial_documents_id' =>  $last_id,
-                    'file_path' => "/assets/uploads/financial-docs/".$data['upload_data']['file_name'],
+                    'file_path' => "assets/uploads/financial-docs/".$data['upload_data']['file_name'],
                 );
                 $this->db->insert('financial_file',$financial_file_data);
             }
+            
         }
         echo 'Success';
         die;

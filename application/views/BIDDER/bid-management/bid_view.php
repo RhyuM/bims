@@ -27,7 +27,25 @@
     .projectShow{
         width: 50%;
         margin: auto;
-    }
+	}
+	.table .btn {
+		margin: 5px 5px!important;
+	}
+	button.confirm,
+	.submit_button,
+	a.btn.upload_btn,
+	a.btn.submit_bid ,
+	a.btn.img_button {
+		background: #af9500;
+		color: #fff!important;
+	}
+	a.btn.view_tech {
+		background: #003924;
+		color: white;
+	}
+	.action_row{
+		margin-bottom: 10px;
+	}
  </style>
  
 
@@ -155,7 +173,7 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
+						<a href="">Home</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 				</ul>
@@ -217,7 +235,8 @@
 									</div>
 								</div>
 							</div>
-						
+
+
 							<div class="table-scrollable">
 								<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 									<thead>
@@ -231,34 +250,34 @@
 									<tbody class="table_data" >
 										<tr>
 											<td class="financial_description">Financial Bid Form</td>
-											<td class="financial_bid_file"><p>empty!</p></td>
+											<td id="fbf_file"></td>
 											<td style="vertical-align: middle;">
-												<button class="upload_btn" data-d_id="Financial Bid Form">Add New File</button>
-												<button class="upload_btn" data-d_id="Financial Bid Form">Edit</button>
+												<a class="btn upload_btn" data-financial_documents_id="<?php echo $financial_bid_form_id; ?>" data-d_id="Financial Bid Form">Add New File</a>
+												<a class="btn upload_btn" data-d_id="Financial Bid Form">Edit</a>
 											</td>
 										</tr>
 										<tr>
 											<td class="financial_description">Bill Of Quantities</td>
-											<td>empty!</td>
+											<td id="boq_file"></td>
 											<td style="vertical-align: middle;">
-												<button class="upload_btn" data-d_id="Bill Of Quantities">Add New File</button>
-												<button class="upload_btn" data-d_id="Bill Of Quantities">Edit</button>
+											<a class="btn upload_btn" data-financial_documents_id="<?php echo $bill_of_quantities_id; ?>" data-d_id="Bill Of Quantities">Add New File</a>
+												<a class="btn upload_btn" data-d_id="Bill Of Quantities">Edit</a>
 											</td>
 										</tr>
 										<tr>
 											<td class="financial_description">Detailed Estimates</td>
-											<td>empty!</td>
+											<td id="de_file"></td>
 											<td style="vertical-align: middle;">
-												<button class="upload_btn" data-d_id="Detailed Estimates">Add New File</button>
-												<button class="upload_btn" data-d_id="Detailed Estimates">Edit</button>
+												<a class="btn upload_btn" data-financial_documents_id="<?php echo $detailed_estimates_id; ?>" data-d_id="Detailed Estimates">Add New File</a>
+												<a class="btn upload_btn" data-d_id="Detailed Estimates">Edit</a>
 											</td>
 										</tr>
 										<tr>
 											<td class="financial_description">Cash Flow By Quarter</td>
-											<td>empty!</td>
+											<td id="cfbq_file"></td>
 											<td style="vertical-align: middle;">
-												<button class="upload_btn" data-d_id="Cash Flow By Quarter">Add New File</button>
-												<button class="upload_btn" data-d_id="Cash Flow By Quarter">Edit</button>
+												<a class="btn upload_btn" data-financial_documents_id="<?php echo $cash_flow_by_quarter_id; ?>" data-d_id="Cash Flow By Quarter">Add New File</a>
+												<a class="btn upload_btn" data-d_id="Cash Flow By Quarter">Edit</a>
 											</td>
 										</tr>
 
@@ -268,8 +287,9 @@
 								</table>
 
 							</div>
-                            <div class="continue" style="text-align: center; margin-top: 30px;  margin-bottom: 20px;">
-                                <button>SUBMIT BID</button>
+                            <div class="continue" style="text-align: center; margin-top: 30px;  margin-bottom: 30px;">
+								<a href="/bims/usermanagement/my-documents" class="btn view_tech">VIEW TECHNICAL DOCUMENTS</a>
+								<a class="btn submit_bid">SUBMIT BID</a>
                             <div>
 						</div>
 					</div>
@@ -282,7 +302,7 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header" style="text-align: center;">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></a>
 							<h4 style="font-weight: 600;" class="modal-title">Upload Financial Documents</h4>
 						</div>
 						<div class="modal-body">
@@ -295,16 +315,17 @@
 											<p class="description_text"></p>
 											<input type="hidden" name="financialdesc" class="hide_dec"/>
                                             <input type="hidden" name="projects_id" value="<?php echo $projects_id; ?>"/>
+											<input type="hidden" class="financial_documents" name="financial_documents_id" />
                                             
 											<input type="file" class="file_input form-control" name="file" required>
 										</div>
 									</div>
 							
 									<div class="form-actions">
-										<div class="row">
+										<div class="row action_row">
 											<div class="col-md-12" style="text-align: center;">
-												<button type="submit"  class="btn green">Submit</button>
-												<a  type="button" data-dismiss="modal" class="btn default">Cancel</a>
+												<button class="btn submit_button" type="submit">Submit</button>
+												<a class="btn" type="button" data-dismiss="modal">Cancel</a>
 											</div>
 										</div>
 									</div>
@@ -333,16 +354,45 @@
 <script>
         jQuery(document).ready(function() {
 
-			// get data from project table
-			// $.ajax({
-			// 	type  : 'get',
-			// 	url   : '<?php echo base_url('BidderBidManagementController/ajax_table_projects_show')?>',
-			// 	async : true,
-			// 	success : function(data){
-					
-			// 		$('.table_data').html(data);
-			// 	}
-			// });
+			// show Financial Bid Form document file
+			$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
+			async : true,
+				success : function(data){
+					$('#fbf_file').html(data);
+				}
+			});
+
+			// show Bill Of Quantities document file
+			$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
+			async : true,
+				success : function(data){
+					$('#boq_file').append(data);
+				}
+			});
+
+			// show Detailed Estimates document file
+			$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
+			async : true,
+				success : function(data){
+					$('#de_file').append(data);
+				}
+			});
+
+			// show Cash Flow By Quarter document file
+			$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
+			async : true,
+				success : function(data){
+					$('#cfbq_file').append(data);
+				}
+			});
 
             $('#upload_docs').on('submit',function(e){
 				e.preventDefault();
@@ -357,8 +407,49 @@
 					cache:false,
 					async:false,
 					success: function(response){
-						alert($('input[type=file]').val());
-						
+						// alert($('input[type=file]').val());
+						$('#upload_modal').modal('toggle');
+						swal("Added!", "File has been Added!", "success");
+
+						// show Financial Bid Form document file
+						$.ajax({
+						type  : 'get',
+						url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
+						async : true,
+							success : function(data){
+								$('#fbf_file').html(data);
+							}
+						});
+
+						// show Bill Of Quantities document file
+						$.ajax({
+						type  : 'get',
+						url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
+						async : true,
+							success : function(data){
+								$('#boq_file').html(data);
+							}
+						});
+
+						// show Detailed Estimates document file
+						$.ajax({
+						type  : 'get',
+						url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
+						async : true,
+							success : function(data){
+								$('#de_file').html(data);
+							}
+						});
+
+						// show Cash Flow By Quarter document file
+						$.ajax({
+						type  : 'get',
+						url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
+						async : true,
+							success : function(data){
+								$('#cfbq_file').html(data);
+							}
+						});
 					}
 				});
 			});
@@ -367,6 +458,7 @@
 			$('.table_data').on('click','.upload_btn',function(){
 				$('#upload_modal').modal('toggle');
 				$(".description_text").text($(this).data('d_id'));
+				$(".financial_documents").val($(this).data('financial_documents_id'));
 				$(".hide_dec").val($(this).data('d_id'));
 			});
         });
