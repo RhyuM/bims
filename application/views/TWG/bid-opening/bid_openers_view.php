@@ -166,23 +166,6 @@
 						</li>
 					</ul>
 				</li>
-				<li class="project_management">
-					<a href="javascript:;">
-					<i class="icon-diamond"></i>
-					<span class="title">project Management</span>
-					<span class="arrow"></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="list_of_project">
-							<a href="http://localhost/bims/projectmanagement.html">
-							List Of Projects</a>
-						</li>
-						<li class="bids_submitted">
-							<a href="#">
-							Bids Submitted</a>
-						</li>
-					</ul>
-				</li>
 				<li class="active open">
 					<a href="javascript:;">
 					<i class="icon-briefcase"></i>

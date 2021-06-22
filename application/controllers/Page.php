@@ -33,7 +33,7 @@ class Page extends CI_Controller{
         }
         else if($this->session->userdata('type')==='TWG' || $this->session->userdata('type')==='HEAD-TWG')
         {
-          $this->load->view('dashboard_view_twg');
+          $this->load->view('TWG/dashboard_view');
         }
         else
         {

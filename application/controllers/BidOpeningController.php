@@ -73,8 +73,13 @@ class BidOpeningController extends CI_Controller
                 inner join users on project_openers.users_user_id = users.user_id
                 where projects_projects_id = "'.$id.'" ';
 
+        $sql2='SELECT * FROM bims_db.project_openers
+                where projects_projects_id  = "'.$id.'"
+                and decrypt_status ="1"';
+                
         
         $query = $this->db->query($sql);
+        $query2 = $this->db->query($sql2);
       
         $openers_data = '<form class="form-horizontal contact-form" id="decryptForm" method="post"> ';
                 foreach($query->result() as $openers){
@@ -112,6 +117,10 @@ class BidOpeningController extends CI_Controller
                                     </div>';
                 }
             $openers_data .=    '</form>';
+
+            if ( $query2->num_rows() == 2){
+                $openers_data .=    '<div style="text-align: center; margin-top: 20px;"><a class="btn continue">CONTINUE</a></div>';
+            }
         echo $openers_data;
         die;
 
