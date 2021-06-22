@@ -266,32 +266,44 @@ class BidderBidManagementController extends CI_Controller
 
         $sql2='  SELECT * FROM technical_documents
                 where users_user_id ="'.$users_user_id.'" ';
+        
+        $sql3 ='  SELECT * FROM bims_db.bids
+                where  projects_projects_id ="'.$projects_id.'" 
+                and users_user_id = "'.$users_user_id.'"
+                and status = "1" '; 
 
         $query = $this->db->query($sql);
         $query2 = $this->db->query($sql2);
+        $query3 = $this->db->query($sql3);
 
-        if ( $query->num_rows() == 4 ){
-            if ( $query2->num_rows() == 20 ){
+        if ( $query3->num_rows() == 0){
+            if ( $query->num_rows() == 4 ){
+                if ( $query2->num_rows() == 20 ){
 
-                    $bid_data = array(		
-                        'bid_price' 	=> $this->input->post('bid_price'), 
-                        'projects_projects_id' 	=> $this->input->post('projects_id'), 
-                        'users_user_id' => $this->session->userdata('user_id'),
-                        'status' => 1
-                    );
-        
-                $this->db->insert('bids',$bid_data);
-                
-                print json_encode(array("status"=>"success","message"=>"success"));
+                        $bid_data = array(		
+                            'bid_price' 	=> $this->input->post('bid_price'), 
+                            'projects_projects_id' 	=> $this->input->post('projects_id'), 
+                            'users_user_id' => $this->session->userdata('user_id'),
+                            'status' => 1
+                        );
+            
+                    $this->db->insert('bids',$bid_data);
+                    
+                    print json_encode(array("status"=>"success","message"=>"success"));
+                }
+                else{
+                    // echo 'Technical documents not completed!';
+                    print json_encode(array("status"=>"fail","message"=>"Technical documents not completed!"));
+                }
             }
             else{
-                // echo 'Technical documents not completed!';
-                print json_encode(array("status"=>"fail","message"=>"Technical documents not completed!"));
+                // echo 'Financial documents not completed!';
+                print json_encode(array("status"=>"fail","message"=>"Financial documents not completed!"));
             }
         }
         else{
             // echo 'Financial documents not completed!';
-            print json_encode(array("status"=>"fail","message"=>"Financial documents not completed!"));
+            print json_encode(array("status"=>"fail","message"=>"You Already Bid To This Project"));
         }
     }
 
@@ -300,7 +312,7 @@ class BidderBidManagementController extends CI_Controller
     {   
         $this->load->view('BIDDER/bid-management/my_active_bids_view');
     }
-    
+
     public function my_active_bids_show()
     {
         $users_user_id = $this->session->userdata('user_id');
