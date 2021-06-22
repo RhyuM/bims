@@ -166,6 +166,34 @@ class BidderUserManagementController extends CI_Controller
         echo $this->input->post('techdesc');
         die;
     }
+    public function updatetechdocs()
+    {
+        $config['upload_path']="./assets/uploads/technical-docs/";
+        $config['allowed_types']='pdf|jpg|png';
+        $this->load->library('upload',$config);
+
+        if($this->upload->do_upload("file")){
+            $data = array('upload_data' => $this->upload->data());
+
+            $technical_documents_data = array(		
+                'description' => $this->input->post('techdesc'),
+                'users_user_id' => $this->session->userdata('user_id'),
+            );
+
+            $this->db->insert('technical_documents',$technical_documents_data);
+            $last_id = $this->db->insert_id();
+
+
+            $technical_file_data = array(		
+                'technical_documents_technical_documents_id' =>  $last_id,
+                'file_path' => "assets/uploads/technical-docs/".$data['upload_data']['file_name'],
+            );
+            $this->db->insert('technical_file',$technical_file_data);
+        }
+        echo $this->input->post('techdesc');
+        die;
+    }
+    
 
     // method from thisup to the bottom is for showing file in the technical
     public function technical_documents_1_show()
@@ -187,7 +215,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">1</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -212,7 +240,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">2</td>
                                 <td >'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -237,7 +265,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">3</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -262,7 +290,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">4</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -287,7 +315,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">5</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -312,7 +340,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">6</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -337,7 +365,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">7</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -362,7 +390,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">8</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -387,7 +415,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">9</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -412,7 +440,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">10</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -437,7 +465,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">11</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -462,7 +490,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">12</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -487,7 +515,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">13</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -512,7 +540,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">14</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -537,7 +565,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">15</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -562,7 +590,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">16</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -587,7 +615,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">17</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -612,7 +640,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">18</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -637,7 +665,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">19</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;
@@ -662,7 +690,7 @@ class BidderUserManagementController extends CI_Controller
                                 <td class="sorting_1">20</td>
                                 <td>'.$technical_documents->description.'</td>
                                 <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br></td>
-                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">EDIT</a></td>
+                                <td><a class="btn upload_btn" data-d_id="'.$technical_documents->description.'">replace</a></td>
                             ';
                 }
         echo $table_data;

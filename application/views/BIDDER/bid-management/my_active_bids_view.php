@@ -83,11 +83,11 @@
 							<a href="#">
 							Search Active Projects</a>
 						</li>
-						<li class="active">
+						<li class="">
 							<a href="/bims/bidderbidmanagement/list-of-projects">
 							New Projects</a>
 						</li>
-						<li class="">
+						<li class="active">
 							<a href="/bims/bidderbidmanagement/my_active_bids">
 							My Active Bids</a>
 						</li>
@@ -150,7 +150,7 @@
 					<div class="portlet box grey-cascade">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>List Of Projects
+								<i class="fa fa-globe"></i>My Active Bids
 							</div>
 							
 						</div>
@@ -173,8 +173,7 @@
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" >Project Type</th>
 											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Bid Opening Date</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Approved Budget Cost</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Invitation To Bid</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Status</th>
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">My Bid Price</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Action</th>
 										</tr>
 									</thead>
@@ -183,7 +182,8 @@
 									</tbody>
 								</table>
 
-							</div><div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 15 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div>
+							</div>
+							<!-- <div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 15 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div> -->
 						</div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->
@@ -209,7 +209,7 @@
 		// get data from project table
 		$.ajax({
 			type  : 'get',
-			url   : '<?php echo base_url('BidderBidManagementController/ajax_table_projects_show')?>',
+			url   : '<?php echo base_url('BidderBidManagementController/my_active_bids_show')?>',
 			async : true,
 			success : function(data){
 				

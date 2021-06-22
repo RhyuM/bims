@@ -104,9 +104,9 @@ class BidderBidManagementController extends CI_Controller
         
         // $this->financial_bid_form_file_show($id);
         $this->load->view('BIDDER/bid-management/bid_view', $data);
-        
-        
     }
+
+
 
     public function financial_bid_form_file_show($id)
     {
@@ -254,6 +254,82 @@ class BidderBidManagementController extends CI_Controller
             
         }
         echo 'Success';
+        die;
+    }
+    public function submit_bid()
+    {
+        $users_user_id = $this->session->userdata('user_id');
+        $projects_id	= $this->input->post('projects_id');
+        $sql=' SELECT * FROM financial_documents
+                where users_user_id ="'.$users_user_id.'"
+                and projects_projects_id ="'.$projects_id.'" ';
+
+        $sql2='  SELECT * FROM technical_documents
+                where users_user_id ="'.$users_user_id.'" ';
+
+        $query = $this->db->query($sql);
+        $query2 = $this->db->query($sql2);
+
+        if ( $query->num_rows() == 4 ){
+            if ( $query2->num_rows() == 20 ){
+
+                    $bid_data = array(		
+                        'bid_price' 	=> $this->input->post('bid_price'), 
+                        'projects_projects_id' 	=> $this->input->post('projects_id'), 
+                        'users_user_id' => $this->session->userdata('user_id'),
+                        'status' => 1
+                    );
+        
+                $this->db->insert('bids',$bid_data);
+                
+                print json_encode(array("status"=>"success","message"=>"success"));
+            }
+            else{
+                // echo 'Technical documents not completed!';
+                print json_encode(array("status"=>"fail","message"=>"Technical documents not completed!"));
+            }
+        }
+        else{
+            // echo 'Financial documents not completed!';
+            print json_encode(array("status"=>"fail","message"=>"Financial documents not completed!"));
+        }
+    }
+
+    
+    public function my_active_bids()
+    {   
+        $this->load->view('BIDDER/bid-management/my_active_bids_view');
+    }
+    
+    public function my_active_bids_show()
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql='  SELECT * FROM bims_db.bids
+                inner join projects on bids.projects_projects_id = projects.projects_id
+                where users_user_id = "'.$users_user_id.'"
+                and status = "1" '; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+            
+                $start = 1;
+                foreach ($query->result() as $projects_bid)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row" id="'.$projects_bid->projects_id.'">
+                                    
+                    <td class="sorting_1">'.$start++.'</td>
+                    <td>'.$projects_bid->projects_description.'</td>
+                    <td>'.$projects_bid->projects_type.'</td>
+                    <td>'. $projects_bid->opening_date .'</td>
+                    <td>₱'.$projects_bid->approve_budget_cost.'</td>
+                    <td>₱'.$projects_bid->bid_price.'</td>
+                    <td><a class="btn img_button"type="button" href="#">WITHDRAW BID</a></td>
+                    ';
+                }
+
+        echo $table_data;
         die;
     }
 }

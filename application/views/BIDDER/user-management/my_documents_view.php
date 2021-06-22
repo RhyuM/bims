@@ -102,7 +102,7 @@
 							New Projects</a>
 						</li>
 						<li class="">
-							<a href="#">
+							<a href="/bims/bidderbidmanagement/my_active_bids">
 							My Active Bids</a>
 						</li>
 						<li class="">
@@ -209,14 +209,14 @@
 														<td>
 															<?php 
 																if(!empty($docs1)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs1.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs1.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 															?>
 														</td>
 														<td>
 															<?php 
 																if(!empty($docs1)) {
-																	echo '<a class="btn edit_btn" data-d_id="DTI">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="DTI">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="DTI">upload</a>'; 
@@ -231,14 +231,14 @@
 														<td class>
 															<?php 
 																if(!empty($docs2)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs2.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs2.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}																
 															?>
 														</td>
 														<td>
 															<?php 
 																if(!empty($docs2)) {
-																	echo '<a class="btn edit_btn" data-d_id="Valid and current Mayor’s permit/municipal license">Edit</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Valid and current Mayor’s permit/municipal license">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Valid and current Mayor’s permit/municipal license">upload</a>'; 
@@ -253,14 +253,14 @@
 														<td>
 															<?php 
 																if(!empty($docs3)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs3.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs3.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}															
 															?>
 														</td>
 														<td>
 															<?php 
 																if(!empty($docs3)) {
-																	echo '<a class="btn edit_btn" data-d_id="Tax Clearance">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Tax Clearance">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Tax Clearance">upload</a>'; 
@@ -276,7 +276,7 @@
 														<td>
 															<?php 
 																if(!empty($docs4)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs4.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs4.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -284,7 +284,7 @@
 														<td>
 															<?php 
 																if(!empty($docs4)) {
-																	echo '<a class="btn edit_btn" data-d_id="Statement Completed Government and Private Construction Contract">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Statement Completed Government and Private Construction Contract">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Statement Completed Government and Private Construction Contract">upload</a>'; 
@@ -300,7 +300,7 @@
 														<td>
 															<?php 
 																if(!empty($docs5)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs5.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs5.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -308,7 +308,7 @@
 														<td>
 															<?php 
 																if(!empty($docs5)) {
-																	echo '<a class="btn edit_btn" data-d_id="Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started">upload</a>'; 
@@ -323,7 +323,7 @@
 														<td>
 															<?php 
 																if(!empty($docs6)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs6.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs6.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -331,7 +331,7 @@
 														<td>
 															<?php 
 																if(!empty($docs6)) {
-																	echo '<a class="btn edit_btn" data-d_id="Valid PCAB license">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Valid PCAB license">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Valid PCAB license">upload</a>'; 
@@ -347,7 +347,7 @@
 														<td>
 															<?php 
 																if(!empty($docs7)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs7.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs7.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -355,7 +355,7 @@
 														<td>
 															<?php 
 																if(!empty($docs7)) {
-																	echo '<a class="btn edit_btn" data-d_id="Audited financial statements and current assets and liabilities">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Audited financial statements and current assets and liabilities">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Audited financial statements and current assets and liabilities">upload</a>'; 
@@ -371,7 +371,7 @@
 														<td>
 															<?php 
 																if(!empty($docs8)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs8.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs8.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -379,7 +379,7 @@
 														<td>
 															<?php 
 																if(!empty($docs8)) {
-																	echo '<a class="btn edit_btn" data-d_id="Net Financial Contracting Capacity (NFCC)">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Net Financial Contracting Capacity (NFCC)">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Net Financial Contracting Capacity (NFCC)">upload</a>'; 
@@ -395,7 +395,7 @@
 														<td>
 															<?php 
 																if(!empty($docs9)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs9.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs9.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -403,7 +403,7 @@
 														<td>
 															<?php 
 																if(!empty($docs9)) {
-																	echo '<a class="btn edit_btn" data-d_id="Bid Security/Bid Securing Declaration">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Bid Security/Bid Securing Declaration">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Bid Security/Bid Securing Declaration">upload</a>'; 
@@ -419,7 +419,7 @@
 														<td>
 															<?php 
 																if(!empty($docs10)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs10.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs10.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -427,7 +427,7 @@
 														<td>
 															<?php 
 																if(!empty($docs10)) {
-																	echo '<a class="btn edit_btn" data-d_id="Contractor’s Organizational Chart for the contract">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Contractor’s Organizational Chart for the contract">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Contractor’s Organizational Chart for the contract">upload</a>'; 
@@ -441,7 +441,7 @@
 														<td>
 															<?php 
 																if(!empty($docs11)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs11.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs11.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -449,7 +449,7 @@
 														<td>
 															<?php 
 																if(!empty($docs11)) {
-																	echo '<a class="btn edit_btn" data-d_id="List of Qualification of Key Personnel Proposed to be Assigned to the Contract">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="List of Qualification of Key Personnel Proposed to be Assigned to the Contract">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="List of Qualification of Key Personnel Proposed to be Assigned to the Contract">upload</a>'; 
@@ -464,7 +464,7 @@
 														<td>
 															<?php 
 																if(!empty($docs12)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs12.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs12.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -472,10 +472,10 @@
 														<td>
 															<?php 
 																if(!empty($docs12)) {
-																	echo '<a class="btn edit_btn" data-d_id="List of Equipment, Owned or Leased and/or under purchased agreements">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="List of Equipment, Owned or Leased and/or under purchased agreements">replace</a>';
 																}
 																else{ 
-																	echo '<a class="btn upload_btn" data-d_id="List of Qualification of Key Personnel Proposed to be Assigned to the Contract">upload</a>'; 
+																	echo '<a class="btn upload_btn" data-d_id="List of Equipment, Owned or Leased and/or under purchased agreements">upload</a>'; 
 																}
 															?>
 														</td>
@@ -487,7 +487,7 @@
 														<td>
 															<?php 
 																if(!empty($docs13)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs13.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs13.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -495,7 +495,7 @@
 														<td>
 															<?php 
 																if(!empty($docs13)) {
-																	echo '<a class="btn edit_btn" data-d_id="Omnibus Sworn Statement">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Omnibus Sworn Statement">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Omnibus Sworn Statement">upload</a>'; 
@@ -510,7 +510,7 @@
 														<td>
 															<?php 
 																if(!empty($docs14)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs14.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs14.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -518,7 +518,7 @@
 														<td>
 															<?php 
 																if(!empty($docs14)) {
-																	echo '<a class="btn edit_btn" data-d_id="Affidavit of Site Inspection">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Affidavit of Site Inspection">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Affidavit of Site Inspection">upload</a>'; 
@@ -533,7 +533,7 @@
 														<td>
 															<?php 
 																if(!empty($docs15)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs15.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs15.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -541,7 +541,7 @@
 														<td>
 															<?php 
 																if(!empty($docs15)) {
-																	echo '<a class="btn edit_btn" data-d_id="PhilGEPS Registration Certificate">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="PhilGEPS Registration Certificate">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="PhilGEPS Registration Certificate">upload</a>'; 
@@ -556,7 +556,7 @@
 														<td>
 															<?php 
 																if(!empty($docs16)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs16.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs16.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -564,7 +564,7 @@
 														<td>
 															<?php 
 																if(!empty($docs16)) {
-																	echo '<a class="btn edit_btn" data-d_id="Safety and Health Program">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Safety and Health Program">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Safety and Health Program">upload</a>'; 
@@ -579,7 +579,7 @@
 														<td>
 															<?php 
 																if(!empty($docs17)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs17.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs17.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -587,7 +587,7 @@
 														<td>
 															<?php 
 																if(!empty($docs17)) {
-																	echo '<a class="btn edit_btn" data-d_id="Income Tax Return (ITR)">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Income Tax Return (ITR)">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Income Tax Return (ITR)">upload</a>'; 
@@ -602,7 +602,7 @@
 														<td>
 															<?php 
 																if(!empty($docs18)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs18.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs18.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -610,7 +610,7 @@
 														<td>
 															<?php 
 																if(!empty($docs18)) {
-																	echo '<a class="btn edit_btn" data-d_id="Construction Method">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Construction Method">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Construction Method">upload</a>'; 
@@ -625,7 +625,7 @@
 														<td>
 															<?php 
 																if(!empty($docs19)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs19.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs19.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -633,7 +633,7 @@
 														<td>
 															<?php 
 																if(!empty($docs19)) {
-																	echo '<a class="btn edit_btn" data-d_id="Equipment Utilization Schedule">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Equipment Utilization Schedule">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Equipment Utilization Schedule">upload</a>'; 
@@ -648,7 +648,7 @@
 														<td>
 															<?php 
 																if(!empty($docs20)) {
-																	echo '<a class="btn img_button"href='.base_url()."".$docs20.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
+																	echo '<a class="btn img_button"href='.base_url()."".$docs20.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a>';
 																}
 																
 															?>
@@ -656,7 +656,7 @@
 														<td>
 															<?php 
 																if(!empty($docs20)) {
-																	echo '<a class="btn edit_btn" data-d_id="Manpower Utilization Schedule">EDIT</a>';
+																	echo '<a class="btn replace_btn" data-d_id="Manpower Utilization Schedule">replace</a>';
 																}
 																else{ 
 																	echo '<a class="btn upload_btn" data-d_id="Manpower Utilization Schedule">upload</a>'; 
@@ -678,7 +678,7 @@
 				</div>
 			</div>
 
-			<!-- modal for upload project -->
+			<!-- modal for upload documents -->
 			<div id="upload_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -690,6 +690,45 @@
 							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
 								
 								<form class="form-horizontal contact-form" id="upload_docs">
+									<div class="form-body" style="margin-bottom: 20px;">
+										<div class="input-block">
+											<label style="font-weight: 600;">Description</label>
+											<p class="description_text"></p>
+											<input type="hidden" name="techdesc" class="hide_dec"/>
+											<input type="file" class="file_input form-control" name="file" required>
+										</div>
+									</div>
+							
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-12" style="text-align: center;">
+												<button type="submit"  class="btn green">Submit</button>
+												<a  type="button" data-dismiss="modal" class="btn default">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</form>
+
+							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- modal end -->
+
+			<!-- modal for replace documents -->
+			<div id="replace_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="text-align: center;">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 style="font-weight: 600;" class="modal-title">Upload Technical Documents</h4>
+						</div>
+						<div class="modal-body">
+							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+								
+								<form class="form-horizontal contact-form" id="replace_docs">
 									<div class="form-body" style="margin-bottom: 20px;">
 										<div class="input-block">
 											<label style="font-weight: 600;">Description</label>
@@ -731,20 +770,35 @@
 <script>
         jQuery(document).ready(function() {
 
+			// show modal and assign value to inputs
+			$('.table_data').on('click','.upload_btn',function(){
+				$('#upload_modal').modal('toggle');
+				$(".description_text").text($(this).data('d_id'));
+				$(".hide_dec").val($(this).data('d_id'));
+			});
+
+			// show modal and assign value to inputs
+			$('.table_data').on('click','.replace_btn',function(){
+				$('#replace_modal').modal('toggle');
+				$(".description_text").text($(this).data('d_id'));
+				$(".hide_dec").val($(this).data('d_id'));
+			});
+
 			$('#upload_docs').on('submit',function(e){
 				e.preventDefault();
 
 				$.ajax({
 					url: "<?php echo base_url(); ?>BidderUserManagementController/inserttechdocs",
 					type: "POST",
-					// data: regdata,
 					data:new FormData(this),
 					processData:false,
 					contentType:false,
 					cache:false,
 					async:false,
 					success: function(response){
-							alert($('input[type=file]').val());
+							// alert($('input[type=file]').val());
+							$('#upload_modal').modal('toggle');
+							swal("Added!", "File has been Added!", "success");
 							console.log(response);
 							
 							if(response == "DTI")
@@ -1005,13 +1059,280 @@
 					}
 				});
 			});
+			$('#replace_docs').on('submit',function(e){
+				e.preventDefault();
 
-			// show modal and assign value to inputs
-			$('.table_data').on('click','.upload_btn',function(){
+				$.ajax({
+					url: "<?php echo base_url(); ?>BidderUserManagementController/updatetechdocs",
+					type: "POST",
+					data:new FormData(this),
+					processData:false,
+					contentType:false,
+					cache:false,
+					async:false,
+					success: function(response){
+							// alert($('input[type=file]').val());
+							$('#replace_modal').modal('toggle');
+							swal("Added!", "File has been Added!", "success");
+							console.log(response);
+							
+							if(response == "DTI")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_1_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_1').html(data);
+									}
+								});
+							}
 
-				$('#upload_modal').modal('toggle');
-				$(".description_text").text($(this).data('d_id'));
-				$(".hide_dec").val($(this).data('d_id'));
+							if(response == "Valid and current Mayor’s permit/municipal license")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_2_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_2').html(data);
+									}
+								});
+							}
+							if(response == "Tax Clearance")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_3_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_3').html(data);
+									}
+								});
+							}
+							if(response == "Statement Completed Government and Private Construction Contract")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_4_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_4').html(data);
+									}
+								});
+							}
+							if(response == "Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_5_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_5').html(data);
+									}
+								});
+							}
+
+							if(response == "Valid PCAB license")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_6_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_6').html(data);
+									}
+								});
+							}
+
+							if(response == "Audited financial statements and current assets and liabilities")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_7_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_7').html(data);
+									}
+								});
+							}
+							if(response == "Net Financial Contracting Capacity (NFCC)")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_8_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_8').html(data);
+									}
+								});
+							}
+
+							if(response == "Bid Security/Bid Securing Declaration")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_9_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_9').html(data);
+									}
+								});
+							}
+
+							if(response == "Contractor’s Organizational Chart for the contract")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_10_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_10').html(data);
+									}
+								});
+							}
+
+							if(response == "List of Qualification of Key Personnel Proposed to be Assigned to the Contract")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_11_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_11').html(data);
+									}
+								});
+							}
+
+							if(response == "List of Equipment, Owned or Leased and/or under purchased agreements")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_12_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_12').html(data);
+									}
+								});
+							}
+
+							if(response == "Omnibus Sworn Statement")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_13_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_13').html(data);
+									}
+								});
+							}
+
+							if(response == "Affidavit of Site Inspection")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_14_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_14').html(data);
+									}
+								});
+							}
+
+							if(response == "PhilGEPS Registration Certificate")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_15_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_15').html(data);
+									}
+								});
+							}
+
+							if(response == "Safety and Health Program")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_16_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_16').html(data);
+									}
+								});
+							}
+
+							if(response == "Income Tax Return (ITR)")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_17_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_17').html(data);
+									}
+								});
+							}
+
+							if(response == "Construction Method")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_18_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_18').html(data);
+									}
+								});
+							}
+
+							if(response == "Equipment Utilization Schedule")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_19_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_19').html(data);
+									}
+								});
+							}
+
+							if(response == "Manpower Utilization Schedule")
+							{
+								$.ajax({
+									type  : 'get',
+									url   : '<?php echo base_url('BidderUserManagementController/technical_documents_20_show')?>',
+									async : true,
+									success : function(data){
+										
+										$('.documents_20').html(data);
+									}
+								});
+							}
+					}
+				});
 			});
 		});
 	</script>

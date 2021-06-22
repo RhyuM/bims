@@ -10,7 +10,7 @@ class BidOpeningController extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         if ($this->session->userdata('logged_in')==false){
-            redirect('login');
+            redirect('login-register');
         }
     }
 

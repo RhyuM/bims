@@ -46,6 +46,13 @@
 	.action_row{
 		margin-bottom: 10px;
 	}
+	input.bid_price_c {
+		margin: 40px auto!important;
+		width: 80%;
+	}
+	label{
+		font-size: 16px;
+	}
  </style>
  
 
@@ -122,7 +129,7 @@
 							New Projects</a>
 						</li>
 						<li class="">
-							<a href="#">
+							<a href="/bims/bidderbidmanagement/my_active_bids">
 							My Active Bids</a>
 						</li>
 						<li class="">
@@ -289,7 +296,7 @@
 							</div>
                             <div class="continue" style="text-align: center; margin-top: 30px;  margin-bottom: 30px;">
 								<a href="/bims/usermanagement/my-documents" class="btn view_tech">VIEW TECHNICAL DOCUMENTS</a>
-								<a class="btn submit_bid">SUBMIT BID</a>
+								<a class="btn submit_bid_btn">SUBMIT BID</a>
                             <div>
 						</div>
 					</div>
@@ -297,7 +304,7 @@
 				</div>
 			</div>
 
-			<!-- modal for upload project -->
+			<!-- modal for upload financial documents -->
 			<div id="upload_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -339,6 +346,47 @@
 				</div>
 			</div>
 			<!-- modal end -->
+
+			<!-- modal for submission of bid -->
+			<div id="submit_bid_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="text-align: center;">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></a>
+							<h4 style="font-weight: 600;" class="modal-title">SUBMIT MY BID</h4>
+						</div>
+						<div class="modal-body">
+							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+								
+								<form class="form-horizontal contact-form" id="submit_bids_form">
+									<div class="form-body" style="margin-bottom: 20px;">
+										<div class="input-block">
+                                            <label style="font-weight: 600;">Approve Budget Cost</label>
+											<p>₱ <?php echo $approve_budget_cost ?></p>
+                                            <input type="hidden" name="projects_id" value="<?php echo $projects_id; ?>"/>
+											
+											<input type="text" class="bid_price_c form-control"  data-type="currency" name="bid_price" placeholder="Total Bid Price" required>
+										</div>
+									</div>
+							
+									<div class="form-actions">
+										<div class="row action_row">
+											<div class="col-md-12" style="text-align: center;">
+												<button class="btn submit_button" type="submit">Submit</button>
+												<a class="btn" type="button" data-dismiss="modal">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</form>
+
+							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+						</div>
+
+						</div> 
+					</div>
+				</div>
+			</div>
+			<!-- modal end -->
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
@@ -356,9 +404,9 @@
 
 			// show Financial Bid Form document file
 			$.ajax({
-			type  : 'get',
-			url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
-			async : true,
+				type  : 'get',
+				url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
+				async : true,
 				success : function(data){
 					$('#fbf_file').html(data);
 				}
@@ -366,9 +414,9 @@
 
 			// show Bill Of Quantities document file
 			$.ajax({
-			type  : 'get',
-			url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
-			async : true,
+				type  : 'get',
+				url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
+				async : true,
 				success : function(data){
 					$('#boq_file').append(data);
 				}
@@ -376,9 +424,9 @@
 
 			// show Detailed Estimates document file
 			$.ajax({
-			type  : 'get',
-			url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
-			async : true,
+				type  : 'get',
+				url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
+				async : true,
 				success : function(data){
 					$('#de_file').append(data);
 				}
@@ -386,9 +434,9 @@
 
 			// show Cash Flow By Quarter document file
 			$.ajax({
-			type  : 'get',
-			url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
-			async : true,
+				type  : 'get',
+				url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
+				async : true,
 				success : function(data){
 					$('#cfbq_file').append(data);
 				}
@@ -454,6 +502,40 @@
 				});
 			});
 
+			$('#submit_bids_form').on('submit',function(e){
+				e.preventDefault();
+
+				$.ajax({
+					url: "<?php echo base_url(); ?>BidderBidManagementController/submit_bid",
+					type: "POST",
+					// data: regdata,
+					data:new FormData(this),
+					processData:false,
+					contentType:false,
+					cache:false,
+					async:false,
+					success: function(response){
+						var json = $.parseJSON(response);
+						if (json.status == "success") {
+							$('#submit_bid_modal').modal('toggle');
+							swal("Successfully", "Bid has ben submitted", "success");
+
+							setTimeout(function(){ 
+								window.location.href = '<?php echo base_url(); ?>/bidderbidmanagement/my_active_bids';
+							}, 1500);
+							
+						} 
+						else if(json.status == "fail"){
+							$('#submit_bid_modal').modal('toggle');
+							swal(json.message);
+						}
+						
+
+					}
+					
+				});
+			});
+
 			// show modal and assign value to inputs
 			$('.table_data').on('click','.upload_btn',function(){
 				$('#upload_modal').modal('toggle');
@@ -461,5 +543,100 @@
 				$(".financial_documents").val($(this).data('financial_documents_id'));
 				$(".hide_dec").val($(this).data('d_id'));
 			});
+
+			// show modal and assign value to inputs
+			$('.continue').on('click','.submit_bid_btn',function(){
+				$('#submit_bid_modal').modal('toggle');
+			});
         });
+	</script>
+
+	
+	<!-- money format on typing -->
+	<script>
+		
+		// Jquery Dependency
+
+		$("input[data-type='currency']").on({
+			keyup: function() {
+			formatCurrency($(this));
+			},
+			blur: function() { 
+			formatCurrency($(this), "blur");
+			}
+		});
+
+
+		function formatNumber(n) {
+		// format number 1000000 to 1,234,567
+		return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+		}
+
+
+		function formatCurrency(input, blur) {
+		// appends $ to value, validates decimal side
+		// and puts cursor back in right position.
+		
+		// get input value
+		var input_val = input.val();
+		
+		// don't validate empty input
+		if (input_val === "") { return; }
+		
+		// original length
+		var original_len = input_val.length;
+
+		// initial caret position 
+		var caret_pos = input.prop("selectionStart");
+			
+		// check for decimal
+		if (input_val.indexOf(".") >= 0) {
+
+			// get position of first decimal
+			// this prevents multiple decimals from
+			// being entered
+			var decimal_pos = input_val.indexOf(".");
+
+			// split number by decimal point
+			var left_side = input_val.substring(0, decimal_pos);
+			var right_side = input_val.substring(decimal_pos);
+
+			// add commas to left side of number
+			left_side = formatNumber(left_side);
+
+			// validate right side
+			right_side = formatNumber(right_side);
+			
+			// On blur make sure 2 numbers after decimal
+			if (blur === "blur") {
+			right_side += "00";
+			}
+			
+			// Limit decimal to only 2 digits
+			right_side = right_side.substring(0, 2);
+
+			// join number by .
+			input_val = left_side + "." + right_side;
+
+		} else {
+			// no decimal entered
+			// add commas to number
+			// remove all non-digits
+			input_val = formatNumber(input_val);
+			input_val =  input_val;
+			
+			// final formatting
+			if (blur === "blur") {
+			input_val += ".00";
+			}
+		}
+		
+		// send updated string to input
+		input.val(input_val);
+
+		// put caret back in the right position
+		var updated_len = input_val.length;
+		caret_pos = updated_len - original_len + caret_pos;
+		input[0].setSelectionRange(caret_pos, caret_pos);
+		}
 	</script>
