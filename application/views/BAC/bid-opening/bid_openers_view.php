@@ -1,6 +1,7 @@
 <?php 
      $this->load->view('BAC/layouts/head');
 	 $this->load->view('BAC/layouts/header');
+	 $this->load->view('BAC/layouts/sidebar');
 ?>  
 	   <style>
 	   		.admins_row {
@@ -99,120 +100,13 @@
 			.alert.alert-block.fade.in {
 				background: #af9500;
 				color: #fff;
-				letter-spacing: 4px;
+				letter-spacing: 3px;
 			}
 			.info_text{
 				font-weight: 600;
 			}
 		</style>
 
-<div class="clearfix">
-</div>
-<!-- BEGIN CONTAINER -->
-<div class="page-container">
-	<!-- BEGIN SIDEBAR -->
-	<div class="page-sidebar-wrapper">
-		<div class="page-sidebar navbar-collapse collapse">
-			<ul class="page-sidebar-menu page-sidebar-menu-light " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-				<li class="sidebar-toggler-wrapper">
-					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-					<div class="sidebar-toggler">
-					</div>
-					<!-- END SIDEBAR TOGGLER BUTTON -->
-				</li>
-				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-				<li class="sidebar-search-wrapper">
-					<form class="sidebar-search " action="extra_search.html" method="POST">
-						<a href="javascript:;" class="remove">
-						<i class="icon-close"></i>
-						</a>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search...">
-							<span class="input-group-btn">
-							<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-							</span>
-						</div>
-					</form>
-					<!-- END RESPONSIVE QUICK SEARCH FORM -->
-				</li>
-				<li class="start dashboard">
-					<a href="http://localhost/bims/page/staff.html">
-					<i class="icon-home"></i>
-					<span class="title">Dashboard</span>
-					</a>
-				</li>
-				<li class="announcement">
-					<a href="javascript:;">
-					<i class="fas fa fa-bullhorn"></i>
-					<span class="title">Announcement</span>
-					</a>
-				</li>
-				<li class="user_management">
-					<a href="javascript:;">
-					<i class="fa fa-users"></i>
-					<span class="title">User Management</span>
-					<span class="selected"></span>
-					<span class="arrow open"></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="certified_bidder">
-							<a href="http://localhost/bims/usermanagement/certified-bidder.html">
-							List Of Certified Bidder</a>
-						</li>
-						<li class="new_bidder_entry">
-							<a href="http://localhost/bims/usermanagement/new-entry.html">
-							List Of New Bidder Entry</a>
-						</li>
-					</ul>
-				</li>
-				<li class="project_management">
-					<a href="javascript:;">
-					<i class="icon-diamond"></i>
-					<span class="title">project Management</span>
-					<span class="arrow"></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="list_of_project">
-							<a href="http://localhost/bims/projectmanagement.html">
-							List Of Projects</a>
-						</li>
-						<li class="bids_submitted">
-							<a href="#">
-							Bids Submitted</a>
-						</li>
-					</ul>
-				</li>
-				<li class="active open">
-					<a href="javascript:;">
-					<i class="icon-briefcase"></i>
-					<span class="title">Bid Opening</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="active">
-							<a href="http://localhost/bims/bidopening.html">
-							Projects</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-bar-chart"></i>
-					<span class="title">Bid Evaluation</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="#">
-							Technical Evaluation</a>
-						</li>
-					</ul>
-				</li>
-			<!-- END SIDEBAR MENU -->
-		</div>
-	</div>
-	<!-- END SIDEBAR -->
 
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
@@ -403,9 +297,27 @@
                             </div>
                     </div>
 					
+
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+					<!-- <div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable"> -->
+						<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+							<thead>
+								<tr role="row">
+									<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
+									<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
+
+								</tr>
+							</thead>
+							<tbody class="bidders_data" >
+							
+							</tbody>
+						</table>
+
+					</div>
+
                     <div class="alert alert-block fade in">
                         <button type="button" class="close" data-dismiss="alert"></button>
-                        <h4 class="info_text" style="margin-bottom: 0px;"><i class="fa fa-exclamation-triangle"></i> All departments head should decrypt the key</h4>  
+                        <h4 class="info_text" style="margin-bottom: 0px;"><i class="fa fa-exclamation-triangle"></i> Bid and Awards Committe(BAC) and Technical Working Group(TWG) head should decript the key to proceed</h4>  
                     </div>
                     <div class="portlet box">
                         <div class="portlet-title">
@@ -423,11 +335,8 @@
                         </div>
 						
 						<div class="portlet-body row admins_row">
-						<!-- <div style="text-align: center; margin: 20px 0">
-							<button class="buttonload btn btn-primary"><i class="refresh_icon"></i>refresh</button>
-						</div> -->
 							<div class="openers_data">
-								<!-- ajax load here ----------------------------------------------------------------------->
+
 							</div>
 						</div>
                     </div>
@@ -460,9 +369,24 @@
 	});
 </script>
 <script>
-		jQuery(window).load(function() {
+		jQuery(document).ready(function() {
 		// get data ajax
 
+		//show bidder
+		setInterval(function(){ 
+			
+			$( document ).ready(function() {
+				$.ajax({
+					type  : 'get',
+					url   : '<?php echo base_url('BidOpeningController/bidder_show')?>/<?php echo $projects_id ?>',
+					async : true,
+					success : function(data){
+							$('.bidders_data').html(data);
+						
+					}
+				});
+			});
+		}, 100);
 		
 		$.ajax({
 			type  : 'get',
@@ -473,13 +397,11 @@
 				$('.openers_data').html(data);
 				jQuery('#decryptForm').on('submit',function(e){
 					e.preventDefault();
-					// var decryptData = $('#decrypt_user').val();
+
 					var p_opener_id = $('#project_openers_id').val();
 					var opener_id = $('#opener_id').val();
 					var project_id = $('#project_id').val();
 
-					// console.log(opener_id);
-					// console.log(project_id);
 					var ajaxurl = "<?php echo site_url();?>BidOpeningController/decrypt_project";
 
 					var data = { 
@@ -521,8 +443,6 @@
 				async : true,
 				success : function(data){
 					setTimeout(function(){
-						// jQuery('.decrypt .refresh_icon').removeClass("fa fa-spinner fa-spin");
-						// swal("Unlock!", "Project has been Unlock!", "success");
 						$('.openers_data').html(data);
 					}, 3000);	
 					
@@ -530,23 +450,9 @@
 			});
 		}, 5000);
 		console.log("ok2");
-
-			// //FORM 
-			
-		// refresh every 5 seconds
-		// setInterval(function(){ 
-		// 	$.ajax({
-		// 		type  : 'get',
-		// 		url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
-		// 		async : true,
-		// 		success : function(data){
-		// 			console.log("refresh ajax data");
-		// 			$('.openers_data').html(data);
-		// 		}
-		// 	});
-		// }, 5000);
 	});
 
+	
 
 	// loading button
 	jQuery('.buttonload').click(function(){

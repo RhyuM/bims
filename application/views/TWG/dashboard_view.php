@@ -47,7 +47,7 @@
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
 				<li class="active start dashboard">
-					<a href="http://localhost/bims/page/staff.html">
+					<a href="<?php echo base_url()?>page/staff.html">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					</a>
@@ -66,7 +66,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li class="list_of_project">
-							<a href="http://localhost/bims/projectmanagement.html">
+							<a href="<?php echo base_url()?>projectmanagement.html">
 							List Of Projects</a>
 						</li>
 						<li class="bids_submitted">
@@ -83,7 +83,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="http://localhost/bims/bidopening.html">
+							<a href="<?php echo base_url()?>bidopening.html">
 							Projects</a>
 						</li>
 					</ul>

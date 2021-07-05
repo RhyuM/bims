@@ -100,8 +100,29 @@
     </script>
     <script>
       $(document).ready( function () {
-        $('#invitations_table').DataTable();
-    } );
+          $('#invitations_table').DataTable();
+      } );
+
+      $(function () {
+          setNavigation();
+      });
+
+      function setNavigation() {
+          var path = window.location.href;
+          // path = path.replace(/\/$/, "");
+          // path = decodeURIComponent(path);
+          console.log(path);
+          $("#navbarResponsive .nav a.nav-link").each(function () {
+              var href = $(this).attr('href');
+              
+              if (href === path) {
+                  $(this).closest('li.nav-item').addClass('active');
+                  console.log("ok");
+                  
+              }
+              console.log(href);
+          });
+      }
     </script>
 
   </body>

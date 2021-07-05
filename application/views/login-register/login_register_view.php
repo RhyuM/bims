@@ -58,7 +58,7 @@
 	<div class="sub">
 			<!-- BEGIN LOGO -->
 			<div class="logo">
-				<a href="http://localhost/bims/">
+				<a href="<?php echo base_url()?>">
 				<img src="<?php echo base_url()."assets/"; ?>logo/bims-logo.svg" alt=""/>
 				</a>
 			</div>

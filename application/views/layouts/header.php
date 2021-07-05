@@ -35,32 +35,32 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <!-- not sticky header logo -->
-          <a class="navbar-brand logo-not-sticky" href="http://localhost/bims/"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo.svg" style="width: 100px;"></a>
+          <a class="navbar-brand logo-not-sticky" href="<?php echo base_url()?>"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo.svg" style="width: 100px;"></a>
          
           <!-- sticky header logo -->
-          <a class="navbar-brand logo-sticky" href="http://localhost/bims/"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo-dark.svg" style="width: 100px;"></a>
+          <a class="navbar-brand logo-sticky" href="<?php echo base_url()?>"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo-dark.svg" style="width: 100px;"></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/bims/">Home
-                  <span class="sr-only">(current)</span>
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url()?>">Home
+                  
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/bims/about">About Us</a>
+                <a class="nav-link" href="<?php echo base_url()?>about">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/bims/contact">Contact Us</a>
+                <a class="nav-link" href="<?php echo base_url()?>contact">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/bims/invitation-to-bid">Invitation To Bid</a>
+                <a class="nav-link" href="<?php echo base_url()?>invitation-to-bid">Invitation To Bid</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/bims/login-register">Login/Register</a>
+                <a class="nav-link" href="<?php echo base_url()?>login-register">Login/Register</a>
               </li>
             </ul>
           </div>

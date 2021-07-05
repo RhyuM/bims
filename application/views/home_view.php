@@ -55,7 +55,7 @@
           
           </div>
           <div class="col-md-4">
-            <a hre="http://localhost/bims/about" class="border-button" >Contact Us</a>
+            <a hre="<?php echo base_url()?>about" class="border-button" >Contact Us</a>
           </div>
         </div>
       </div>

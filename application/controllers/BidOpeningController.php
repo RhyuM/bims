@@ -66,6 +66,92 @@ class BidOpeningController extends CI_Controller
         }
     }
 
+    public function bids_opened($id) 
+    {
+        $row = $this->db->query('select * from projects where projects_id = "'.$id.'"  ')->row();
+        
+        $sql='Select * from project_openers
+                inner join users on project_openers.users_user_id = users.user_id
+                and projects_projects_id = "'.$id.'" ';
+
+        $query = $this->db->query($sql);
+      
+        if ($row) {
+            $data = array(
+                'users_bid_opener' => $query->result(),
+
+                'projects_id' => $row->projects_id,
+                'projects_description' => $row->projects_description,
+                'projects_type' => $row->projects_type,
+                'opening_date' => $row->opening_date,
+                'approve_budget_cost' => $row->approve_budget_cost,
+                'projects_status' => $row->projects_status,
+                
+                'session_user_id'=>   $this->session->userdata('user_id')
+            );
+
+            $this->load->view('BAC/bid-opening/bids_open_view', $data);
+     
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('bidopening'));
+        }
+    }
+
+    public function bids_show($id) 
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql='  SELECT * FROM bids
+        inner join users on bids.users_user_id = users.user_id
+        where projects_projects_id = "'.$id.'" '; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+            
+                $start = 1;
+                foreach ($query->result() as $bids)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$start++.'</td>
+                    <td>'.$bids->companyname.'</td>
+                    <td>₱'.$bids->bid_price.'</td>
+                    <td><a class="btn evaluate-button"type="button" href="#">EVALUATE BIDDER</a></td>
+                    ';
+                }
+
+        echo $table_data;
+        die;
+    }
+
+    public function bidder_show($id) 
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql='  SELECT * FROM bids
+            inner join users on bids.users_user_id = users.user_id
+            where projects_projects_id = "'.$id.'" '; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+            
+                $start = 1;
+                foreach ($query->result() as $bids)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$start++.'</td>
+                    <td>'.$bids->companyname.'</td>
+                    ';
+                }
+
+        echo $table_data;
+        die;
+    }
+
     public function bid_openers_ajax_show($id) 
     {
 
@@ -119,7 +205,8 @@ class BidOpeningController extends CI_Controller
             $openers_data .=    '</form>';
 
             if ( $query2->num_rows() == 2){
-                $openers_data .=    '<div style="text-align: center; margin-top: 20px;"><a class="btn continue">CONTINUE</a></div>';
+            
+            $openers_data .=    '<div style="text-align: center; margin-top: 20px;"><a href="'.base_url("bidopening/bids_opened").'/'.$id.'" class="btn continue">CONTINUE</a></div>';
             }
         echo $openers_data;
         die;

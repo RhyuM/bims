@@ -90,7 +90,7 @@
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
 				<li class="dashboard">
-					<a href="/bims/page/bidder.html">
+					<a href="<?php echo base_url()?>page/bidder.html">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					</a>
@@ -108,7 +108,7 @@
 							My Account</a>
 						</li>
 						<li class="">
-							<a href="/bims/usermanagement/my-documents">
+							<a href="<?php echo base_url()?>usermanagement/my-documents">
 							My Documents</a>
 						</li>
 					</ul>
@@ -125,11 +125,11 @@
 							Search Active Projects</a>
 						</li>
 						<li class="active">
-							<a href="/bims/bidderbidmanagement/list-of-projects">
+							<a href="<?php echo base_url()?>bidderbidmanagement/list-of-projects">
 							New Projects</a>
 						</li>
 						<li class="">
-							<a href="/bims/bidderbidmanagement/my_active_bids">
+							<a href="<?php echo base_url()?>bidderbidmanagement/my_active_bids">
 							My Active Bids</a>
 						</li>
 						<li class="">
@@ -295,7 +295,7 @@
 
 							</div>
                             <div class="continue" style="text-align: center; margin-top: 30px;  margin-bottom: 30px;">
-								<a href="/bims/usermanagement/my-documents" class="btn view_tech">VIEW TECHNICAL DOCUMENTS</a>
+								<a href="<?php echo base_url()?>usermanagement/my-documents" class="btn view_tech">VIEW TECHNICAL DOCUMENTS</a>
 								<a class="btn submit_bid_btn">SUBMIT BID</a>
                             <div>
 						</div>

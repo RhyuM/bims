@@ -4,16 +4,7 @@
 <div class="page-container">
 	<!-- BEGIN SIDEBAR -->
 	<div class="page-sidebar-wrapper">
-		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
-			<!-- BEGIN SIDEBAR MENU -->
-			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 			<ul class="page-sidebar-menu page-sidebar-menu-light " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 				<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
 				<li class="sidebar-toggler-wrapper">
@@ -22,12 +13,9 @@
 					</div>
 					<!-- END SIDEBAR TOGGLER BUTTON -->
 				</li>
-				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 				<li class="sidebar-search-wrapper">
 					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-					<form class="sidebar-search " action="extra_search.html" method="POST">
+					<form class="sidebar-search " action="extra_search" method="POST">
 						<a href="javascript:;" class="remove">
 						<i class="icon-close"></i>
 						</a>
@@ -40,46 +28,46 @@
 					</form>
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
-				<li class="start dashboard">
-					<a href="http://localhost/BIMS/page/staff.html">
+				<li class="nav start dashboard">
+					<a href="<?php echo base_url()?>page/staff">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					</a>
 				</li>
-				<li class="announcement">
+				<li class="nav announcement">
 					<a href="javascript:;">
 					<i class="fas fa fa-bullhorn"></i>
 					<span class="title">Announcement</span>
 					</a>
 				</li>
-				<li class="user_management">
+				<li class="nav user_management">
 					<a href="javascript:;">
-					<i class="icon-rocket"></i>
+					<i class="fa fa-users"></i>
 					<span class="title">User Management</span>
 					<span class="selected"></span>
 					<span class="arrow open"></span>
 					</a>
 					<ul class="sub-menu">
 						<li class="certified_bidder">
-							<a href="http://localhost/BIMS/usermanagement/certified-bidder.html">
+							<a href="<?php echo base_url()?>usermanagement/certified-bidder">
 							List Of Certified Bidder</a>
 						</li>
 						<li class="new_bidder_entry">
-							<a href="http://localhost/BIMS/usermanagement/new-entry.html">
+							<a href="<?php echo base_url()?>usermanagement/new-entry">
 							List Of New Bidder Entry</a>
 						</li>
 					</ul>
 				</li>
-				<li class="project_management">
+				<li class="nav project_management">
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
-					<span class="title">Project Management</span>
-					<span class="arrow"></span>
+					<span class="title">project Management</span>
+					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li class="list_of_project">
-							<a href="http://localhost/BIMS/projectmanagement.html">
-							List Of projects</a>
+							<a href="<?php echo base_url()?>projectmanagement">
+							List Of Projects</a>
 						</li>
 						<li class="bids_submitted">
 							<a href="#">
@@ -87,22 +75,22 @@
 						</li>
 					</ul>
 				</li>
-				<li>
+				<li class="nav">
 					<a href="javascript:;">
-					<i class="icon-diamond"></i>
+					<i class="icon-briefcase"></i>
 					<span class="title">Bid Opening</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="http://localhost/BIMS/bidopening.html">
+							<a href="<?php echo base_url()?>bidopening">
 							projects</a>
 						</li>
 					</ul>
 				</li>
-				<li>
+				<li class="nav">
 					<a href="javascript:;">
-					<i class="icon-puzzle"></i>
+					<i class="icon-bar-chart"></i>
 					<span class="title">Bid Evaluation</span>
 					<span class="arrow "></span>
 					</a>
@@ -117,5 +105,3 @@
 		</div>
 	</div>
 	<!-- END SIDEBAR -->
-	
-	

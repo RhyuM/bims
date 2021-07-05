@@ -150,7 +150,7 @@
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
 				<li class="start dashboard">
-					<a href="http://localhost/bims/page/staff.html">
+					<a href="<?php echo base_url()?>page/staff.html">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					</a>
@@ -170,11 +170,11 @@
 					</a>
 					<ul class="sub-menu">
 						<li class="certified_bidder">
-							<a href="http://localhost/bims/usermanagement/certified-bidder.html">
+							<a href="<?php echo base_url()?>usermanagement/certified-bidder.html">
 							List Of Certified Bidder</a>
 						</li>
 						<li class="new_bidder_entry">
-							<a href="http://localhost/bims/usermanagement/new-entry.html">
+							<a href="<?php echo base_url()?>usermanagement/new-entry.html">
 							List Of New Bidder Entry</a>
 						</li>
 					</ul>
@@ -188,7 +188,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="http://localhost/bims/bidopening.html">
+							<a href="<?php echo base_url()?>bidopening.html">
 							projects</a>
 						</li>
 					</ul>
