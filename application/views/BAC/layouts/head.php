@@ -43,7 +43,9 @@
 <link id="style_color" href="<?php echo base_url()."assets/"; ?>admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url()."assets/"; ?>admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+
+<!-- <link rel="shortcut icon" href="favicon.ico"/> -->
+<link rel="shortcut icon" href="#"/>
 
 <!-- datetimepicker -->
 <!-- BEGIN PAGE LEVEL STYLES -->

@@ -22,6 +22,7 @@ $route['invitation-to-bid'] = 'HomeController/invitation_to_bid';
 $route['bidopening'] = 'BidOpeningController';
 $route['bidopening/bid_openers/(:any)'] = 'BidOpeningController/bid_openers/$1';
 $route['bidopening/bids_opened/(:any)'] = 'BidopeningController/bids_opened/$1';
+$route['bidopening/evaluate_bidder/(:any)'] = 'BidopeningController/evaluate_bidder/$1';
 
 
 $route['projectmanagement'] = 'ProjectManagementController/index';

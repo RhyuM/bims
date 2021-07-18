@@ -1,7 +1,7 @@
 <?php 
 	$this->load->view('BIDDER/layouts/head');
 	$this->load->view('BIDDER/layouts/header');
-	// $this->load->view('BAC/layouts/sidebar');
+	$this->load->view('BIDDER/layouts/sidebar');
  ?>
  
  <style>
@@ -15,117 +15,6 @@
  </style>
  
 
- <div class="clearfix">
-</div>
-<!-- BEGIN CONTAINER -->
-<div class="page-container">
-	<!-- BEGIN SIDEBAR -->
-	<div class="page-sidebar-wrapper">
-		<div class="page-sidebar navbar-collapse collapse">
-			<!-- BEGIN SIDEBAR MENU -->
-
-			<ul class="page-sidebar-menu page-sidebar-menu-light " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-				<li class="sidebar-toggler-wrapper">
-					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-					<div class="sidebar-toggler">
-					</div>
-					<!-- END SIDEBAR TOGGLER BUTTON -->
-				</li>
-				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-				<li class="sidebar-search-wrapper">
-					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<form class="sidebar-search " action="extra_search.html" method="POST">
-						<a href="javascript:;" class="remove">
-						<i class="icon-close"></i>
-						</a>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search...">
-							<span class="input-group-btn">
-							<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-							</span>
-						</div>
-					</form>
-					<!-- END RESPONSIVE QUICK SEARCH FORM -->
-				</li>
-				<li class="dashboard">
-					<a href="<?php echo base_url()?>page/bidder.html">
-					<i class="icon-home"></i>
-					<span class="title">Dashboard</span>
-					</a>
-				</li>
-				<li class="user_management">
-					<a href="javascript:;">
-					<i class="fa fa-users"></i>
-					<span class="title">User Management</span>
-					<span class="selected"></span>
-					<span class="arrow open"></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="">
-							<a href="#">
-							My Account</a>
-						</li>
-						<li class="">
-							<a href="<?php echo base_url()?>usermanagement/my-documents">
-							My Documents</a>
-						</li>
-					</ul>
-				</li>
-				<li class="active open">
-					<a href="javascript:;">
-					<i class="icon-diamond"></i>
-					<span class=" title">Bid Management</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="">
-							<a href="#">
-							Search Active Projects</a>
-						</li>
-						<li class="">
-							<a href="<?php echo base_url()?>bidderbidmanagement/list-of-projects">
-							New Projects</a>
-						</li>
-						<li class="active">
-							<a href="<?php echo base_url()?>bidderbidmanagement/my_active_bids">
-							My Active Bids</a>
-						</li>
-						<li class="">
-							<a href="#">
-							Bid Opening(Live)</a>
-						</li>
-						<li class="">
-							<a href="#">
-							My Bid History</a>
-						</li>
-						<li class="">
-							<a href="#">
-							My Withdrawn Bids</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="icon-diamond"></i>
-					<span class="title">Pos Award Management</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="">
-							<a href="#">
-							Awards Declaration</a>
-						</li>
-					</ul>
-				</li>
-
-			<!-- END SIDEBAR MENU -->
-		</div>
-	</div>
-	<!-- END SIDEBAR -->
-	
-	
-
  <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
 		<div class="page-content">
@@ -137,7 +26,7 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
+						<a href="<?php echo base_url()?>">Home</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 				</ul>
@@ -183,7 +72,7 @@
 								</table>
 
 							</div>
-							<!-- <div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 15 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div> -->
+						
 						</div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->

@@ -111,120 +111,7 @@
  <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
 		<div class="page-content">
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">Modal title</h4>
-						</div>
-						<div class="modal-body">
-							 Widget settings form goes here
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn blue">Save changes</button>
-							<button type="button" class="btn default" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<!-- /.modal -->
-			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- BEGIN STYLE CUSTOMIZER -->
-			<div class="theme-panel hidden-xs hidden-sm">
-				<div class="toggler">
-				</div>
-				<div class="toggler-close">
-				</div>
-				<div class="theme-options">
-					<div class="theme-option theme-colors clearfix">
-						<span>
-						THEME COLOR </span>
-						<ul>
-							<li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default">
-							</li>
-							<li class="color-darkblue tooltips" data-style="darkblue" data-container="body" data-original-title="Dark Blue">
-							</li>
-							<li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue">
-							</li>
-							<li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey">
-							</li>
-							<li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light">
-							</li>
-							<li class="color-light2 tooltips" data-style="light2" data-container="body" data-html="true" data-original-title="Light 2">
-							</li>
-						</ul>
-					</div>
-					<div class="theme-option">
-						<span>
-						Layout </span>
-						<select class="layout-option form-control input-sm">
-							<option value="fluid" selected="selected">Fluid</option>
-							<option value="boxed">Boxed</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Header </span>
-						<select class="page-header-option form-control input-sm">
-							<option value="fixed" selected="selected">Fixed</option>
-							<option value="default">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Top Menu Dropdown</span>
-						<select class="page-header-top-dropdown-style-option form-control input-sm">
-							<option value="light" selected="selected">Light</option>
-							<option value="dark">Dark</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Mode</span>
-						<select class="sidebar-option form-control input-sm">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Menu </span>
-						<select class="sidebar-menu-option form-control input-sm">
-							<option value="accordion" selected="selected">Accordion</option>
-							<option value="hover">Hover</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Style </span>
-						<select class="sidebar-style-option form-control input-sm">
-							<option value="default" selected="selected">Default</option>
-							<option value="light">Light</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Position </span>
-						<select class="sidebar-pos-option form-control input-sm">
-							<option value="left" selected="selected">Left</option>
-							<option value="right">Right</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Footer </span>
-						<select class="page-footer-option form-control input-sm">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<!-- END STYLE CUSTOMIZER -->
+			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
 			Project Management
@@ -233,30 +120,11 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
+						<a href="<?php echo base_url()?>">Home</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 				</ul>
-				<div class="page-toolbar">
-					<div class="btn-group pull-right">
-						<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-						Actions <i class="fa fa-angle-down"></i>
-						</button>
-						<ul class="dropdown-menu pull-right" role="menu">
-							<li>
-								<a href="#">Action</a>
-							</li>
-							<li>
-								<a href="#">Another action</a>
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-								<a href="#">Separated link</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+				
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
@@ -320,6 +188,7 @@
 											<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 287px;">#</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email" style="width: 472px;">Description</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" style="width: 177px;">Project Type</th>
+											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" style="width: 258px;">Bid Submission Deadline</th>
 											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" style="width: 258px;">Bid Opening Date</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Approved Budget Cost</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Status</th>
@@ -330,12 +199,13 @@
 											
 										</tr>
 									</thead>
-									<tbody class="table_data" >
+									<tbody class="table_data" > 
 									
 									</tbody>
 								</table>
 
-							</div><div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 15 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div>
+							</div>
+						
 						</div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->
@@ -374,19 +244,29 @@
 										<label for="" style="top: -6px; font-size: 16px;">Opening Date</label>
 											<input type="text" class="form-control" name="opening_date" id="opening_date" autocomplete="off" value="">
 									</div>
+
+									<div class="input-block">
+										<label for="" style="top: -6px; font-size: 16px;">Bid Submission Deadline</label>
+											<input type="text" class="form-control" name="submission_deadline" id="submission_deadline" autocomplete="off" value="">
+									</div>
+
 									<div class="form-body">
 										<div class="input-block">
 											<label for="">Approve Budget Cost</label>
 											<input type="text" class="form-control"  data-type="currency" name="approve_budget_cost" id="approve_budget_cost"  autocomplete="off" required>
 										</div>
 									</div>
+
+									
+
 									<!-- hidden for user -->
-									<div class="form-body">
+									<!-- <div class="form-body">
 										<div class="input-block">
 											<label for="">Status</label>
 											<input type="text" class="form-control" name="projects_status" id="projects_status" value="new" readonly>
 										</div>
-									</div>
+									</div> -->
+
 									<div class="form-body invitation">
 											<label for="">Invitation To Bid</label>
 											<p style="color: #AF9500; font-size: 14px;">Accepts PDF only</p>
@@ -446,19 +326,27 @@
 										<label for="" style="top: -6px; font-size: 16px;">Opening Date</label>
 											<input type="text" class="form-control" name="o_date" id="o_date" autocomplete="off" value="">
 									</div>
+
+									<div class="input-block">
+										<label for="" style="top: -6px; font-size: 16px;">Bid Submission Deadline</label>
+											<input type="text" class="form-control" name="update_submission_deadline" id="update_submission_deadline" autocomplete="off" value="">
+									</div>
+
 									<div class="form-body">
 										<div class="input-block">
 											<label for="">Approve Budget Cost</label>
 											<input type="text" class="form-control" data-type="currency" name="abc" id="abc"  autocomplete="off" required>
 										</div>
 									</div>
+
 									<!-- hidden for user -->
-									<div class="form-body">
+									<!-- <div class="form-body">
 										<div class="input-block">
 											<label for="">Status</label>
 											<input type="text" class="form-control" name="p_status" id="p_status" placeholder="Enter project status" value="new" readonly>
 										</div>
-									</div>
+									</div> -->
+
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-12" style="text-align: center;">
@@ -543,11 +431,11 @@
 			}
 		});
 		
-
+		
 </script>
 <script type="text/javascript">
 	$(function() {
-		$('input[name="opening_date"],input[name="o_date"]').daterangepicker({
+		$('input[name="opening_date"],input[name="o_date"],input[name="submission_deadline"],input[name="update_submission_deadline"]').daterangepicker({
 			"autoApply": true,
 			"singleDatePicker": true,
 			"opens": "center",
@@ -634,6 +522,9 @@
 				$("#p_description").val($(this).data('projects_description'));
 				$("#p_type").val($(this).data('projects_type'));
 				$("#o_date").val($(this).data('opening_date'));
+				$("#update_submission_deadline").val($(this).data('submission_deadline'));
+
+				
 				$("#abc").val($(this).data('approve_budget_cost'));
 				// just hide for now
 				// $("#p_status").val($(this).data('projects_status'));
@@ -661,6 +552,8 @@
                 var edit_p_description = $('#p_description').val();
                 var edit_p_type = $('#p_type').val();
                 var edit_o_date = $('#o_date').val();
+				var edit_submission_deadline= $('#update_submission_deadline').val();
+				
                 var edit_abc = $('#abc').val();
                 var edit_p_status = $('#p_status').val();
 				
@@ -671,6 +564,7 @@
 							projects_description: edit_p_description,
 							projects_type: edit_p_type,
 							opening_date: edit_o_date,
+							submission_deadline: edit_submission_deadline,
 							approve_budget_cost: edit_abc,
 							projects_status: edit_p_status
 						};

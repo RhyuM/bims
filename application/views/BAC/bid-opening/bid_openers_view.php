@@ -2,6 +2,8 @@
      $this->load->view('BAC/layouts/head');
 	 $this->load->view('BAC/layouts/header');
 	 $this->load->view('BAC/layouts/sidebar');
+	 $session_projects_id = $this->session->userdata("projects_id");
+	//  echo '<script> alert("'.$session_projects_id.'")</script>';
 ?>  
 	   <style>
 	   		.admins_row {
@@ -111,120 +113,7 @@
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">Modal title</h4>
-						</div>
-						<div class="modal-body">
-							 Widget settings form goes here
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn blue">Save changes</button>
-							<button type="button" class="btn default" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<!-- /.modal -->
-			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- BEGIN STYLE CUSTOMIZER -->
-			<div class="theme-panel hidden-xs hidden-sm">
-				<div class="toggler">
-				</div>
-				<div class="toggler-close">
-				</div>
-				<div class="theme-options">
-					<div class="theme-option theme-colors clearfix">
-						<span>
-						THEME COLOR </span>
-						<ul>
-							<li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default">
-							</li>
-							<li class="color-darkblue tooltips" data-style="darkblue" data-container="body" data-original-title="Dark Blue">
-							</li>
-							<li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue">
-							</li>
-							<li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey">
-							</li>
-							<li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light">
-							</li>
-							<li class="color-light2 tooltips" data-style="light2" data-container="body" data-html="true" data-original-title="Light 2">
-							</li>
-						</ul>
-					</div>
-					<div class="theme-option">
-						<span>
-						Layout </span>
-						<select class="layout-option form-control input-sm">
-							<option value="fluid" selected="selected">Fluid</option>
-							<option value="boxed">Boxed</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Header </span>
-						<select class="page-header-option form-control input-sm">
-							<option value="fixed" selected="selected">Fixed</option>
-							<option value="default">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Top Menu Dropdown</span>
-						<select class="page-header-top-dropdown-style-option form-control input-sm">
-							<option value="light" selected="selected">Light</option>
-							<option value="dark">Dark</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Mode</span>
-						<select class="sidebar-option form-control input-sm">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Menu </span>
-						<select class="sidebar-menu-option form-control input-sm">
-							<option value="accordion" selected="selected">Accordion</option>
-							<option value="hover">Hover</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Style </span>
-						<select class="sidebar-style-option form-control input-sm">
-							<option value="default" selected="selected">Default</option>
-							<option value="light">Light</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Sidebar Position </span>
-						<select class="sidebar-pos-option form-control input-sm">
-							<option value="left" selected="selected">Left</option>
-							<option value="right">Right</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>
-						Footer </span>
-						<select class="page-footer-option form-control input-sm">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<!-- END STYLE CUSTOMIZER -->
+			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
 			Project Management
@@ -233,30 +122,11 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
+						<a href="<?php echo base_url()?>">Home</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 				</ul>
-				<div class="page-toolbar">
-					<div class="btn-group pull-right">
-						<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-						Actions <i class="fa fa-angle-down"></i>
-						</button>
-						<ul class="dropdown-menu pull-right" role="menu">
-							<li>
-								<a href="#">Action</a>
-							</li>
-							<li>
-								<a href="#">Another action</a>
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-								<a href="#">Separated link</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+				
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
@@ -277,18 +147,20 @@
                                                 <tr role="row">
                                                     <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Projects Description</th>
                                                     <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">Project Type</th>
+													<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Bid Submission Deadline</th>
                                                     <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Bid Opening Date &amp; Time</th>
                                                     <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Approve Budget Cost</th>
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
+                                            <tbody class="projects_data">
+                                                <!-- <tr>
                                                     <td><?php echo $projects_description; ?></td>
                                                     <td><?php echo $projects_type; ?></td>
+													<td><?php echo $submission_deadline; ?></td>
                                                     <td><?php echo $opening_date; ?></td>
                                                     <td>₱ <?php echo $approve_budget_cost ?></td>
-                                                </tr> 
+                                                </tr>  -->
                                             </tbody>
                                             
                                         </table>
@@ -297,22 +169,29 @@
                             </div>
                     </div>
 					
+					<div class="portlet box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-cogs"></i>Bidders
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+								<div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+									<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+										<thead>
+											<tr role="row">
+												<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
+												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
+												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Date & Time Submitted</th>
+											</tr>
+										</thead>
+										<tbody class="bidders_data">
+										
+										</tbody>
+									</table>
 
-                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
-					<!-- <div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable"> -->
-						<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
-							<thead>
-								<tr role="row">
-									<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
-									<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
-
-								</tr>
-							</thead>
-							<tbody class="bidders_data" >
-							
-							</tbody>
-						</table>
-
+								</div>
+							</div>
 					</div>
 
                     <div class="alert alert-block fade in">
@@ -323,14 +202,6 @@
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="fa fa-gift"></i>Bid Openers
-                            </div>
-                            <div class="tools">
-                                <a href="javascript:;" class="collapse" data-original-title="" title="">
-                                </a>
-                                <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
-                                </a>
-                                <a href="javascript:;" class="reload" data-original-title="" title="">
-                                </a>
                             </div>
                         </div>
 						
@@ -372,13 +243,25 @@
 		jQuery(document).ready(function() {
 		// get data ajax
 
+		//get project details
+		jQuery.ajax({
+			type  : 'get',
+			url   : '<?php echo site_url('BidOpeningController/show_project_details')?>',
+			async : true,
+			success : function(data){
+					$('.projects_data').html(data);
+				
+			}
+		});
+
+
 		//show bidder
 		setInterval(function(){ 
 			
 			$( document ).ready(function() {
 				$.ajax({
 					type  : 'get',
-					url   : '<?php echo base_url('BidOpeningController/bidder_show')?>/<?php echo $projects_id ?>',
+					url   : '<?php echo base_url('BidOpeningController/bidder_show')?>/<?php echo $session_projects_id ?>',
 					async : true,
 					success : function(data){
 							$('.bidders_data').html(data);
@@ -390,7 +273,7 @@
 		
 		$.ajax({
 			type  : 'get',
-			url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
+			url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $session_projects_id ?>',
 			async : true,
 			success : function(data){
 				console.log("ok");
@@ -417,7 +300,7 @@
 						
 						$.ajax({
 							type  : 'get',
-							url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
+							url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $session_projects_id ?>',
 							async : true,
 							success : function(data){
 								setTimeout(function(){
@@ -439,7 +322,7 @@
 		setInterval(function(){ 
 			$.ajax({
 				type  : 'get',
-				url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $projects_id ?>',
+				url   : '<?php echo base_url('BidOpeningController/bid_openers_ajax_show')?>/<?php echo $session_projects_id ?>',
 				async : true,
 				success : function(data){
 					setTimeout(function(){

@@ -2,8 +2,9 @@
      $this->load->view('BAC/layouts/head');
 	 $this->load->view('BAC/layouts/header');
 	 $this->load->view('BAC/layouts/sidebar');
-	 $session_projects_id = $this->session->userdata("projects_id");
 
+	 $session_projects_id = $this->session->userdata("projects_id");
+	//  echo '<script> alert("'.$session_projects_id.'")</script>';
 ?>  
 	   <style>
 	   		.admins_row {
@@ -193,7 +194,6 @@
 													<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Date & Time Submitted</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
 												</tr>
 											</thead>
@@ -222,31 +222,15 @@
 
 
 <script  type="text/javascript">
-$( document ).ready(function() {
-
 	//get project details
 	jQuery.ajax({
 		type  : 'get',
-		url   : '<?php echo site_url('BidOpeningController/show_project_details')?>',
+		url   : '<?php echo base_url('BidOpeningController/show_project_details')?>',
 		async : true,
 		success : function(data){
 				$('.projects_data').html(data);
 			
 		}
 	});
-
-    $.ajax({
-		type  : 'get',
-		url   : '<?php echo base_url('BidOpeningController/bids_show')?>/<?php echo $session_projects_id ?>',
-		async : true,
-		success : function(data){
-			$('.table_data').html(data);
-			setInterval(function(){
-				$('.table_data').html(data);
-			}, 1500);	
-			
-		}
-	});
-});
 
 </script>

@@ -211,18 +211,18 @@
           var path = window.location.href;
           // path = path.replace(/\/$/, "");
           // path = decodeURIComponent(path);
-          console.log(path);
-          console.log('yo');
+        //   console.log(path);
+        //   console.log('yo');
           $(".page-sidebar-menu .nav a").each(function () {
               var href = $(this).attr('href');
               
               if (path.substring(0, href.length) === href) {
                 $(this).closest('.nav').addClass('open active');
                   $(this).closest('li').addClass('active');
-                  console.log("ok");
+                //   console.log("ok");
                   
               }
-              console.log(href);
+            //   console.log(href);
           });
       }
  </script>

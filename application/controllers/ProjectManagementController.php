@@ -44,21 +44,17 @@ class ProjectManagementController extends CI_Controller
                     <td class="sorting_1">'.$start++.'</td>
                     <td>'.$projects->projects_description.'</td>
                     <td>'.$projects->projects_type.'</td>
+                    <td>'. $projects->submission_deadline.'</td>
                     <td>'. $projects->opening_date .'</td>
                     <td> ₱ '.$projects->approve_budget_cost.'</td>
                     <td>'. $projects->projects_status.'</td>
                     ';
-                        // var_dump($user[0]->user_type);
-                        // exit();
-                    
-                        //  echo $user[0]->user_type;
-                        // if($user[0]->user_type == "HEAD-BAC")
                         
                         if($this->session->userdata('type') == "HEAD-BAC")
                         {
                             $table_data .= '
                                 <td>  
-                                    <a href="javascript:void(0);"  data-projects_id="'.$projects->projects_id.'" data-projects_description="'.$projects->projects_description.'" data-projects_type="'.$projects->projects_type.'" data-opening_date="'. $projects->opening_date .'" data-approve_budget_cost="'. $projects->approve_budget_cost .'" class="editRecord btn btn-success" role="button">Update</a>
+                                    <a href="javascript:void(0);"  data-projects_id="'.$projects->projects_id.'" data-projects_description="'.$projects->projects_description.'" data-projects_type="'.$projects->projects_type.'" data-opening_date="'. $projects->opening_date .'" data-submission_deadline="'. $projects->submission_deadline .'" data-approve_budget_cost="'. $projects->approve_budget_cost .'" class="editRecord btn btn-success" role="button">Update</a>
                                     <a href="javascript:void(0);" class="btn btn-danger deleteRecord" data-projects_id="'.$projects->projects_id.'">Delete</a>
                                 </td>
                             </tr>';
@@ -87,6 +83,7 @@ class ProjectManagementController extends CI_Controller
                 'projects_description' 		=> $this->input->post('projects_description'), 
                 'projects_type' 	=> $this->input->post('projects_type'), 
                 'opening_date' 	=> $this->input->post('opening_date'), 
+                'submission_deadline' 	=> $this->input->post('submission_deadline'), 
                 'approve_budget_cost' 	=> $this->input->post('approve_budget_cost'), 
                 'projects_status' 	=> $this->input->post('projects_status'), 
                 'delete_status' 	=> '0', 
@@ -119,6 +116,8 @@ class ProjectManagementController extends CI_Controller
         $projects_description 		= $this->input->post('projects_description');
         $projects_type	= $this->input->post('projects_type'); 
         $opening_date 	= $this->input->post('opening_date');
+        $submission_deadline 	= $this->input->post('submission_deadline');
+       
         $approve_budget_cost 	= $this->input->post('approve_budget_cost');
         $projects_status 	= $this->input->post('projects_status');
 
@@ -126,6 +125,8 @@ class ProjectManagementController extends CI_Controller
         $this->db->set('projects_description', $projects_description);
         $this->db->set('projects_type', $projects_type);
         $this->db->set('opening_date', $opening_date);
+        $this->db->set('submission_deadline', $submission_deadline);
+        
         $this->db->set('approve_budget_cost', $approve_budget_cost);
         $this->db->set('projects_status', $projects_status);
         $this->db->where('projects_id', $projects_id);

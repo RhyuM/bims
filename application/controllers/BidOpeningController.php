@@ -9,6 +9,7 @@ class BidOpeningController extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->library('session');
         if ($this->session->userdata('logged_in')==false){
             redirect('login-register');
         }
@@ -34,74 +35,66 @@ class BidOpeningController extends CI_Controller
 
     public function bid_openers($id) 
     {
-        $row = $this->db->query('select * from projects where projects_id = "'.$id.'"  ')->row();
-        
+
+        // add projects_id to session
+        $this->session->set_userdata("projects_id", "$id");
+
         $sql='Select * from project_openers
                 inner join users on project_openers.users_user_id = users.user_id
                 and projects_projects_id = "'.$id.'" ';
 
         
         $query = $this->db->query($sql);
-        // $query2 = $this->db->query($sql2);
       
-        if ($row) {
-            $data = array(
-                'users_bid_opener' => $query->result(),
+        $data = array(
+            'users_bid_opener' => $query->result(),
+            'session_user_id'=>   $this->session->userdata('user_id')
+        );
 
-                'projects_id' => $row->projects_id,
-                'projects_description' => $row->projects_description,
-                'projects_type' => $row->projects_type,
-                'opening_date' => $row->opening_date,
-                'approve_budget_cost' => $row->approve_budget_cost,
-                'projects_status' => $row->projects_status,
-                
-                'session_user_id'=>   $this->session->userdata('user_id')
-            );
 
-            $this->load->view('BAC/bid-opening/bid_openers_view', $data);
+        
+
+        $this->load->view('BAC/bid-opening/bid_openers_view', $data);
      
-        } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('bidopening'));
-        }
+    }
+
+    public function show_project_details() 
+    {
+        $session_projects_id = $this->session->userdata("projects_id");
+        
+
+        $sql='  SELECT * FROM projects
+        where projects_id = "'.$session_projects_id.'" '; 
+
+        $query = $this->db->query($sql);
+
+        $projects_data ="";
+            
+                $start = 1;
+                foreach ($query->result() as $bids)
+                {
+                    $projects_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$bids->projects_description.'</td>
+                    <td>'.$bids->projects_type.'</td>
+                    <td>'.$bids->submission_deadline.'</td>
+                    <td>'.$bids->opening_date.'</td>
+                    <td>'.$bids->approve_budget_cost.'</td>
+                    ';
+                }
+
+        echo $projects_data;
     }
 
     public function bids_opened($id) 
     {
-        $row = $this->db->query('select * from projects where projects_id = "'.$id.'"  ')->row();
-        
-        $sql='Select * from project_openers
-                inner join users on project_openers.users_user_id = users.user_id
-                and projects_projects_id = "'.$id.'" ';
 
-        $query = $this->db->query($sql);
-      
-        if ($row) {
-            $data = array(
-                'users_bid_opener' => $query->result(),
-
-                'projects_id' => $row->projects_id,
-                'projects_description' => $row->projects_description,
-                'projects_type' => $row->projects_type,
-                'opening_date' => $row->opening_date,
-                'approve_budget_cost' => $row->approve_budget_cost,
-                'projects_status' => $row->projects_status,
-                
-                'session_user_id'=>   $this->session->userdata('user_id')
-            );
-
-            $this->load->view('BAC/bid-opening/bids_open_view', $data);
+        $this->load->view('BAC/bid-opening/bids_open_view');
      
-        } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('bidopening'));
-        }
     }
 
     public function bids_show($id) 
     {
-        $users_user_id = $this->session->userdata('user_id');
-
         $sql='  SELECT * FROM bids
         inner join users on bids.users_user_id = users.user_id
         where projects_projects_id = "'.$id.'" '; 
@@ -118,17 +111,26 @@ class BidOpeningController extends CI_Controller
                     <td class="sorting_1">'.$start++.'</td>
                     <td>'.$bids->companyname.'</td>
                     <td>₱'.$bids->bid_price.'</td>
-                    <td><a class="btn evaluate-button"type="button" href="#">EVALUATE BIDDER</a></td>
+                    <td>'.date("m/d/Y - H:m", strtotime($bids->created_on)).'</td>
+                    
+                    <td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->user_id.'">EVALUATE BIDDER</a></td>
                     ';
                 }
 
         echo $table_data;
+        
+       
         die;
+    }
+
+    public function evaluate_bidder($id) 
+    {
+
+        $this->load->view('BAC/bid-opening/evaluate_bidder_view');
     }
 
     public function bidder_show($id) 
     {
-        $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM bids
             inner join users on bids.users_user_id = users.user_id
@@ -145,6 +147,7 @@ class BidOpeningController extends CI_Controller
                                     
                     <td class="sorting_1">'.$start++.'</td>
                     <td>'.$bids->companyname.'</td>
+                    <td>'.date("m/d/Y - H:m", strtotime($bids->created_on)).'</td>
                     ';
                 }
 
