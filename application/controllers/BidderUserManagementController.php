@@ -20,7 +20,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" ';
 
         $query = $this->db->query($sql);
@@ -151,17 +151,10 @@ class BidderUserManagementController extends CI_Controller
             $technical_documents_data = array(		
                 'description' => $this->input->post('techdesc'),
                 'users_user_id' => $this->session->userdata('user_id'),
+                'file_path' => "assets/uploads/technical-docs/".$data['upload_data']['file_name'],
             );
 
             $this->db->insert('technical_documents',$technical_documents_data);
-            $last_id = $this->db->insert_id();
-
-
-            $technical_file_data = array(		
-                'technical_documents_technical_documents_id' =>  $last_id,
-                'file_path' => "assets/uploads/technical-docs/".$data['upload_data']['file_name'],
-            );
-            $this->db->insert('technical_file',$technical_file_data);
         }
         echo $this->input->post('techdesc');
         die;
@@ -178,30 +171,23 @@ class BidderUserManagementController extends CI_Controller
             $technical_documents_data = array(		
                 'description' => $this->input->post('techdesc'),
                 'users_user_id' => $this->session->userdata('user_id'),
+                'file_path' => "assets/uploads/technical-docs/".$data['upload_data']['file_name'],
             );
 
             $this->db->insert('technical_documents',$technical_documents_data);
-            $last_id = $this->db->insert_id();
 
-
-            $technical_file_data = array(		
-                'technical_documents_technical_documents_id' =>  $last_id,
-                'file_path' => "assets/uploads/technical-docs/".$data['upload_data']['file_name'],
-            );
-            $this->db->insert('technical_file',$technical_file_data);
         }
         echo $this->input->post('techdesc');
         die;
     }
     
 
-    // method from thisup to the bottom is for showing file in the technical
+    // method from this up to the bottom is for showing file in the technical
     public function technical_documents_1_show()
     {
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "DTI"';
 
@@ -226,7 +212,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Valid and current Mayor’s permit/municipal license"';
 
@@ -251,7 +237,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Tax Clearance"';
 
@@ -276,7 +262,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Statement Completed Government and Private Construction Contract"';
 
@@ -301,7 +287,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started"';
 
@@ -326,7 +312,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Valid PCAB license"';
 
@@ -351,7 +337,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Audited financial statements and current assets and liabilities"';
 
@@ -376,7 +362,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Net Financial Contracting Capacity (NFCC)"';
 
@@ -401,7 +387,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Bid Security/Bid Securing Declaration"';
 
@@ -426,7 +412,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Contractor’s Organizational Chart for the contract"';
 
@@ -451,7 +437,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "List of Qualification of Key Personnel Proposed to be Assigned to the Contract"';
 
@@ -476,7 +462,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "List of Equipment, Owned or Leased and/or under purchased agreements"';
 
@@ -501,7 +487,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Omnibus Sworn Statement"';
 
@@ -526,7 +512,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Affidavit of Site Inspection"';
 
@@ -551,7 +537,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "PhilGEPS Registration Certificate"';
 
@@ -576,7 +562,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Safety and Health Program"';
 
@@ -601,7 +587,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Income Tax Return (ITR)"';
 
@@ -626,7 +612,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Construction Method"';
 
@@ -651,7 +637,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Equipment Utilization Schedule"';
 
@@ -676,7 +662,7 @@ class BidderUserManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql='  SELECT * FROM technical_documents
-                inner join technical_file on technical_documents.technical_documents_id = technical_file.technical_documents_technical_documents_id
+                
                 where users_user_id = "'.$users_user_id.'" 
                 and description = "Manpower Utilization Schedule"';
 

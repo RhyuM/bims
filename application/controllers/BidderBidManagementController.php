@@ -113,7 +113,6 @@ class BidderBidManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql=' SELECT * FROM financial_documents
-                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
                 where description = "Financial Bid Form" 
                 and users_user_id ="'.$users_user_id.'"
                 and projects_projects_id ="'.$id.'" ';
@@ -122,10 +121,19 @@ class BidderBidManagementController extends CI_Controller
 
         $financial_bid_file ="";
             
-                foreach ($query->result() as $financial_file)
-                {
-                    $financial_bid_file .= '<a class="btn img_button"href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
-                }
+        $financial_bid_file .= '<td class="financial_description">Financial Bid Form</td>';
+
+        if ($query->num_rows()) {
+            foreach ($query->result() as $financial_documents)
+            {
+                $financial_bid_file .=' <td><a class="btn img_button"href='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                                        <td style="vertical-align: middle;"><a class="btn replace_btn" data-d_id="Financial Bid Form">REPLACE</a></td> ';
+            }
+        } 
+        else {
+            $financial_bid_file .= '<td></td>
+                                    <td style="vertical-align: middle;"><a class="btn upload_btn" data-financial_documents_id="<?php echo $financial_bid_form_id; ?>" data-d_id="Financial Bid Form">Add File</a></td> ';
+        }
 
         echo $financial_bid_file;
         die;
@@ -136,7 +144,6 @@ class BidderBidManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql=' SELECT * FROM financial_documents
-                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
                 where description = "Bill Of Quantities" 
                 and users_user_id ="'.$users_user_id.'"
                 and projects_projects_id ="'.$id.'" ';
@@ -145,10 +152,19 @@ class BidderBidManagementController extends CI_Controller
 
         $financial_bid_file ="";
             
-                foreach ($query->result() as $financial_file)
-                {
-                    $financial_bid_file .= '<a class="btn img_button"href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
-                }
+        $financial_bid_file .= '<td class="financial_description">Bill Of Quantities</td>';
+
+        if ($query->num_rows()) {
+            foreach ($query->result() as $financial_documents)
+            {
+                $financial_bid_file .=' <td><a class="btn img_button"href='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                                        <td style="vertical-align: middle;"><a class="btn replace_btn" data-d_id="Financial Bid Form">REPLACE</a></td> ';
+            }
+        } 
+        else {
+            $financial_bid_file .= '<td></td>
+                                    <td style="vertical-align: middle;"><a class="btn upload_btn" data-financial_documents_id="<?php echo $bill_of_quantities_id; ?>" data-d_id="Bill Of Quantities">Add File</a></td> ';
+        }
 
         echo $financial_bid_file;
         die;
@@ -159,7 +175,6 @@ class BidderBidManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql=' SELECT * FROM financial_documents
-                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
                 where description = "Detailed Estimates" 
                 and users_user_id ="'.$users_user_id.'"
                 and projects_projects_id ="'.$id.'" ';
@@ -167,12 +182,20 @@ class BidderBidManagementController extends CI_Controller
         $query = $this->db->query($sql);
 
         $financial_bid_file ="";
-            
-                foreach ($query->result() as $financial_file)
-                {
-                    $financial_bid_file .= '<a class="btn img_button"href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br> ';
-                }
 
+        $financial_bid_file .= '<td class="financial_description">Detailed Estimates</td>';
+
+        if ($query->num_rows()) {
+            foreach ($query->result() as $financial_documents)
+            {
+                $financial_bid_file .=' <td><a class="btn img_button"href='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                                        <td style="vertical-align: middle;"><a class="btn replace_btn" data-d_id="Detailed Estimates">REPLACE</a></td> ';
+            }
+        } 
+        else {
+            $financial_bid_file .= '<td></td>
+                                    <td style="vertical-align: middle;"><a class="btn upload_btn" data-financial_documents_id="<?php echo $detailed_estimates_id; ?>" data-d_id="Detailed Estimates">Add File</a></td> ';
+        }
         echo $financial_bid_file;
         die;
     }
@@ -182,19 +205,27 @@ class BidderBidManagementController extends CI_Controller
         $users_user_id = $this->session->userdata('user_id');
 
         $sql=' SELECT * FROM financial_documents
-                inner join financial_file on financial_documents.financial_documents_id = financial_file.financial_documents_financial_documents_id
                 where description = "Cash Flow By Quarter" 
                 and users_user_id ="'.$users_user_id.'"
                 and projects_projects_id ="'.$id.'" ';
 
         $query = $this->db->query($sql);
-
+        
         $financial_bid_file ="";
-            
-                foreach ($query->result() as $financial_file)
-                {
-                    $financial_bid_file .= '<a class="btn img_button"class="btn" href='.base_url()."".$financial_file->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a><br>';
-                }
+       
+        $financial_bid_file .= '<td class="financial_description">Cash Flow By Quarter</td>';
+
+        if ($query->num_rows()) {
+            foreach ($query->result() as $financial_documents)
+            {
+                $financial_bid_file .=' <td><a class="btn img_button"href='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                                        <td style="vertical-align: middle;"><a class="btn replace_btn" data-d_id="Cash Flow By Quarter">REPLACE</a></td> ';
+            }
+        } 
+        else {
+            $financial_bid_file .= '<td></td>
+                                    <td style="vertical-align: middle;"><a class="btn upload_btn" data-financial_documents_id="<?php echo $cash_flow_by_quarter_id; ?>" data-d_id="Cash Flow By Quarter">Add File</a></td> ';
+        }
 
         echo $financial_bid_file;
         die;
@@ -214,43 +245,11 @@ class BidderBidManagementController extends CI_Controller
             $financial_documents_data = array(		
                 'description' => $this->input->post('financialdesc'),
                 'users_user_id' => $this->session->userdata('user_id'),
-                'projects_projects_id' => $this->input->post('projects_id')
+                'projects_projects_id' => $this->input->post('projects_id'),
+                'file_path' => "assets/uploads/financial-docs/".$data['upload_data']['file_name']
             );
 
-            $description = $this->input->post('financialdesc');
-            $users_user_id = $this->session->userdata('user_id');
-            $projects_projects_id = $this->input->post('projects_id');
-
-
-            $sql=' SELECT * FROM financial_documents
-                    where description = "'. $description.'" 
-                    and users_user_id ="'.$users_user_id.'"
-                    and projects_projects_id ="'.$projects_projects_id.'"';
-    
-            $query = $this->db->query($sql);
-            $row = $query->row();
-
-            
-            if ( $query->num_rows() > 0 ) 
-            {
-                $financial_file_data = array(		
-                    'financial_documents_financial_documents_id' =>  $row->financial_documents_id,
-                    'file_path' => "assets/uploads/financial-docs/".$data['upload_data']['file_name'],
-                );
-               
-                $this->db->insert('financial_file',$financial_file_data);
-            } 
-            else {
-
-                $this->db->insert('financial_documents',$financial_documents_data);
-                $last_id = $this->db->insert_id();
-    
-                $financial_file_data = array(		
-                    'financial_documents_financial_documents_id' =>  $last_id,
-                    'file_path' => "assets/uploads/financial-docs/".$data['upload_data']['file_name'],
-                );
-                $this->db->insert('financial_file',$financial_file_data);
-            }
+            $this->db->insert('financial_documents',$financial_documents_data);
             
         }
         echo 'Success';
@@ -289,16 +288,32 @@ class BidderBidManagementController extends CI_Controller
             
                     $this->db->insert('bids',$bid_data);
                     
+                    // insert technical docs to bid_technical_documents table
+                    $res = $this->db->query($sql2)->result();
+                    foreach($res as $tech_file_data)
+                    {
+                        $technical_docs_data = array(				
+                            'description' => $tech_file_data->description,
+                            'file_path' => $tech_file_data->file_path,
+                            'findings' => '0',
+                            'users_user_id' => $tech_file_data->users_user_id,
+                            'projects_projects_id' => $projects_id,
+                        );
+                
+                        $this->db->insert('bid_technical_documents',$technical_docs_data);
+                        // echo $this->db->insert_id();
+
+                    }
                     print json_encode(array("status"=>"success","message"=>"success"));
                 }
                 else{
                     // echo 'Technical documents not completed!';
-                    print json_encode(array("status"=>"fail","message"=>"Technical documents not completed!"));
+                    print json_encode(array("status"=>"fail","message"=>"Technical documents is incomplete!"));
                 }
             }
             else{
                 // echo 'Financial documents not completed!';
-                print json_encode(array("status"=>"fail","message"=>"Financial documents not completed!"));
+                print json_encode(array("status"=>"fail","message"=>"Financial documents is incomplete!"));
             }
         }
         else{

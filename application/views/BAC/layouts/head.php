@@ -42,6 +42,11 @@
 <link href="<?php echo base_url()."assets/"; ?>admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
 <link id="style_color" href="<?php echo base_url()."assets/"; ?>admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url()."assets/"; ?>admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url()."assets/"; ?>global/css/plugins.css" rel="stylesheet" type="text/css">
+
+<!-- custom global css -->
+<link href="<?php echo base_url()."assets/"; ?>/custom/my-global-custom-css.css" rel="stylesheet" type="text/css"/>
+
 <!-- END THEME STYLES -->
 
 <!-- <link rel="shortcut icon" href="favicon.ico"/> -->
@@ -49,6 +54,7 @@
 
 <!-- datetimepicker -->
 <!-- BEGIN PAGE LEVEL STYLES -->
+<link href="<?php echo base_url()."assets/";?>global/plugins/icheck/skins/all.css" rel="stylesheet">
 <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/";?>global/plugins/clockface/css/clockface.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/";?>global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/";?>global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">

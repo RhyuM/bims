@@ -42,6 +42,10 @@
 <link href="<?php echo base_url()."assets/"; ?>admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
 <link id="style_color" href="<?php echo base_url()."assets/"; ?>admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url()."assets/"; ?>admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+
+<!-- custom global css -->
+<link href="<?php echo base_url()."assets/"; ?>/custom/my-global-custom-css.css" rel="stylesheet" type="text/css"/>
+
 <!-- END THEME STYLES -->
 
 <!-- <link rel="shortcut icon" href="favicon.ico"/> -->

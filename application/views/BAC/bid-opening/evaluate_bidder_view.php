@@ -4,7 +4,11 @@
 	 $this->load->view('BAC/layouts/sidebar');
 
 	 $session_projects_id = $this->session->userdata("projects_id");
-	//  echo '<script> alert("'.$session_projects_id.'")</script>';
+	 $session_bidder_id = $this->session->userdata("session_bidder_id");
+
+	 
+	//  echo '<script> console.log("'.$session_bidder_id.'")</script>';
+	//  echo '<script> console.log("'.$session_bidder_id.'")</script>';
 ?>  
 	   <style>
 	   		.admins_row {
@@ -113,6 +117,67 @@
 				background: #af9500;
 				color: #fff!important;
 			}
+
+			/* radio button css */
+			.check-button label:hover::before{
+				background-color:  #005841;
+			}
+			
+			.check-button{
+				display: inline;
+			}
+
+			.radio-custom {
+				opacity: 0;
+				position: absolute;   
+			}
+
+			.radio-custom, .radio-custom-label {
+				display: inline-block;
+				vertical-align: middle;
+				margin: 5px;
+				cursor: pointer;
+			}
+
+			.radio-custom-label {
+				position: relative;
+			}
+
+			.radio-custom + .radio-custom-label:before {
+				content: '';
+				background: #fff;
+				border: 2px solid #ddd;
+				display: inline-block;
+				vertical-align: middle;
+				width: 25px;
+				height: 25px;
+				padding: 2px;
+				margin-right: 10px;
+				text-align: center;
+			}
+
+
+			.radio-custom + .radio-custom-label:before {
+				border-radius: 50%;
+			}
+
+			.radio-custom:checked + .radio-custom-label:before {
+				content: "\f00c";
+				font-family: 'FontAwesome';
+				color: #af9500;
+			}
+
+			.radio-custom:focus + .radio-custom-label {
+			outline: 1px solid #ddd;
+			}
+			.submit-button{
+				text-align: right;
+			}
+
+			.button-div{
+				text-align: right;
+    			margin: auto 5%;
+			}
 		</style>
 
 
@@ -173,7 +238,7 @@
 							<div class="portlet box">
 								<div class="portlet-title">
 									<div class="caption">
-										<i class="fa fa-globe"></i>Bids
+										<i class="fa fa-globe"></i>TECHNICAL DOCUMENTS
 									</div>
 									
 								</div>
@@ -187,23 +252,44 @@
 											</div>
 										</div>
 									</div>
-									<div id="sample_1_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable">
-										<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
-											<thead>
-												<tr role="row">
-													<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
-												</tr>
-											</thead>
-											<tbody class="table_data" >
-											
-											</tbody>
-										</table>
-
-									</div>
-			
+									
+										<div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="dataTables_length" id="sample_1_length">
+														<label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label>
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<div id="sample_1_filter" class="dataTables_filter">
+														<label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label>
+													</div>
+												</div>
+											</div>
+											<form id="technical_checklist_form" method="post">
+												<div class="table-scrollable">
+													
+													
+													<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+														<thead>
+															<tr role="row">
+																<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Description</th>
+																<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Document File</th>
+																<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">Action/Findings</th>
+															</tr>
+														</thead>
+														<tbody class="table_data" >
+														
+														</tbody>
+														
+													</table>
+													
+												</div>
+												<div class="button-div">
+													<button class="btn primary-button submit-button" type="submit">SUBMIT</button>
+												</div>
+											</form>
+										</div>
 								</div>
 							</div>
 							<!-- END ALERTS PORTLET-->
@@ -212,7 +298,7 @@
 				</div>
 		<!-- END PAGE CONTENT-->
 		</div>
-	</div>
+	</div>	
 	<!-- END CONTENT -->
 
 <?php
@@ -222,6 +308,18 @@
 
 
 <script  type="text/javascript">
+	$( window ).load(function() {
+		jQuery.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidOpeningController/technical_checklist_show')?>/<?php echo $session_bidder_id ?>',
+			async : true,
+			success : function(data){
+					$('.table_data').html(data);
+			}
+		});
+	});
+
+	
 	//get project details
 	jQuery.ajax({
 		type  : 'get',
@@ -233,4 +331,25 @@
 		}
 	});
 
+	
+
+	$('#technical_checklist_form').submit(function(event){
+        event.preventDefault();
+		// jQuery('input.radio-custom:checked').each(function(){
+		// 	console.log($(this).val());
+		// });
+		jQuery.ajax({
+			type : 'post',
+			url:  '<?php echo base_url('BidOpeningController/insert_technical_findings')?>',
+			data : $('#technical_checklist_form').serialize(),
+			async : true,
+			success : function(data){	
+				console.log(data);
+			}
+		});
+		alert($('#technical_checklist_form').serialize());
+	});
+
+	
+	
 </script>

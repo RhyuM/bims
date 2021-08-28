@@ -145,37 +145,17 @@
 										</tr>
 									</thead>
 									<tbody class="table_data" >
-										<tr>
-											<td class="financial_description">Financial Bid Form</td>
-											<td id="fbf_file"></td>
-											<td style="vertical-align: middle;">
-												<a class="btn upload_btn" data-financial_documents_id="<?php echo $financial_bid_form_id; ?>" data-d_id="Financial Bid Form">Add New File</a>
-												<a class="btn upload_btn" data-d_id="Financial Bid Form">Edit</a>
-											</td>
+										<tr id="fbf_file">
+											
 										</tr>
-										<tr>
-											<td class="financial_description">Bill Of Quantities</td>
-											<td id="boq_file"></td>
-											<td style="vertical-align: middle;">
-											<a class="btn upload_btn" data-financial_documents_id="<?php echo $bill_of_quantities_id; ?>" data-d_id="Bill Of Quantities">Add New File</a>
-												<a class="btn upload_btn" data-d_id="Bill Of Quantities">Edit</a>
-											</td>
+										<tr id="boq_file">
+											
 										</tr>
-										<tr>
-											<td class="financial_description">Detailed Estimates</td>
-											<td id="de_file"></td>
-											<td style="vertical-align: middle;">
-												<a class="btn upload_btn" data-financial_documents_id="<?php echo $detailed_estimates_id; ?>" data-d_id="Detailed Estimates">Add New File</a>
-												<a class="btn upload_btn" data-d_id="Detailed Estimates">Edit</a>
-											</td>
+										<tr id="de_file">
+										
 										</tr>
-										<tr>
-											<td class="financial_description">Cash Flow By Quarter</td>
-											<td id="cfbq_file"></td>
-											<td style="vertical-align: middle;">
-												<a class="btn upload_btn" data-financial_documents_id="<?php echo $cash_flow_by_quarter_id; ?>" data-d_id="Cash Flow By Quarter">Add New File</a>
-												<a class="btn upload_btn" data-d_id="Cash Flow By Quarter">Edit</a>
-											</td>
+										<tr id="cfbq_file">
+											
 										</tr>
 
                                         

@@ -180,15 +180,15 @@
 							</p>
 							<div class="form-group">
 								<label class="control-label visible-ie8 visible-ie9">Username</label>
-								<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" id="username" <?php echo !empty($user['username'])?$user['username']:''; ?>/>
+								<input class="form-control placeholder-no-fix" type="text" placeholder="Username" name="username" id="username" <?php echo !empty($user['username'])?$user['username']:''; ?>/>
 							</div>
 							<div class="form-group">
 								<label class="control-label visible-ie8 visible-ie9">Password</label>
-								<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
+								<input class="form-control placeholder-no-fix" type="password" id="register_password" placeholder="Password" name="password"/>
 							</div>
 							<div class="form-group">
 								<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-								<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" id="rpassword"/>
+								<input class="form-control placeholder-no-fix" type="password" placeholder="Re-type Your Password" name="rpassword" id="rpassword"/>
 							</div>
 						</div>
 						<div class="col-md-12">

@@ -88,6 +88,7 @@ class BidOpeningController extends CI_Controller
 
     public function bids_opened($id) 
     {
+        
 
         $this->load->view('BAC/bid-opening/bids_open_view');
      
@@ -125,8 +126,79 @@ class BidOpeningController extends CI_Controller
 
     public function evaluate_bidder($id) 
     {
+        // add session_bidder_id to session
+        $this->session->set_userdata("session_bidder_id", "$id");
 
-        $this->load->view('BAC/bid-opening/evaluate_bidder_view');
+        $session_projects_id = $this->session->userdata("projects_id");
+
+        $sql='SELECT * FROM bid_technical_documents
+            where users_user_id = "'.$id.'" 
+            and projects_projects_id = "'.$session_projects_id.'"'; 
+
+        $query = $this->db->query($sql);
+
+        $data = array(
+            'technical_docs_data' => $query->result(),
+        );
+
+        $this->load->view('BAC/bid-opening/evaluate_bidder_view',$data);
+    }
+
+    public function technical_checklist_show($id) 
+    {
+        $session_projects_id = $this->session->userdata("projects_id");
+
+        $sql='SELECT * FROM bid_technical_documents
+            where users_user_id = "'.$id.'"
+            and projects_projects_id = "'.$session_projects_id.'"'; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+        
+                $index = 1;
+                $id = 1;
+                foreach ($query->result() as $technical_documents)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$technical_documents->description.'</td>
+                    <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                    <td>
+                        <div class="check-button">
+                            <input id="radio'.$id.'" class="radio-custom" name="radio'.$index.'"  data-d_id="'.$technical_documents->bid_technical_documents_id.'" type="radio" value="1" required>
+                            <label for="radio'.$id.'" class="radio-custom-label">PASS</label>
+                        </div>
+                        <div class="check-button">
+                            <input id="radio'.++$id.'" class="radio-custom" name="radio'.$index.'" data-d_id="'.$technical_documents->bid_technical_documents_id.'" type="radio" value="0">
+                            <label for="radio'.$id.'" class="radio-custom-label">FAIL</label>
+                        </div>
+                        <input  name="id'.$index.'" data-d_id="'.$technical_documents->bid_technical_documents_id.'" type="hidden" value="'.$technical_documents->bid_technical_documents_id.'">
+                    </td>
+                    ';
+                    $id++;
+                    $index++;
+                }
+
+        echo $table_data;
+        die;
+    }
+
+    public function insert_technical_findings() 
+    {
+    
+        $i = 1;
+        foreach($this->input->post() as $data){
+
+
+            $this->db->set('findings', $this->input->post('radio'.$i));
+
+            $this->db->where('bid_technical_documents_id',$this->input->post('id'.$i));
+
+            $this->db->update('bid_technical_documents');
+           $i++;
+        }
+        
     }
 
     public function bidder_show($id) 

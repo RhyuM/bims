@@ -85,7 +85,8 @@ class ProjectManagementController extends CI_Controller
                 'opening_date' 	=> $this->input->post('opening_date'), 
                 'submission_deadline' 	=> $this->input->post('submission_deadline'), 
                 'approve_budget_cost' 	=> $this->input->post('approve_budget_cost'), 
-                'projects_status' 	=> $this->input->post('projects_status'), 
+                // 'projects_status' 	=> $this->input->post('projects_status'), 
+                'projects_status' 	=> 'procurement', 
                 'delete_status' 	=> '0', 
                 'ITB_path' => "/assets/uploads/invitation-to-bid/".$data['upload_data']['file_name']
             );

@@ -41,6 +41,8 @@
 <script src="<?php echo base_url()."assets/";?>admin/pages/scripts/table-managed.js"></script>
 
 <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="<?php echo base_url()."assets/"; ?>global/plugins/icheck/icheck.min.js"></script>
+    <script src="<?php echo base_url()."assets/"; ?>admin/pages/scripts/form-icheck.js"></script>
     <!-- <script type="text/javascript" src="<?php echo base_url()."assets/"; ?>global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()."assets/"; ?>global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()."assets/"; ?>global/plugins/clockface/js/clockface.js"></script>
@@ -66,7 +68,9 @@
             QuickSidebar.init(); // init quick sidebar
             Demo.init(); // init demo features
             ComponentsPickers.init();
+            FormiCheck.init(); // init page demo
         });   
+
 </script>
 
 <!-- clock -->
