@@ -23,6 +23,8 @@ $route['bidopening'] = 'BidOpeningController';
 $route['bidopening/bid_openers/(:any)'] = 'BidOpeningController/bid_openers/$1';
 $route['bidopening/bids_opened/(:any)'] = 'BidopeningController/bids_opened/$1';
 $route['bidopening/evaluate_bidder/(:any)'] = 'BidopeningController/evaluate_bidder/$1';
+$route['bidopening/financial_evaluation/(:any)'] = 'BidopeningController/financial_evaluation/$1';
+$route['bidopening/evaluation_result/(:any)'] = 'BidopeningController/evaluation_result/$1';
 
 
 $route['projectmanagement'] = 'ProjectManagementController/index';

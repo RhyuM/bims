@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <!--<![endif]-->
@@ -39,7 +40,7 @@
 
 <style>
 	.main-container {
-		background-image: url(assets/images/testbg2.jpg);
+		/* background-image: url(assets/images/testbg2.jpg); */
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -54,7 +55,7 @@
 		color: #ff3333;
 	}
 </style>
-<div class="main-container">
+<div class="main-container" style="background-image: url('<?php echo base_url()."assets/"; ?>images/testbg2.jpg');">
 	<div class="sub">
 			<!-- BEGIN LOGO -->
 			<div class="logo">
@@ -69,12 +70,22 @@
 				<div>
 					<form class="login-form" action="<?php echo site_url('loginregister/auth');?>" method="post">
 						<h3 class="form-title" style="margin-bottom: 4vh;">Login</h3>
-						<?php echo $this->session->flashdata('msg');?>
-						<div class="alert alert-danger display-hide">
-							<button class="close" data-close="alert"></button>
-							<span>
-							Enter any username and password. </span>
-						</div>
+						
+						<?php 
+								if (!empty($this->session->flashdata('msg') )) {
+									echo '<div class="alert alert-danger">
+											<button class="close" data-close="alert"></button>
+											<span>'.$this->session->flashdata('msg').'</span>
+										</div>';
+								}
+								else{
+									echo '<div class="alert alert-danger display-hide">
+											<button class="close" data-close="alert"></button>
+											<span>Username or Password is Wrong</span>
+										</div>';
+								}
+						?>
+						
 						<div class="form-group">
 							<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 							<label class="control-label visible-ie8 visible-ie9">Username</label>
@@ -246,25 +257,34 @@
 <script>
 	$(document).ready(function(){
 		$('#regformid').on('submit', function(e) {
-		e.preventDefault();
-		// var regdata = $(this).serialize();
-			$.ajax({
-				url: "<?php echo base_url();?>loginregister/registration",
-				type: "POST",
-				// data: regdata,
-				data:new FormData(this),
-				processData:false,
-				contentType:false,
-				cache:false,
-				async:false,
-				success: function(response){
-					alert("success");
-					// $('body').html(response);
-				}
-			});
+			e.preventDefault();
+			// var regdata = $(this).serialize();
+				$.ajax({
+					url: "<?php echo base_url();?>loginregister/registration",
+					type: "POST",
+					// data: regdata,
+					data:new FormData(this),
+					processData:false,
+					contentType:false,
+					cache:false,
+					async:false,
+					success: function(response){
+						// alert("success");
+						window.location = 'page/bidder';
+					}
+				});
+		
+		});
+
+		if ( window.location.hash === '#register-btn' ){
+			
+			setTimeout(function(){
+				jQuery('#register-btn').trigger('click');
+			 }, 50);
+		}
+	});
+
 	
-	});
-	});
 </script>
 
 

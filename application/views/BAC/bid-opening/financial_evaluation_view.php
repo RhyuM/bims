@@ -7,8 +7,8 @@
 	 $session_bidder_id = $this->session->userdata("session_bidder_id");
 
 	 
-	//  echo '<script> console.log("'.$session_bidder_id.'")</script>';
-	//  echo '<script> console.log("'.$session_bidder_id.'")</script>';
+	 echo '<script> console.log("'.$session_projects_id.'")</script>';
+	 echo '<script> console.log("bidder '.$session_bidder_id.'")</script>';
 ?>  
 	   <style>
 	   		.admins_row {
@@ -178,6 +178,13 @@
 				text-align: right;
     			margin: auto 5%;
 			}
+
+			@media (min-width: 768px){
+				.modal-dialog {
+					width: 80%;
+					margin: 30px auto;
+				}
+			}
 		</style>
 
 
@@ -188,7 +195,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Technical Evaluation
+			Financial Evaluation
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -238,7 +245,7 @@
 							<div class="portlet box">
 								<div class="portlet-title">
 									<div class="caption">
-										<i class="fa fa-globe"></i>TECHNICAL DOCUMENTS
+										<i class="fa fa-globe"></i>FINANCIAL DOCUMENTS
 									</div>
 									
 								</div>
@@ -266,7 +273,7 @@
 													</div>
 												</div>
 											</div>
-											<form id="technical_checklist_form" method="post">
+											<form id="financial_checklist_form" method="post">
 												<div class="table-scrollable">
 													
 													
@@ -296,6 +303,32 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- modal -->
+			<div id="docs_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="text-align: center;">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 style="font-weight: 600;" class="modal-title">FINANCIAL EVALUATION</h4>
+						</div>
+						<div class="modal-body">
+							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+							
+							<!-- <object data='http://localhost/bims/assets/uploads/financial-docs/Compro-SA3-FinalProject3.pdf' type="application/pdf" width="100%" height="800"> -->
+							
+							<object data="http://localhost/bims/assets/uploads/financial-docs/Compro-SA3-FinalProject3.pdf" type="application/pdf" width="100%" height="800">
+	
+								<embed src="http://localhost/bims/assets/uploads/financial-docs/Compro-SA3-FinalProject3.pdf" type="application/pdf" />
+							</object>
+
+							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- modal end -->
 		<!-- END PAGE CONTENT-->
 		</div>
 	</div>	
@@ -308,10 +341,18 @@
 
 
 <script  type="text/javascript">
+	
+	$( document ).ready(function() {
+		$('.table_data').on('click','.img_button',function(){
+			$('#docs_modal').modal("toggle");
+		});
+	});
+
+
 	$( window ).load(function() {
 		jQuery.ajax({
 			type  : 'get',
-			url   : '<?php echo base_url('BidOpeningController/technical_checklist_show')?>/<?php echo $session_bidder_id ?>',
+			url   : '<?php echo base_url('BidOpeningController/financial_checklist_show')?>/<?php echo $session_bidder_id ?>',
 			async : true,
 			success : function(data){
 					$('.table_data').html(data);
@@ -333,26 +374,20 @@
 
 	
 
-	$('#technical_checklist_form').submit(function(event){
+	$('#financial_checklist_form').submit(function(event){
         event.preventDefault();
-		// jQuery('input.radio-custom:checked').each(function(){
-		// 	console.log($(this).val());
-		// });
-		
+
 		jQuery.ajax({
 			type : 'post',
-			url:  '<?php echo base_url('BidOpeningController/insert_technical_findings')?>',
-			data : $('#technical_checklist_form').serialize(),
+			url:  '<?php echo base_url('BidOpeningController/insert_financial_findings')?>',
+			data : $('#financial_checklist_form').serialize(),
 			async : true,
 			success : function(response){	
 				// console.log(response);
 				var json = $.parseJSON(response);
 				if (json.status == "success") {
-					swal("Successfully", "Technical checklist has ben submitted", "success");
-
-					setTimeout(function(){ 
-						window.location.href = '<?php echo base_url("bidopening/financial_evaluation"); ?>/<?php echo $session_projects_id; ?>';
-					}, 1500);
+					swal("Successfully", "Financial checklist has ben submitted", "success");
+					window.location.href = '<?php echo base_url("bidopening/bids_opened"); ?>/<?php echo $session_projects_id; ?>';
 				} 
 				else if(json.status == "fail"){
 
@@ -362,9 +397,5 @@
 				}
 			}
 		});
-		// alert($('#technical_checklist_form').serialize());
 	});
-
-	
-	
 </script>

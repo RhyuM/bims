@@ -1,5 +1,13 @@
-<body>
 
+<?php 
+
+   $isLogin = $this->session->userdata("logged_in");
+   $userType = $this->session->userdata("type");
+   $username = $this->session->userdata("username");
+
+?> 
+
+<body>
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -35,10 +43,10 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <!-- not sticky header logo -->
-          <a class="navbar-brand logo-not-sticky" href="<?php echo base_url()?>"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo.svg" style="width: 100px;"></a>
+          <a class="navbar-brand logo-not-sticky" href="<?php echo base_url()?>"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo.svg" style="width: 120px;"></a>
          
           <!-- sticky header logo -->
-          <a class="navbar-brand logo-sticky" href="<?php echo base_url()?>"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo-dark.svg" style="width: 100px;"></a>
+          <a class="navbar-brand logo-sticky" href="<?php echo base_url()?>"><img src="<?php echo base_url()."assets/"; ?>logo/bims-logo-dark.svg" style="width: 120px;"></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -60,7 +68,32 @@
                 <a class="nav-link" href="<?php echo base_url()?>invitation-to-bid">Invitation To Bid</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url()?>login-register">Login/Register</a>
+                <?php
+                     if(!$isLogin){
+                        echo '<a class="nav-link" href="'.base_url().'login-register">Login/Register</a>';
+                     }
+                     else{
+                        if($userType === 'admin')
+                        {
+                            // redirect('page/admin');
+                            echo '<a class="nav-link" href="'.base_url().'page/admin">'.$username.'</a>';
+                        }
+
+                        elseif($userType === 'BAC' || $userType === 'TWG' || $userType === 'HEAD-BAC' )
+                        {
+                            // redirect('page/staff');
+                            echo '<a class="nav-link" href="'.base_url().'page/staff">'.$username.'</a>';
+                        }
+
+                        // access login for bidder
+                        elseif($userType === 'BIDDER')
+                        {
+                            // redirect('page/bidder');
+                            echo '<a class="nav-link" href="'.base_url().'page/bidder">'.$username.'</a>';
+                        }
+                        
+                     }
+                ?>
               </li>
             </ul>
           </div>

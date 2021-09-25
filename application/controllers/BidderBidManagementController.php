@@ -295,7 +295,7 @@ class BidderBidManagementController extends CI_Controller
                         $technical_docs_data = array(				
                             'description' => $tech_file_data->description,
                             'file_path' => $tech_file_data->file_path,
-                            'findings' => '0',
+                            'findings' => '-1',
                             'users_user_id' => $tech_file_data->users_user_id,
                             'projects_projects_id' => $projects_id,
                         );

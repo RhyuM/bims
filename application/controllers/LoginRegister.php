@@ -4,10 +4,33 @@ class LoginRegister extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('login_model');
+        
     }
     
     function index()
     {
+        if ($this->session->userdata('logged_in') !== false){
+            $session_user_type = $this->session->userdata("type");
+            if($session_user_type === 'admin')
+            {
+                redirect('page/admin');
+            }
+             // access login for Bid and Awards Committe
+            elseif($session_user_type === 'BAC' || $session_user_type === 'HEAD-BAC' )
+            {
+                redirect('page/staff');
+            }
+             // access login for Technical Working Group
+            elseif($session_user_type === 'TWG' ||  $session_user_type === 'HEAD-TWG')
+            {
+                redirect('page/staff');
+            }
+             // access login for bidder
+            elseif($session_user_type === 'BIDDER')
+            {
+                redirect('page/bidder');
+            }
+        }
         $this->load->view('login-register/login_register_view');
     }
     
@@ -82,16 +105,36 @@ class LoginRegister extends CI_Controller{
                 ); 
 
                 $this->db->insert('users', $userData);
-                
-                // if ($result == TRUE) {
-                //     echo "true";
-                // }
+
+                $last_id = $this->db->insert_id();
+
+                $user_id  =  $last_id;
+                $name  = $this->input->post('username');
+                $email = $this->input->post('email');
+                $type = 'BIDDER';
+                $sesdata = array(
+                    'user_id'  => $user_id,
+                    'username'  => $name,
+                    'email'     => $email,
+                    'type'     => $type,
+                    'logged_in' => TRUE
+                );
+
+                $this->session->set_userdata($sesdata);
+
             }
     } 
 
     function logout()
     {
+        // $user_data = $this->session->all_userdata();
+        // foreach ($user_data as $key => $value) {
+        //     if ($key != 'user_id' && $key != 'username' && $key != 'email' && $key != 'type'  && $key != 'logged_in') {
+        //         $this->session->unset_userdata($key);
+        //     }
+        // }
         $this->session->sess_destroy();
+
         redirect('login-register');
     }
     

@@ -181,7 +181,7 @@ a.border-button:hover {
 /* Sub Header Style */
 
 .sub-header {
-    background-color: #AF9500;
+    background-color: #003924;
     height: 46px;
     line-height: 46px;
 }
@@ -243,7 +243,7 @@ header {
     z-index: 99999;
     width: 100%;
     background-color: transparent!important;
-    height: 80px;
+    height: 100px;
     -webkit-transition: all 0.3s ease-in-out 0s;
     -moz-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
@@ -255,13 +255,14 @@ header .navbar {
 }
 
 .background-header .navbar {
-    padding: 10px 0px;
+    padding: 20px 0px;
+    height: 100%;
 }
 
 .background-header {
     top: 0;
     position: fixed;
-    background-color: #e1e1e1!important;
+    background-color: #fff!important;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -320,9 +321,9 @@ header .navbar {
 }
 
 .navbar .navbar-nav a.nav-link {
-    text-transform: capitalize;
-    font-size: 15px;
-    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
     letter-spacing: 0.5px;
     color: #fff;
     transition: all 0.5s;
@@ -343,8 +344,8 @@ header .navbar {
 }
 
 .navbar .navbar-toggler {
-    border-color: #fff;
-    background-color: #fff;
+    /* border-color: #fff;
+    background-color: #fff; */
     height: 36px;
     outline: none;
     border-radius: 0px;
@@ -410,24 +411,24 @@ header .navbar {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 95vh;
+    height: 83vh;
 }
 
-
-.Modern-Slider .item-1 .img-fill  {
+.Modern-Slider .item-1 .img-fill {
     background-image: url(../images/Pictures/pic1.jpg);
-    box-shadow:inset 0 0 0 2000px rgb(37 34 34 / 52%);
-    
+    box-shadow: inset 0 0 0 2000px rgb(37 34 34 / 20%);
 }
+
 .Modern-Slider .item-2 .img-fill {
     background-image: url(../images/Pictures/pic3.jpg);
-   box-shadow:inset 0 0 0 2000px rgb(37 34 34 / 52%);
+    box-shadow: inset 0 0 0 2000px rgb(37 34 34 / 20%);
 }
 
 .Modern-Slider .item-3 .img-fill {
     background-image: url(../images/Pictures/pic2.jpg);
-    box-shadow:inset 0 0 0 2000px rgb(37 34 34 / 52%);
+    box-shadow: inset 0 0 0 2000px rgb(37 34 34 / 20%);
 }
+
 .Modern-Slider .NextArrow {
     position: absolute;
     top: 50%;
@@ -440,12 +441,11 @@ header .navbar {
     color: #FFF;
     z-index: 5;
     outline: none;
-   
 }
 
 .Modern-Slider .NextArrow:before {
     content: '\f105';
-    font-size:45px;
+    font-size: 45px;
 }
 
 .Modern-Slider .PrevArrow {
@@ -499,61 +499,66 @@ ul.slick-dots {
     letter-spacing: 2.5px;
     color: #FFF;
     overflow: hidden;
-    animation:forwards 20s both;
+    animation: forwards 20s both;
 }
 
 .Modern-Slider .item p {
     max-width: 570px;
-    color:#ffffff;
+    color: #ffffff;
     font-size: 20px;
     font-weight: 400;
     line-height: 30px;
     margin-bottom: -192px;
-  
-   
-    
-    text-align: justify;
-text-justify: distribute;
-text-align-last:left;
+    text-align-last: left;
 }
+
 #float {
     position: relative;
-    -webkit-animation: floatBubble 2s infinite  normal ease-out;
-    animation: floatBubble 2s infinite  normal ease-out;
+    -webkit-animation: floatBubble 2s infinite normal ease-out;
+    animation: floatBubble 2s infinite normal ease-out;
 }
+
 @-webkit-keyframes floatBubble {
     0% {
-        top:500px;
+        top: 500px;
     }
     100% {
         top: 0px;
     }
 }
+
 @keyframes floatBubble {
     0% {
-        top:500px;
+        top: 500px;
     }
     100% {
         top: 0px;
     }
 }
-.sliderimg{
-   
-        -webkit-animation: mover 2s infinite  alternate;
-        animation: mover 1s infinite  alternate;
-        
-        
+
+.sliderimg {
+    -webkit-animation: mover 2s infinite alternate;
+    animation: mover 1s infinite alternate;
 }
-    @-webkit-keyframes mover {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-40px); }
+
+@-webkit-keyframes mover {
+    0% {
+        transform: translateY(0);
     }
-    @keyframes mover {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-40px); }
-   
+    100% {
+        transform: translateY(-40px);
+    }
 }
-    
+
+@keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-40px);
+    }
+}
+
 .Modern-Slider .item a {
     margin: 0 5px;
 }
@@ -669,7 +674,7 @@ text-align-last:left;
 /* Request Form */
 
 .request-form {
-    background-color: #AF9500;
+    background-color: #003924;
     padding: 40px 0px;
     color: #fff;
 }
@@ -687,8 +692,12 @@ text-align-last:left;
 }
 
 .request-form a.border-button {
-    margin-top: 12px;
+    /* margin-top: 12px; */
     float: right;
+}
+
+.request-form .col-md-4 {
+    margin: auto;
 }
 
 
@@ -904,7 +913,7 @@ text-align-last:left;
 
 .callback-form {
     margin-top: 100px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
 }
 
 .callback-form .contact-form {
@@ -1387,6 +1396,12 @@ footer .contact-form button.filled-button:hover {
     font-size: 15px;
 }
 
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1600px;
+    }
+}
+
 
 /* Responsive Style */
 
@@ -1474,7 +1489,7 @@ footer .contact-form button.filled-button:hover {
     #navbarResponsive {
         z-index: 99999;
         position: absolute;
-        top: 80px;
+        top: 100px;
         left: 0;
         width: 100%;
         text-align: center;

@@ -88,17 +88,79 @@ class BidOpeningController extends CI_Controller
 
     public function bids_opened($id) 
     {
-        
-
         $this->load->view('BAC/bid-opening/bids_open_view');
      
     }
+    public function evaluation_result($id) 
+    {
+    
+        $this->load->view('BAC/bid-opening/evaluation_result_view');
+     
+    }
+    public function evaluation_result_bids_show($id) 
+    {
+        $sql='  SELECT * FROM bids
+        inner join users on bids.users_user_id = users.user_id
+        where projects_projects_id = "'.$id.'" 
+        order by bid_price'; 
 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+            
+                $start = 1;
+                foreach ($query->result() as $bids)
+                {
+
+                    $sql2 ='  SELECT findings FROM bid_technical_documents
+                    where projects_projects_id = "'.$id.'" 
+                    and users_user_id = "'.$bids->user_id.'" '; 
+                    $query2 = $this->db->query($sql2);
+
+                    $sql3 ='  SELECT findings FROM financial_documents
+                    where projects_projects_id = "'.$id.'" 
+                    and users_user_id = "'.$bids->user_id.'" '; 
+                    $query3 = $this->db->query($sql3);
+
+                    $tech_findings = true;
+                    $financial_findings = true;
+
+                    foreach ($query2->result() as $tech_docs){
+                        if($tech_docs->findings == '0' ){
+                            $tech_findings = false;
+                            break;
+                        }
+                    }
+                    foreach ($query3->result() as $financial_docs){
+                        if($financial_docs->findings == '0' ){
+                            $financial_findings = false;
+                            break;
+                        }
+                    }
+
+                    if($tech_findings == true & $financial_findings == true){
+                        $table_data .= '<tr class="gradeX odd" role="row">                    
+                        <td class="sorting_1">'.$start++.'</td>
+                        <td>'.$bids->companyname.'</td>
+                        <td>₱'.$bids->bid_price.'</td>
+                        <td>'.date("m/d/Y - H:m", strtotime($bids->created_on)).'</td>
+                        <td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->user_id.'">VIEW EVALUATION RESULT</a></td>';
+                    }
+
+                }
+
+        echo $table_data;
+        
+       
+        die;
+    }
     public function bids_show($id) 
     {
         $sql='  SELECT * FROM bids
         inner join users on bids.users_user_id = users.user_id
         where projects_projects_id = "'.$id.'" '; 
+
 
         $query = $this->db->query($sql);
 
@@ -112,10 +174,50 @@ class BidOpeningController extends CI_Controller
                     <td class="sorting_1">'.$start++.'</td>
                     <td>'.$bids->companyname.'</td>
                     <td>₱'.$bids->bid_price.'</td>
-                    <td>'.date("m/d/Y - H:m", strtotime($bids->created_on)).'</td>
-                    
-                    <td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->user_id.'">EVALUATE BIDDER</a></td>
-                    ';
+                    <td>'.date("m/d/Y - H:m", strtotime($bids->created_on)).'</td>';
+
+                        $sql2 ='  SELECT findings FROM bid_technical_documents
+                        where projects_projects_id = "'.$id.'" 
+                        and users_user_id = "'.$bids->user_id.'" '; 
+                        $query2 = $this->db->query($sql2);
+
+                        $sql3 ='  SELECT findings FROM financial_documents
+                        where projects_projects_id = "'.$id.'" 
+                        and users_user_id = "'.$bids->user_id.'" '; 
+                        $query3 = $this->db->query($sql3);
+
+                        $tech_findings = false;
+                        $financial_findings = false;
+                        $tech_findings_result = true;
+
+                        foreach ($query2->result() as $tech_docs){
+                            if($tech_docs->findings == '1' ){
+                                $tech_findings = true;
+                                break;
+                            }
+                            else{
+                                $tech_findings_result = false;
+                            }
+                        }
+                        foreach ($query3->result() as $financial_docs){
+                            if($financial_docs->findings == '1' ){
+                                $financial_findings = true;
+                                break;
+                            }
+                        }
+
+                        if($tech_findings == true & $financial_findings == true){
+                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->user_id.'">VIEW RESULT</a></td>';
+                        }
+                        else if($tech_findings_result == true & $financial_findings == false){
+                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->user_id.'">FINANCIAL EVALUATION</a></td>';
+                        }
+                        else if($tech_findings_result == false){
+                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->user_id.'">TECHNICAL EVALUATION RESULT</a></td>';
+                        }
+                        else{
+                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->user_id.'">EVALUATE BIDDER</a></td>';
+                        }
                 }
 
         echo $table_data;
@@ -142,6 +244,27 @@ class BidOpeningController extends CI_Controller
         );
 
         $this->load->view('BAC/bid-opening/evaluate_bidder_view',$data);
+    }
+
+    public function financial_evaluation($id) 
+    {
+
+         // add session_bidder_id to session
+         $this->session->set_userdata("session_bidder_id", "$id");
+
+         $session_projects_id = $this->session->userdata("projects_id");
+ 
+         $sql='SELECT * FROM financial_documents
+             where users_user_id = "'.$id.'" 
+             and projects_projects_id = "'.$session_projects_id.'"'; 
+ 
+         $query = $this->db->query($sql);
+ 
+         $data = array(
+             'financial_docs_data' => $query->result(),
+         );
+ 
+         $this->load->view('BAC/bid-opening/financial_evaluation_view',$data);
     }
 
     public function technical_checklist_show($id) 
@@ -183,23 +306,105 @@ class BidOpeningController extends CI_Controller
         echo $table_data;
         die;
     }
+    public function financial_checklist_show($id) 
+    {
+        $session_projects_id = $this->session->userdata("projects_id");
+
+        $sql='SELECT * FROM financial_documents
+            where users_user_id = "'.$id.'"
+            and projects_projects_id = "'.$session_projects_id.'"'; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+        
+                $index = 1;
+                $id = 1;
+                foreach ($query->result() as $financial_documents)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$financial_documents->description.'</td>
+                    <td><a class="btn img_button" data-url='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                    <td>
+                        <div class="check-button">
+                            <input id="radio'.$id.'" class="radio-custom" name="radio'.$index.'"  data-d_id="'.$financial_documents->financial_documents_id.'" type="radio" value="1" required>
+                            <label for="radio'.$id.'" class="radio-custom-label">PASS</label>
+                        </div>
+                        <div class="check-button">
+                            <input id="radio'.++$id.'" class="radio-custom" name="radio'.$index.'" data-d_id="'.$financial_documents->financial_documents_id.'" type="radio" value="0">
+                            <label for="radio'.$id.'" class="radio-custom-label">FAIL</label>
+                        </div>
+                        <input  name="id'.$index.'" data-d_id="'.$financial_documents->financial_documents_id.'" type="hidden" value="'.$financial_documents->financial_documents_id.'">
+                    </td>
+                    ';
+                    $id++;
+                    $index++;
+                }
+
+        echo $table_data;
+        die;
+    }
 
     public function insert_technical_findings() 
     {
     
         $i = 1;
+
+        $finding_result = true;
         foreach($this->input->post() as $data){
 
+            $findings_val = $this->input->post('radio'.$i);
+            $tech_docs_id = $this->input->post('id'.$i);
 
-            $this->db->set('findings', $this->input->post('radio'.$i));
-
-            $this->db->where('bid_technical_documents_id',$this->input->post('id'.$i));
+            $this->db->set('findings',$findings_val);
+            $this->db->where('bid_technical_documents_id', $tech_docs_id);
 
             $this->db->update('bid_technical_documents');
+
+
+            if($findings_val == '0'){
+                $finding_result = false;
+            }
            $i++;
         }
-        
+        if($finding_result == false){
+            print json_encode(array("status"=>"fail","message"=>"fail"));
+        }
+        else{
+            print json_encode(array("status"=>"success","message"=>"success"));
+        }
     }
+
+    public function insert_financial_findings() 
+    {
+    
+        $i = 1;
+
+        $finding_result = true;
+        foreach($this->input->post() as $data){
+
+            $findings_val = $this->input->post('radio'.$i);
+            $financial_docs_id = $this->input->post('id'.$i);
+
+            $this->db->set('findings',$findings_val);
+            $this->db->where('financial_documents_id', $financial_docs_id);
+
+            $this->db->update('financial_documents');
+
+            if($findings_val == '0'){
+                $finding_result = false;
+            }
+           $i++;
+        }
+        if($finding_result == false){
+            print json_encode(array("status"=>"fail","message"=>"fail"));
+        }
+        else{
+            print json_encode(array("status"=>"success","message"=>"success"));
+        }
+    }
+
 
     public function bidder_show($id) 
     {

@@ -3,42 +3,36 @@
 	$this->load->view('layouts/header');
  ?> 
  
+ <style>
+  .callback-form {
+      margin-bottom: 100px;
+  }
+ </style>
+
  <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="main-home main-banner header-text" id="top">
         <div class="Modern-Slider">
+
           <!-- Item -->
           <div class="item item-1">
-            <div class="img-fill">
+            <div class="img-fill" style="background-image: url('<?php echo base_url()."assets/";?>images/homebg1.jpg')">
                 <div class="text-content">
-                 
-                  <h6>Our Mission</h6>
-                  <p>Procurement Service is the trusted and preferred procurement partner of the public sector in the Philippines providing smart procurement solutions.
-
+                  <h6>we are here to support you</h6>
+                  <h4>Bid Online Here <br> Municipality Of Manticao </h4>
+                  <p>With honor to our onganization we shall deliver bidding with no doubt</p>
 
                 </div>
             </div>
           </div>
           <!-- // Item -->
-          <!-- Item 
-          <div class="item item-2">
-            <div class="img-fill">
-                <div class="text-content sliderimg">
-                  
-                     <img class="sliderimg" style="text-align:left" src=custom/assets/images/pic/img2.png" alt="img"> 
-                    </div>
-            </div>
-          </div>
--->
-          <!-- // Item -->
           <!-- Item -->
-          <div class="item item-3">
-            <div class="img-fill">
+          <div class="item item-2">
+            <div class="img-fill" style="background-image: url('<?php echo base_url()."assets/";?>images/testbg.jpg')">
                 <div class="text-content">
-                 
-                  <h6>Our Vission</h6>
-                  <p> Procure quality government requirements efficiently and economically from reputable sources, provide excellent customer service responsive to the needs of its stakeholders, foster integrity and a fair, transparent, and competitive environment in procurement, develop its human capital as the country’s leading procurement and supply chain professionals, ensure stable, progressive, and sustainable operations and Introduce and sustain smart and innovative products and procurement solutions.</p>     
-                  
+                  <h6>we are here to support you</h6>
+                  <h4>Bid Online Here <br> Municipality Of Manticao </h4>
+                  <p>With honor to our onganization we shall deliver bidding with no doubt</p> 
                 </div>
             </div>
           </div>
@@ -47,63 +41,64 @@
     </div>
     <!-- Banner Ends Here -->
 
+
     <div class="request-form">
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h4>Request a call back right now ?</h4>
-          
+            <h4>JOIN BIDDING NOW</h4>
+            <span>Register and provide your an image of your PhilGeps certificate</span>
           </div>
           <div class="col-md-4">
-            <a hre="<?php echo base_url()?>about" class="border-button" >Contact Us</a>
+            <a href="<?php echo base_url()?>login-register/#register-btn" class="border-button">JOIN AND BID</a>
           </div>
         </div>
       </div>
     </div>
-
     <div class="services">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Municipal Planning And Developement  <em>Staff</em></h2>
+              <h2>Municipal <em>Planning</em> And <em>Developement</em></h2>
               <span>The higly qualified personnel</span>
             </div>
           </div>
           <div class="col-md-4">
             <div class="service-item">
-              <img src="<?php echo base_url()."assets/";?>custom/assets/images/staff/staff3.jpg" style="heigth" alt="">
+             <img src="<?php echo base_url()."assets/";?>custom/assets/images/service_03.jpg" alt="">
               <div class="down-content">
                 <h4  style="text-align:center">BAC Secretary<br> ( BACSEC ) </h4>
-                <p style="text-align:justify;text-justify:inter-word;text-indent:51px">The BAC Secretariat shall ensure that all procurements undertaken by the Procuring Entity are properly documented, to provide an audit trail of the procurement process.</p>
-                
+                <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
+                <a href="" class="filled-button">Read More</a>
               </div>
             </div>
           </div>
+          
           <div class="col-md-4">
             <div class="service-item">
-              <img  src="<?php echo base_url()."assets/";?>custom/assets/images/staff/staff3.jpg" alt="">
-              <div class="down-ycontent">
-                <h4 style="text-align:center;padding-top:28px">Bids And Awards Comittee ( BAC )  </h4>
-                <p style="text-align:justify;text-justify:inter-word;text-indent:51px">The BAC shall have the following functions: advertise and/or post the invitation to bid, conduct pre-procurement and pre-bid conferences, determine the eligibility of prospective bidders, receive bids, conduct the evaluation of bids, undertake post-qualification proceedings, recommend award of contracts to the Head </p><br>
-             
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-item">
-              <img src="<?php echo base_url()."assets/";?>custom/assets/images/staff/staff3.jpg" alt="">
+             <img src="<?php echo base_url()."assets/";?>custom/assets/images/service_03.jpg" alt="">
               <div class="down-content">
-                <h4 style="text-align:center">Techncial Working Group ( TWG )</h4>
-                <p style="text-align:justify;text-justify:inter-word;text-indent:51px">Assist the BAC in the preparation of the bidding documents, ensuring that the same properly reflects the requirements of the Procuring Entity and that these conform to the standards set forth by R.A. 9184, its IRR-A and the PBDs prescribed by the GPPB</p>
-               
+                <h4 style="text-align:center;">Bids And Awards Comittee <br> ( BAC )  </h4>
+                <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
+                <a href="" class="filled-button">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service-item">
+              <img src="<?php echo base_url()."assets/";?>custom/assets/images/service_03.jpg" alt="">
+              <div class="down-content">
+                <h4 style="text-align:center">Techncial Working Group <br> ( TWG )</h4>
+                <p>Sed tincidunt dictum lobortis. Aenean tempus diam vel augue luctus dignissim. Nunc ornare leo tortor.</p>
+                <a href="" class="filled-button">Read More</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="fun-facts">
       <div class="container">
         <div class="row">
@@ -112,22 +107,18 @@
               <span>Lorem ipsum dolor sit amet</span>
               <h2>Our solutions for your <em>business growth</em></h2>
               <p>Pellentesque ultrices at turpis in vestibulum. Aenean pretium elit nec congue elementum. Nulla luctus laoreet porta. Maecenas at nisi tempus, porta metus vitae, faucibus augue. 
-              Fusce et venenatis ex. Quisque varius, velit quis dictum sagittis, odio velit molestie nunc, ut posuere ante tortor ut neque.</p>
-           
-             <!--  <a href="" class="filled-button">Read More</a> -->
+              <br><br>Fusce et venenatis ex. Quisque varius, velit quis dictum sagittis, odio velit molestie nunc, ut posuere ante tortor ut neque.</p>
+              <a href="" class="filled-button">Read More</a>
             </div>
           </div>
-      
           <div class="col-md-6 align-self-center">
             <div class="row">
               <div class="col-md-6">
-                <div class="count-area-content sliderimg">
-      
-                <img style="padding-right:120px;width:567px;"src="<?php echo base_url()."assets/";?>custom/assets/images/process/pro1.jpg" alt="">
+                <div class="count-area-content">
+                  <div class="count-digit">945</div>
+                  <div class="count-title">Work Hours</div>
                 </div>
               </div>
-</div>
-              <!---
               <div class="col-md-6">
                 <div class="count-area-content">
                   <div class="count-digit">1280</div>
@@ -144,7 +135,6 @@
                 <div class="count-area-content">
                   <div class="count-digit">26</div>
                   <div class="count-title">Awards Won</div>
-            -->
                 </div>
               </div>
             </div>
@@ -152,7 +142,6 @@
         </div>
       </div>
     </div>
-
     <div class="more-info">
       <div class="container">
         <div class="row">
@@ -161,15 +150,15 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="left-image">
-                  <img class="sliderimg" style="text-align:left" src="<?php echo base_url()."assets/";?>custom/assets/images/pic/img2.png" alt="img"> 
-                    </div>
+                    <img src="<?php echo base_url()."assets/";?>custom/assets/images/more-info.jpg" alt="">
+                  </div>
                 </div>
                 <div class="col-md-6 align-self-center">
                   <div class="right-content">
                     <span>Who we are</span>
                     <h2>Get to know about <em>Manticao</em></h2>
-                    <p> Manticao, officially the Municipality of Manticao, is a 4th class municipality in the province of Misamis Oriental, Philippines. According to the 2015 census, it has a population of 28,422 people. Manticao River was known as Naawan River until 1957, when it was renamed.  </p> 
-                         <a href="#" class="filled-button">Read More</a>
+                    <p>Curabitur pulvinar sem a leo tempus facilisis. Sed non sagittis neque. Nulla conse quat tellus nibh, id molestie felis sagittis ut. Nam ullamcorper tempus ipsum in cursus<br><br>Praes end at dictum metus. Morbi id hendrerit lectus, nec dapibus ex. Etiam ipsum quam, luctus eu egestas eget, tincidunt</p>
+                    <a href="#" class="filled-button">Read More</a>
                   </div>
                 </div>
               </div>
@@ -178,7 +167,6 @@
         </div>
       </div>
     </div>
-
     <div class="testimonials">
       <div class="container">
         <div class="row">
@@ -232,14 +220,13 @@
         </div>
       </div>
     </div>
-
     <div class="callback-form">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Request a <em>call back</em></h2>
-             
+              <span>Etiam suscipit ante a odio consequat</span>
             </div>
           </div>
           <div class="col-md-12">
