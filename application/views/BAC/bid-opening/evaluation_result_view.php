@@ -3,6 +3,7 @@
 	 $this->load->view('BAC/layouts/header');
 	 $this->load->view('BAC/layouts/sidebar');
 	 $session_projects_id = $this->session->userdata("projects_id");
+	 $session_bids_id = $this->session->userdata("session_bids_id");
 
 ?>  
 	   <style>
@@ -172,7 +173,7 @@
 							<div class="portlet box">
 								<div class="portlet-title">
 									<div class="caption">
-										<i class="fa fa-globe"></i>Bids
+										<i class="fa fa-globe"></i>Evaluators
 									</div>
 									
 								</div>
@@ -190,10 +191,9 @@
 										<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 											<thead>
 												<tr role="row">
-													<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">Rank #</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Date & Time Submitted</th>
+													<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Name</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Position</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
 												</tr>
 											</thead>
@@ -237,7 +237,7 @@ $( document ).ready(function() {
 
     $.ajax({
 		type  : 'get',
-		url   : '<?php echo base_url('BidOpeningController/evaluation_result_bids_show')?>/<?php echo $session_projects_id ?>',
+		url   : '<?php echo base_url('BidOpeningController/evaluation_result_evaluator_show')?>/<?php echo $session_bids_id ?>',
 		async : true,
 		success : function(data){
 			$('.table_data').html(data);

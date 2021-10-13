@@ -61,7 +61,7 @@
 				<li class="nav project_management">
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
-					<span class="title">project Management</span>
+					<span class="title">Project Management</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
@@ -84,7 +84,7 @@
 					<ul class="sub-menu">
 						<li>
 							<a href="<?php echo base_url()?>bidopening">
-							projects</a>
+							Projects</a>
 						</li>
 					</ul>
 				</li>

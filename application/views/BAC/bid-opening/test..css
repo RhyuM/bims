@@ -1,0 +1,186 @@
+/* Note */
+
+
+/* Testimonial slider section css is on its own codeblock */
+
+.product-category img {
+    max-height: 300px;
+}
+
+#collection .product-category>div {
+    width: 33.33%;
+}
+
+@media (max-width: 991px) {
+    #collection .product-category>div {
+        width: 44%!important;
+    }
+    #category-section1 .product-category>div {
+        width: 44%!important;
+    }
+}
+
+@media (max-width: 767px) {
+    #collection .product-category>div {
+        width: 70%!important;
+    }
+    #category-section1 .product-category>div {
+        width: 70%!important;
+    }
+    #category-section1>div {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #collection .product-category>div {
+        width: 100%!important;
+    }
+    #category-section1 .product-category>div {
+        width: 100%!important;
+    }
+}
+
+.button-hover-white:hover {
+    color: #c9a188!important;
+    background-color: #fff!important;
+    transition-timing-function: ease-in;
+}
+
+
+/* testimonial section */
+
+section#section-286-39 {
+    background: linear-gradient( to bottom, transparent 0%, transparent 46%, #C3A58D 46%, #C3A58D 100%);
+}
+
+.testimonial_title_div {
+    bottom: 6%;
+    position: absolute;
+    max-width: 1120px!important;
+}
+
+.title_container {
+    height: 46%;
+    position: absolute;
+    top: 0;
+}
+
+.carousel-item__container,
+.testimonial_title {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* ------------- end ------------------ */
+
+.jewelry-colection-cat {
+    width: 33.33%!important;
+}
+
+
+/* ------------------------------- */
+
+.patek .product-image {
+    width: 51%;
+    position: relative;
+    left: 4%;
+    top: -5%;
+}
+
+.patek .small-image {
+    width: 44%;
+    padding-top: 62%;
+    -webkit-transform: translateY(-16%);
+    transform: translateY(-16%);
+    /* top: 0;*/
+    right: 0;
+    top: 12%;
+}
+
+.patek .big-image {
+    width: 100%;
+    padding-top: 63%;
+    top: 0;
+    */
+}
+
+.patek .big-image,
+.patek .small-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+}
+
+.patek .images {
+    position: relative;
+    width: 100%!important;
+    display: unset;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.patek {
+    justify-content: left;
+}
+
+@media screen and (min-width: 54.9375em) {
+    #main-div .patek .art-text {
+        position: absolute;
+        /*padding: 2.92857rem; */
+        width: 45%!important;
+        margin: 0;
+        z-index: 10;
+        top: 14%;
+    }
+    .patek .product-image {
+        width: 27%;
+        float: right;
+        z-index: 10;
+        top: 0;
+        -webkit-transform: translateY(60%);
+        transform: translateY(60%);
+        margin-right: 23%;
+    }
+    .patek .small-image {
+        width: 35%;
+        padding-top: 40%;
+        top: 23%;
+        right: 0;
+    }
+    .patek .big-image {
+        width: 63%;
+        padding-top: 62%;
+        background-size: cover;
+        left: 7%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #main-div .patek .art-text {
+        width: 30%!important;
+        left: 0;
+    }
+    .patek .big-image {
+        width: 58%!important;
+        padding-top: 39%;
+        left: 18%;
+    }
+    .patek .small-image {
+        width: 29%;
+        padding-top: 31%;
+    }
+    .patek .product-image {
+        width: 27%;
+        float: left;
+        margin-left: 23%;
+        -webkit-transform: translateY(36%);
+        transform: translateY(36%);
+    }
+    .patek .small-image {
+        width: 29%;
+        padding-top: 31%;
+    }
+}

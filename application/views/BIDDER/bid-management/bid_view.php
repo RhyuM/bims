@@ -5,6 +5,9 @@
  ?>
  
  <style>
+	#hidden_input input{
+		display: none;
+	}
 	.portlet-title {
 		background-color: #003924!important;
 	}
@@ -14,6 +17,9 @@
 	.file_input{
 		width: 50%;
 		margin: auto;
+	}
+	.file_input2{
+		width: 50%;
 	}
     .input-block{
 		text-align: center;
@@ -34,6 +40,7 @@
 	button.confirm,
 	.submit_button,
 	a.btn.upload_btn,
+	.upload_btn2,
 	a.btn.submit_bid ,
 	a.btn.img_button {
 		background: #af9500;
@@ -133,40 +140,50 @@
 								</div>
 							</div>
 
+							<form class="form-horizontal contact-form" id="upload_docs2" onsubmit="return false;">
+								<div class="table-scrollable">
+									<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+										<thead>
+											<tr role="row">
+												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Description</th>
+												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Document File</th>
+												<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Action</th>
 
-							<div class="table-scrollable">
-								<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
-									<thead>
-										<tr role="row">
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Description</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">Document File</th>
-											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Action</th>
-
-										</tr>
-									</thead>
-									<tbody class="table_data" >
-										<tr id="fbf_file">
-											
-										</tr>
-										<tr id="boq_file">
-											
-										</tr>
-										<tr id="de_file">
+											</tr>
+										</thead>
+										<tbody class="table_data" >
+											<tr id="fbf_file">
+												<td class="financial_description">Financial Bid Form</td>
+												<td><input type="file" class="fbf_file_class file_input2 form-control" name="financial_bid_form" required></td>
+												<td style="vertical-align: middle;"><a class="btn upload_btn2"  data-d_id="Financial Bid Form">CHOOSE FILE</a></td>
+											</tr>
+											<tr id="boq_file">
+												<td class="financial_description">Bill Of Quantities</td>
+												<td><input type="file" class="boq_file_class file_input2 form-control" name="bill_of_quantities" required></td>
+												<td style="vertical-align: middle;"><a class="btn upload_btn2"  data-d_id="Bill Of Quantities">CHOOSE FILE</a></td>
+											</tr>
+											<tr id="de_file">
+												<td class="financial_description">Detailed Estimates</td>
+												<td><input type="file" class="de_file_class file_input2 form-control" name="detailed_estimates" required></td>
+												<td style="vertical-align: middle;"><a class="btn upload_btn2"  data-d_id="Detailed Estimates">CHOOSE FILE</a></td>
+											</tr>
+											<tr id="cfbq_file">
+												<td class="financial_description">Cash Flow By Quarter</td>
+												<td><input type="file" class="cfbq_file_class file_input2 form-control" name="cash_flow_by_quarter" required></td>
+												<td style="vertical-align: middle;"><a class="btn upload_btn2" data-d_id="Cash Flow By Quarter">CHOOSE FILE</a></td>
+											</tr>
+										</tbody>
 										
-										</tr>
-										<tr id="cfbq_file">
-											
-										</tr>
+									</table>
 
-                                        
-									</tbody>
-                                    
-								</table>
-
-							</div>
+								</div>
+								
+								<button style="display: none;" class="btn submit_button submitFinancialDocs" type="submit">Submit</button>
+												
+							</form>
                             <div class="continue" style="text-align: center; margin-top: 30px;  margin-bottom: 30px;">
-								<a href="<?php echo base_url()?>usermanagement/my-documents" class="btn view_tech">VIEW TECHNICAL DOCUMENTS</a>
-								<a class="btn submit_bid_btn">SUBMIT BID</a>
+								<a href="<?php echo base_url()?>usermanagement/my-documents" class="btn view_tech">OPEN TECHNICAL DOCUMENTS</a>
+								<a class="btn submit_bid_btn">PLACE BID</a>
                             <div>
 						</div>
 					</div>
@@ -175,7 +192,7 @@
 			</div>
 
 			<!-- modal for upload financial documents -->
-			<div id="upload_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
+			<!-- <div id="upload_modal" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header" style="text-align: center;">
@@ -199,12 +216,7 @@
 									</div>
 							
 									<div class="form-actions">
-										<div class="row action_row">
-											<div class="col-md-12" style="text-align: center;">
-												<button class="btn submit_button" type="submit">Submit</button>
-												<a class="btn" type="button" data-dismiss="modal">Cancel</a>
-											</div>
-										</div>
+										<button class="btn submit_button" type="submit">Submit</button>
 									</div>
 								</form>
 
@@ -214,7 +226,7 @@
 						</div> 
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- modal end -->
 
 			<!-- modal for submission of bid -->
@@ -234,7 +246,9 @@
                                             <label style="font-weight: 600;">Approve Budget Cost</label>
 											<p>₱ <?php echo $approve_budget_cost ?></p>
                                             <input type="hidden" name="projects_id" value="<?php echo $projects_id; ?>"/>
-											
+											<div id="hidden_input">
+											</div>
+
 											<input type="text" class="bid_price_c form-control"  data-type="currency" name="bid_price" placeholder="Total Bid Price" required>
 										</div>
 									</div>
@@ -272,147 +286,215 @@
 <script>
         jQuery(document).ready(function() {
 
+			jQuery('#fbf_file .upload_btn2').click(function(){
+				jQuery('#fbf_file .file_input2').trigger('click');
+			});
+
+			jQuery('#boq_file .upload_btn2').click(function(){
+				jQuery('#boq_file .file_input2').trigger('click');
+			});
+
+			jQuery('#de_file .upload_btn2').click(function(){
+				jQuery('#de_file .file_input2').trigger('click');
+			});
+
+			jQuery('#cfbq_file .upload_btn2').click(function(){
+				jQuery('#cfbq_file .file_input2').trigger('click');
+			});
+
+			// Clone the input file and append to another form hidden div
+			
+			$('body').on('change', '#fbf_file .file_input2', function (){
+
+				jQuery('#hidden_input .fbf_file_class').remove();
+				
+				var $this = $(this), $clone = $this.clone();
+				$this.after($clone).appendTo('#hidden_input');
+				jQuery('#hidden_input .fbf_file_class').removeAttr('required');
+			});
+
+			$('body').on('change', '#boq_file .file_input2', function (){
+				jQuery('#hidden_input .boq_file_class').remove();
+
+				var $this = $(this), $clone = $this.clone();
+				$this.after($clone).appendTo('#hidden_input');
+				jQuery('#hidden_input .boq_file_class').removeAttr('required');
+			});
+
+			$('body').on('change', '#de_file .file_input2', function (){
+				jQuery('#hidden_input .de_file_class').remove();
+
+				var $this = $(this), $clone = $this.clone();
+				$this.after($clone).appendTo('#hidden_input');
+				jQuery('#hidden_input .de_file_class').removeAttr('required');
+			});
+
+			$('body').on('change', '#cfbq_file .file_input2', function (){
+				jQuery('#hidden_input .cfbq_file_class').remove();
+				
+				var $this = $(this), $clone = $this.clone();
+				$this.after($clone).appendTo('#hidden_input');
+				jQuery('#hidden_input .cfbq_file_class').removeAttr('required');
+			});
+
+
+
+
 			// show Financial Bid Form document file
-			$.ajax({
-				type  : 'get',
-				url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
-				async : true,
-				success : function(data){
-					$('#fbf_file').html(data);
-				}
-			});
+			// $.ajax({
+			// 	type  : 'get',
+			// 	url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
+			// 	async : true,
+			// 	success : function(data){
+			// 		$('#fbf_file').html(data);
+			// 	}
+			// });
 
-			// show Bill Of Quantities document file
-			$.ajax({
-				type  : 'get',
-				url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
-				async : true,
-				success : function(data){
-					$('#boq_file').append(data);
-				}
-			});
+			// // show Bill Of Quantities document file
+			// $.ajax({
+			// 	type  : 'get',
+			// 	url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
+			// 	async : true,
+			// 	success : function(data){
+			// 		$('#boq_file').append(data);
+			// 	}
+			// });
 
-			// show Detailed Estimates document file
-			$.ajax({
-				type  : 'get',
-				url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
-				async : true,
-				success : function(data){
-					$('#de_file').append(data);
-				}
-			});
+			// // show Detailed Estimates document file
+			// $.ajax({
+			// 	type  : 'get',
+			// 	url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
+			// 	async : true,
+			// 	success : function(data){
+			// 		$('#de_file').append(data);
+			// 	}
+			// });
 
-			// show Cash Flow By Quarter document file
-			$.ajax({
-				type  : 'get',
-				url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
-				async : true,
-				success : function(data){
-					$('#cfbq_file').append(data);
-				}
-			});
+			// // show Cash Flow By Quarter document file
+			// $.ajax({
+			// 	type  : 'get',
+			// 	url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
+			// 	async : true,
+			// 	success : function(data){
+			// 		$('#cfbq_file').append(data);
+			// 	}
+			// });
 
             $('#upload_docs').on('submit',function(e){
 				e.preventDefault();
 
-				$.ajax({
-					url: "<?php echo base_url(); ?>BidderBidManagementController/insertFinancialDocs",
-					type: "POST",
-					// data: regdata,
-					data:new FormData(this),
-					processData:false,
-					contentType:false,
-					cache:false,
-					async:false,
-					success: function(response){
-						// alert($('input[type=file]').val());
-						$('#upload_modal').modal('toggle');
-						swal("Added!", "File has been Added!", "success");
+				// $.ajax({
+				// 	url: "<?php echo base_url(); ?>BidderBidManagementController/insertFinancialDocs",
+				// 	type: "POST",
+				// 	// data: regdata,
+				// 	data:new FormData(this),
+				// 	processData:false,
+				// 	contentType:false,
+				// 	cache:false,
+				// 	async:false,
+				// 	success: function(response){
+				// 		// alert($('input[type=file]').val());
+				// 		$('#upload_modal').modal('toggle');
+				// 		swal("Added!", "File has been Added!", "success");
 
-						// show Financial Bid Form document file
-						$.ajax({
-						type  : 'get',
-						url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
-						async : true,
-							success : function(data){
-								$('#fbf_file').html(data);
-							}
-						});
+				// 		show Financial Bid Form document file
+				// 		$.ajax({
+				// 		type  : 'get',
+				// 		url   : '<?php echo base_url('BidderBidManagementController/financial_bid_form_file_show')?>/<?php echo $projects_id ?>',
+				// 		async : true,
+				// 			success : function(data){
+				// 				$('#fbf_file').html(data);
+				// 			}
+				// 		});
 
-						// show Bill Of Quantities document file
-						$.ajax({
-						type  : 'get',
-						url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
-						async : true,
-							success : function(data){
-								$('#boq_file').html(data);
-							}
-						});
+				// 		// show Bill Of Quantities document file
+				// 		$.ajax({
+				// 		type  : 'get',
+				// 		url   : '<?php echo base_url('BidderBidManagementController/bill_of_quantities_file_show')?>/<?php echo $projects_id ?>',
+				// 		async : true,
+				// 			success : function(data){
+				// 				$('#boq_file').html(data);
+				// 			}
+				// 		});
 
-						// show Detailed Estimates document file
-						$.ajax({
-						type  : 'get',
-						url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
-						async : true,
-							success : function(data){
-								$('#de_file').html(data);
-							}
-						});
+				// 		// show Detailed Estimates document file
+				// 		$.ajax({
+				// 		type  : 'get',
+				// 		url   : '<?php echo base_url('BidderBidManagementController/detailed_estimates_file_show')?>/<?php echo $projects_id ?>',
+				// 		async : true,
+				// 			success : function(data){
+				// 				$('#de_file').html(data);
+				// 			}
+				// 		});
 
-						// show Cash Flow By Quarter document file
-						$.ajax({
-						type  : 'get',
-						url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
-						async : true,
-							success : function(data){
-								$('#cfbq_file').html(data);
-							}
-						});
-					}
-				});
+				// 		// show Cash Flow By Quarter document file
+				// 		$.ajax({
+				// 		type  : 'get',
+				// 		url   : '<?php echo base_url('BidderBidManagementController/cash_flow_by_quarter_file_show')?>/<?php echo $projects_id ?>',
+				// 		async : true,
+				// 			success : function(data){
+				// 				$('#cfbq_file').html(data);
+				// 			}
+				// 		});
+				// 	}
+				// });
 			});
+
+
+
+
 
 			$('#submit_bids_form').on('submit',function(e){
 				e.preventDefault();
+				jQuery('.submitFinancialDocs').trigger('click');
 
-				$.ajax({
-					url: "<?php echo base_url(); ?>BidderBidManagementController/submit_bid",
-					type: "POST",
-					// data: regdata,
-					data:new FormData(this),
-					processData:false,
-					contentType:false,
-					cache:false,
-					async:false,
-					success: function(response){
-						var json = $.parseJSON(response);
-						if (json.status == "success") {
-							$('#submit_bid_modal').modal('toggle');
-							swal("Successfully", "Bid has ben submitted", "success");
+				// validation
+				var f1 = $('#fbf_file .fbf_file_class').get(0).files.length === 0;
+				var f2 = $('#boq_file .boq_file_class').get(0).files.length === 0;
+				var f3 = $('#de_file .de_file_class').get(0).files.length === 0;
+				var f4 = $('#cfbq_file .cfbq_file_class').get(0).files.length === 0;
 
-							setTimeout(function(){ 
-								window.location.href = '<?php echo base_url(); ?>/bidderbidmanagement/my_active_bids';
-							}, 1500);
+				
+				if( f1 == false && f2 == false && f3 == false && f4 == false)
+				{
+					$.ajax({
+						url: "<?php echo base_url(); ?>BidderBidManagementController/submit_bid",
+						type: "POST",
+						data:new FormData(this),
+						processData:false,
+						contentType:false,
+						cache:false,
+						async:false,
+						success: function(response){
+							var json = $.parseJSON(response);
+							if (json.status == "success") {
+								$('#submit_bid_modal').modal('toggle');
+								swal("Successfully", "Bid has ben submitted", "success");
+
+								setTimeout(function(){ 
+									window.location.href = '<?php echo base_url(); ?>/bidderbidmanagement/my_active_bids';
+								}, 1500);
+								
+							} 
+							else if(json.status == "fail"){
+								$('#submit_bid_modal').modal('toggle');
+								swal(json.message);
+							}
 							
-						} 
-						else if(json.status == "fail"){
-							$('#submit_bid_modal').modal('toggle');
-							swal(json.message);
+
 						}
 						
-
-					}
-					
-				});
+					});
+				}
 			});
 
 			// show modal and assign value to inputs
-			$('.table_data').on('click','.upload_btn',function(){
-				$('#upload_modal').modal('toggle');
-				$(".description_text").text($(this).data('d_id'));
-				$(".financial_documents").val($(this).data('financial_documents_id'));
-				$(".hide_dec").val($(this).data('d_id'));
-			});
+			// $('.table_data').on('click','.upload_btn',function(){
+			// 	$('#upload_modal').modal('toggle');
+			// 	$(".description_text").text($(this).data('d_id'));
+			// 	$(".financial_documents").val($(this).data('financial_documents_id'));
+			// 	$(".hide_dec").val($(this).data('d_id'));
+			// });
 
 			// show modal and assign value to inputs
 			$('.continue').on('click','.submit_bid_btn',function(){

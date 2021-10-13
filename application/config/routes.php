@@ -25,6 +25,10 @@ $route['bidopening/bids_opened/(:any)'] = 'BidopeningController/bids_opened/$1';
 $route['bidopening/evaluate_bidder/(:any)'] = 'BidopeningController/evaluate_bidder/$1';
 $route['bidopening/financial_evaluation/(:any)'] = 'BidopeningController/financial_evaluation/$1';
 $route['bidopening/evaluation_result/(:any)'] = 'BidopeningController/evaluation_result/$1';
+$route['bidopening/technical_evaluation_result/(:any)'] = 'BidopeningController/technical_evaluation_result/$1';
+$route['bidopening/financial_evaluation_result/(:any)'] = 'BidopeningController/financial_evaluation_result/$1';
+$route['bidopening/post_qualification_evaluation_result/(:any)'] = 'BidopeningController/post_qualification_evaluation_result/$1';
+$route['bidopening/post_qualification/(:any)'] = 'BidopeningController/post_qualification/$1';
 
 
 $route['projectmanagement'] = 'ProjectManagementController/index';

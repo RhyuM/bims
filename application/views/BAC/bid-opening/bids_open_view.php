@@ -6,6 +6,19 @@
 
 ?>  
 	   <style>
+		   .bids_row {
+				display: flex;
+				gap: 20px;
+				flex-direction: initial;
+			}
+
+			div#qualified_bids,
+			div#disqualified_bids {
+				width: 50%;
+			}
+		   .button_green{
+				background: #005841!important;
+			}
 	   		.admins_row {
 				padding: 30px 10px!important;
 			}
@@ -169,28 +182,16 @@
 									</div>
 							</div>
 
-							<div class="portlet box">
+							<div id="all_bids" class="portlet box">
 								<div class="portlet-title">
 									<div class="caption">
-										<i class="fa fa-globe"></i>Bids
+										<i class="fa fa-globe"></i>All Bids
 									</div>
-									
 								</div>
 								<div class="portlet-body">
-									<div class="table-toolbar">
-										<div class="row">
-											<div class="col-md-6">
-											</div>
-											<div class="col-md-6">
-												
-											</div>
-										</div>
-									</div>
-									<div id="sample_1_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable">
 										<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 											<thead>
 												<tr role="row">
-													<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Date & Time Submitted</th>
@@ -201,11 +202,59 @@
 											
 											</tbody>
 										</table>
-
-									</div>
-			
 								</div>
 							</div>
+							<div class="bids_row">
+								<div id="qualified_bids" class="portlet box">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-globe"></i>Qualified Bids
+										</div>
+									</div>
+									<div class="portlet-body">
+										<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+											<thead>
+												<tr role="row">
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Rank</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
+												</tr>
+											</thead>
+											<tbody class="qualified_bids" >
+											
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div id="disqualified_bids" class="portlet box">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-globe"></i>Disqualified Bids
+										</div>
+									</div>
+									<div class="portlet-body">
+										<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+											<thead>
+												<tr role="row">
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
+												</tr>
+											</thead>
+											<tbody class="disqualified_bids" >
+											
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div id="lcb_container">
+							
+							</div>
+							
+						</div>
+							
 							<!-- END ALERTS PORTLET-->
 						</div>
 					</div>
@@ -247,6 +296,50 @@ $( document ).ready(function() {
 			
 		}
 	});
+	setInterval(function(){
+		$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidOpeningController/qualified_bids_show')?>/<?php echo $session_projects_id ?>',
+			async : true,
+			success : function(data){
+				$('.qualified_bids').html(data);		
+				
+			}
+		});
+	}, 500);
+
+	setInterval(function(){
+		$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidOpeningController/disqualified_bids_show')?>/<?php echo $session_projects_id ?>',
+			async : true,
+			success : function(data){
+				$('.disqualified_bids').html(data);
+			}
+		});
+	}, 500);
+	setInterval(function(){
+		$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidOpeningController/lowest_calculated_bid')?>/<?php echo $session_projects_id ?>',
+			async : true,
+			success : function(data){
+				$('#lcb_container').html(data);
+			}
+		});
+	}, 500);
+
+	setInterval(function(){
+		$.ajax({
+			type  : 'get',
+			url   : '<?php echo base_url('BidOpeningController/check_if_lowest_calculated_bid')?>',
+			async : true,
+			success : function(data){
+				console.log('success '+ data)
+			}
+		});
+	},1500);	
+	
 });
 
 </script>

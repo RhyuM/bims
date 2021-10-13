@@ -52,16 +52,6 @@
 							<div class="caption">
 								<i class="fa fa-globe"></i>Projects
 							</div>
-							<div class="tools">
-								<a href="javascript:;" class="collapse" data-original-title="" title="">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
-								</a>
-								<a href="javascript:;" class="reload" data-original-title="" title="">
-								</a>
-								<a href="javascript:;" class="remove" data-original-title="" title="">
-								</a>
-							</div>
 						</div>
 						
 						<div class="portlet-body">
@@ -117,7 +107,7 @@
 																<td><?php echo $projects->projects_type?></td>
 																<td><?php echo $projects->submission_deadline?></td>
 																<td><?php echo $projects->opening_date?></td>
-																<td><?php echo $projects->approve_budget_cost?></td>
+																<td><?php echo number_format($projects->approve_budget_cost)?></td>
 																<td><?php echo $projects->projects_status?></td>
 																<td>
 																<?php
@@ -182,7 +172,7 @@
 																	<td><?php echo $projects->projects_description ?></td>
 																	<td><?php echo $projects->projects_type ?></td>
 																	<td><?php echo $projects->opening_date ?></td>
-																	<td><?php echo $projects->approve_budget_cost;?></td>
+																	<td><?php echo number_format($projects->approve_budget_cost)?></td>
 																	<td><?php echo $projects->projects_status?></td>
 																	<td>
 																		<a href="<?php echo base_url("bidopening/bid_openers") ?>/<?php echo $projects->projects_id ?>">open</a>

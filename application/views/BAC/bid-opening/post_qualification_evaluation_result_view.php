@@ -7,13 +7,19 @@
 	 $session_bidder_id = $this->session->userdata("session_bidder_id");
 	$session_bids_id = $this->session->userdata("session_bids_id");
 
-		// echo '<script> console.log("'.$session_bids_id.'")</script>';
+		echo '<script> console.log("'.$session_bids_id.'")</script>';
 	//  echo '<script> console.log("'.$session_bidder_id.'")</script>';
 	//  echo '<script> console.log("'.$session_bidder_id.'")</script>';
 ?>  
 	   <style>
-			.modal-dialog {
-				width: 60%;
+			td.passed {
+				color: #005841;
+				font-weight: 600;
+			}
+
+			td.failed {
+				color: #f3565d;
+				font-weight: 600;
 			}
 	   		.admins_row {
 				padding: 30px 10px!important;
@@ -178,10 +184,6 @@
 				text-align: right;
 			}
 
-			.button-div{
-				text-align: right;
-    			margin: auto 5%;
-			}
 		</style>
 
 
@@ -279,7 +281,7 @@
 															<tr role="row">
 																<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Description</th>
 																<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Document File</th>
-																<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">Action/Findings</th>
+																<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">Findings</th>
 															</tr>
 														</thead>
 														<tbody class="table_data" >
@@ -289,9 +291,6 @@
 													</table>
 													
 												</div>
-												<div class="button-div">
-													<button class="btn primary-button submit-button" type="submit">SUBMIT</button>
-												</div>
 											</form>
 										</div>
 								</div>
@@ -299,29 +298,6 @@
 							<!-- END ALERTS PORTLET-->
 						</div>
 					</div>
-					<!-- modal for create new project -->
-					<div id="view_file" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header" style="text-align: center;">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-									<h4 class="pdf-description" style="font-weight: 600;" class="modal-title"></h4>
-								</div>
-								<div class="modal-body">
-									<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
-
-									<!-- <iframe class='pdfembed' src='' width='100%' height='900px'></iframe> -->
-										<object class="pdfembed1" data="" type="application/pdf" width="100%" height="800">
-											<embed class="pdfembed2" src="" type="application/pdf" />
-										</object>
-
-										
-									</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- modal end -->
 				</div>
 		<!-- END PAGE CONTENT-->
 		</div>
@@ -338,7 +314,7 @@
 	$( window ).load(function() {
 		jQuery.ajax({
 			type  : 'get',
-			url   : '<?php echo base_url('BidOpeningController/technical_checklist_show')?>/<?php echo $session_bids_id ?>',
+			url   : '<?php echo base_url('BidOpeningController/post_qualification_evaluation_result_show')?>/<?php echo $session_bids_id ?>',
 			async : true,
 			success : function(data){
 					$('.table_data').html(data);
@@ -346,64 +322,16 @@
 		});
 	});
 
-	// show modal and assign value to inputs
-	$('.table_data').on('click','.img_button',function(){
-		$('#view_file').modal('toggle');
-		var imageSource = $(this).attr('data-link');
-		var description = $(this).attr('data-description');
-		console.log(description);
-		$(".pdf-description").text(description);
-
-		
-		$(".pdfembed1").attr("data",imageSource);
-		$(".pdfembed2").attr("src",imageSource);
-		// $(".pdfembed").attr("src",'<?php echo base_url()?>'+'assets/pdfjs/web/viewer.html?file=' +imageSource);
-	});
-
-
-
+	
 	//get project details
 	jQuery.ajax({
 		type  : 'get',
 		url   : '<?php echo base_url('BidOpeningController/show_project_details')?>',
 		async : true,
 		success : function(data){
-			$('.projects_data').html(data);
+				$('.projects_data').html(data);
+			
 		}
-	});
-
-	
-
-	$('#technical_checklist_form').submit(function(event){
-        event.preventDefault();
-		// jQuery('input.radio-custom:checked').each(function(){
-		// 	console.log($(this).val());
-		// });
-		
-		jQuery.ajax({
-			type : 'post',
-			url:  '<?php echo base_url('BidOpeningController/insert_technical_findings')?>',
-			data : $('#technical_checklist_form').serialize(),
-			async : true,
-			success : function(response){	
-				// console.log(response);
-				var json = $.parseJSON(response);
-				if (json.status == "success") {
-					swal("Successfully", "Technical checklist has ben submitted", "success");
-
-					setTimeout(function(){ 
-						window.location.href = '<?php echo base_url("bidopening/financial_evaluation"); ?>/<?php echo $session_bids_id; ?>';
-					}, 1500);
-				} 
-				else if(json.status == "fail"){
-
-					setTimeout(function(){ 
-						window.location.href = '<?php echo base_url("bidopening/bids_opened"); ?>/<?php echo $session_projects_id; ?>';
-					}, 1500);
-				}
-			}
-		});
-		// alert($('#technical_checklist_form').serialize());
 	});
 
 	

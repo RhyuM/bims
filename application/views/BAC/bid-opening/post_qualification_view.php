@@ -192,7 +192,7 @@
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Technical Evaluation
+			Post Qualification
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -382,7 +382,7 @@
 		
 		jQuery.ajax({
 			type : 'post',
-			url:  '<?php echo base_url('BidOpeningController/insert_technical_findings')?>',
+			url:  '<?php echo base_url('BidOpeningController/insert_post_qualification_findings')?>',
 			data : $('#technical_checklist_form').serialize(),
 			async : true,
 			success : function(response){	
@@ -392,7 +392,8 @@
 					swal("Successfully", "Technical checklist has ben submitted", "success");
 
 					setTimeout(function(){ 
-						window.location.href = '<?php echo base_url("bidopening/financial_evaluation"); ?>/<?php echo $session_bids_id; ?>';
+						// window.location.href = '<?php echo base_url("bidopening/financial_evaluation"); ?>/<?php echo $session_bids_id; ?>';
+						window.location.href = '<?php echo base_url("bidopening/bids_opened"); ?>/<?php echo $session_projects_id; ?>';
 					}, 1500);
 				} 
 				else if(json.status == "fail"){

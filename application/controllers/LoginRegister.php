@@ -86,7 +86,7 @@ class LoginRegister extends CI_Controller{
     }
     public function registration(){ 
             $config['upload_path']="./assets/uploads";
-            $config['allowed_types']='gif|jpg|png';
+            $config['allowed_types']='pdf|jpg|png';
             $this->load->library('upload',$config);
 
             if($this->upload->do_upload("file")){
@@ -101,7 +101,7 @@ class LoginRegister extends CI_Controller{
                     'email' => $this->input->post('email'), 
                     'password' => md5($this->input->post('password')), 
                     'status' => '0', 
-                    'imgpath' => "/assets/uploads/".$data['upload_data']['file_name']
+                    'imgpath' => "/assets/uploads/technical-docs/".$data['upload_data']['file_name']
                 ); 
 
                 $this->db->insert('users', $userData);
@@ -113,7 +113,7 @@ class LoginRegister extends CI_Controller{
                 $email = $this->input->post('email');
                 $type = 'BIDDER';
                 $sesdata = array(
-                    'user_id'  => $user_id,
+                    'user_id'  => $user_id, 
                     'username'  => $name,
                     'email'     => $email,
                     'type'     => $type,

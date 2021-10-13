@@ -12,3 +12,31 @@ a.btn.img_button {
     background: #af9500;
     color: #fff;
 }
+
+.table thead tr th {
+    font-size: 16px!important;
+    font-weight: 700!important;
+}
+
+body {
+    font-weight: 600;
+}
+
+.caption {
+    width: 100%;
+    text-align: center!important;
+    text-transform: uppercase;
+}
+
+body {
+    color: #2d2d2d;
+    font-family: 'Montserrat', sans-serif!important;
+}
+
+.portlet>.portlet-title>.caption>i {
+    display: none;
+}
+
+.portlet-title {
+    background-color: #003924!important;
+}

@@ -70,7 +70,6 @@ class BidOpeningController extends CI_Controller
 
         $projects_data ="";
             
-                $start = 1;
                 foreach ($query->result() as $bids)
                 {
                     $projects_data .= '<tr class="gradeX odd" role="row">
@@ -79,7 +78,7 @@ class BidOpeningController extends CI_Controller
                     <td>'.$bids->projects_type.'</td>
                     <td>'.$bids->submission_deadline.'</td>
                     <td>'.$bids->opening_date.'</td>
-                    <td>'.$bids->approve_budget_cost.'</td>
+                    <td> ₱'.number_format($bids->approve_budget_cost).'</td>
                     ';
                 }
 
@@ -91,133 +90,54 @@ class BidOpeningController extends CI_Controller
         $this->load->view('BAC/bid-opening/bids_open_view');
      
     }
-    public function evaluation_result($id) 
-    {
-    
-        $this->load->view('BAC/bid-opening/evaluation_result_view');
-     
-    }
-    public function evaluation_result_bids_show($id) 
-    {
-        $sql='  SELECT * FROM bids
-        inner join users on bids.users_user_id = users.user_id
-        where projects_projects_id = "'.$id.'" 
-        order by bid_price'; 
-
-
-        $query = $this->db->query($sql);
-
-        $table_data ="";
-            
-                $start = 1;
-                foreach ($query->result() as $bids)
-                {
-
-                    $sql2 ='  SELECT findings FROM bid_technical_documents
-                    where projects_projects_id = "'.$id.'" 
-                    and users_user_id = "'.$bids->user_id.'" '; 
-                    $query2 = $this->db->query($sql2);
-
-                    $sql3 ='  SELECT findings FROM financial_documents
-                    where projects_projects_id = "'.$id.'" 
-                    and users_user_id = "'.$bids->user_id.'" '; 
-                    $query3 = $this->db->query($sql3);
-
-                    $tech_findings = true;
-                    $financial_findings = true;
-
-                    foreach ($query2->result() as $tech_docs){
-                        if($tech_docs->findings == '0' ){
-                            $tech_findings = false;
-                            break;
-                        }
-                    }
-                    foreach ($query3->result() as $financial_docs){
-                        if($financial_docs->findings == '0' ){
-                            $financial_findings = false;
-                            break;
-                        }
-                    }
-
-                    if($tech_findings == true & $financial_findings == true){
-                        $table_data .= '<tr class="gradeX odd" role="row">                    
-                        <td class="sorting_1">'.$start++.'</td>
-                        <td>'.$bids->companyname.'</td>
-                        <td>₱'.$bids->bid_price.'</td>
-                        <td>'.date("m/d/Y - H:m", strtotime($bids->created_on)).'</td>
-                        <td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->user_id.'">VIEW EVALUATION RESULT</a></td>';
-                    }
-
-                }
-
-        echo $table_data;
-        
-       
-        die;
-    }
+   
     public function bids_show($id) 
     {
-        $sql='  SELECT * FROM bids
-        inner join users on bids.users_user_id = users.user_id
-        where projects_projects_id = "'.$id.'" '; 
+        $sql='  SELECT bids.bids_id, bids.users_user_id, bids.bid_price, bids.rank, bids.status, bids.created_on, users.companyname FROM bids
+        left join users on bids.users_user_id = users.user_id
+        where projects_projects_id = "'.$id.'" 
+        ORDER BY bid_price ASC'; 
 
 
         $query = $this->db->query($sql);
 
         $table_data ="";
             
-                $start = 1;
                 foreach ($query->result() as $bids)
                 {
                     $table_data .= '<tr class="gradeX odd" role="row">
                                     
-                    <td class="sorting_1">'.$start++.'</td>
                     <td>'.$bids->companyname.'</td>
-                    <td>₱'.$bids->bid_price.'</td>
+                    <td>₱'.number_format($bids->bid_price).'</td>
                     <td>'.date("m/d/Y - H:m", strtotime($bids->created_on)).'</td>';
 
-                        $sql2 ='  SELECT findings FROM bid_technical_documents
-                        where projects_projects_id = "'.$id.'" 
-                        and users_user_id = "'.$bids->user_id.'" '; 
+                        $session_user_id = $this->session->userdata("user_id");
+
+                        $sql2 ='  SELECT * FROM evaluators
+                        where users_user_id = "'.$session_user_id.'"
+                        and bids_bids_id="'.$bids->bids_id.'"'; 
+
                         $query2 = $this->db->query($sql2);
 
-                        $sql3 ='  SELECT findings FROM financial_documents
-                        where projects_projects_id = "'.$id.'" 
-                        and users_user_id = "'.$bids->user_id.'" '; 
-                        $query3 = $this->db->query($sql3);
+                        $evaluators = $query2->row();
 
-                        $tech_findings = false;
-                        $financial_findings = false;
-                        $tech_findings_result = true;
-
-                        foreach ($query2->result() as $tech_docs){
-                            if($tech_docs->findings == '1' ){
-                                $tech_findings = true;
-                                break;
-                            }
-                            else{
-                                $tech_findings_result = false;
-                            }
-                        }
-                        foreach ($query3->result() as $financial_docs){
-                            if($financial_docs->findings == '1' ){
-                                $financial_findings = true;
-                                break;
-                            }
-                        }
-
-                        if($tech_findings == true & $financial_findings == true){
-                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->user_id.'">VIEW RESULT</a></td>';
-                        }
-                        else if($tech_findings_result == true & $financial_findings == false){
-                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->user_id.'">FINANCIAL EVALUATION</a></td>';
-                        }
-                        else if($tech_findings_result == false){
-                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->user_id.'">TECHNICAL EVALUATION RESULT</a></td>';
+                        if(empty($query2->result())){
+                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">EVALUATE BIDDER</a></td>';
                         }
                         else{
-                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->user_id.'">EVALUATE BIDDER</a></td>';
+                            if($evaluators->status == '1' ){
+                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">TECHNICAL EVALUATION</a></td>';
+                            }
+                            
+                            if($evaluators->status == '2' ){
+                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->bids_id.'">FINANCIAL EVALUATION</a></td>';
+                            }
+                            if($evaluators->status == '4' || $evaluators->status == '3' || $evaluators->status == '-1' || $evaluators->status == '-2' ){
+                                $table_data .= '<td><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
+                            }
                         }
+
+
                 }
 
         echo $table_data;
@@ -226,54 +146,262 @@ class BidOpeningController extends CI_Controller
         die;
     }
 
-    public function evaluate_bidder($id) 
+    public function qualified_bids_show($id) 
     {
-        // add session_bidder_id to session
-        $this->session->set_userdata("session_bidder_id", "$id");
+        $sql='  SELECT bids.bids_id, bids.users_user_id, bids.bid_price, bids.rank, bids.status, bids.created_on, users.companyname FROM bids
+        left join users on bids.users_user_id = users.user_id
+        where projects_projects_id = "'.$id.'" 
+        and bids.status != 0
+        ORDER BY bid_price ASC'; 
 
-        $session_projects_id = $this->session->userdata("projects_id");
-
-        $sql='SELECT * FROM bid_technical_documents
-            where users_user_id = "'.$id.'" 
-            and projects_projects_id = "'.$session_projects_id.'"'; 
 
         $query = $this->db->query($sql);
 
-        $data = array(
-            'technical_docs_data' => $query->result(),
-        );
+        $table_data ="";
+                $rank = 1;
+                foreach ($query->result() as $bids)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                    <td>'.$bids->companyname.'</td>
+                    <td>'.$rank++.'</td> 
+                    <td>₱'.number_format($bids->bid_price).'</td>';
 
-        $this->load->view('BAC/bid-opening/evaluate_bidder_view',$data);
+                        $session_user_id = $this->session->userdata("user_id");
+
+                        $sql2 ='  SELECT * FROM evaluators
+                        where users_user_id = "'.$session_user_id.'"
+                        and bids_bids_id="'.$bids->bids_id.'"'; 
+
+                        $query2 = $this->db->query($sql2);
+
+                        $evaluators = $query2->row();
+
+                        if(empty($query2->result())){
+                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">EVALUATE BIDDER</a></td>';
+                        }
+                        else{
+
+                            if($evaluators->status == '1' ){
+                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">TECHNICAL EVALUATION</a></td>';
+                            }
+                            
+                            if($evaluators->status == '2' ){
+                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->bids_id.'">FINANCIAL EVALUATION</a></td>';
+                            }
+                            if($evaluators->status == '4' || $evaluators->status == '3' || $evaluators->status == '-1' || $evaluators->status == '-2' ){
+                                $table_data .= '<td><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
+                            }
+                        }
+
+
+                }
+
+        echo $table_data;
+        
+       
+        die;
     }
+    public function disqualified_bids_show($id) 
+    {
+        $sql='  SELECT bids.bids_id, bids.users_user_id, bids.bid_price, bids.rank, bids.status, bids.created_on, users.companyname FROM bids
+        left join users on bids.users_user_id = users.user_id
+        where projects_projects_id = "'.$id.'" 
+        and bids.status = 0'; 
+
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+            
+                foreach ($query->result() as $bids)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                    <td>'.$bids->companyname.'</td>              
+                    <td>₱'.number_format($bids->bid_price).'</td>';
+
+                        $session_user_id = $this->session->userdata("user_id");
+
+                        $sql2 ='  SELECT * FROM evaluators
+                        where users_user_id = "'.$session_user_id.'"
+                        and bids_bids_id="'.$bids->bids_id.'"'; 
+
+                        $query2 = $this->db->query($sql2);
+
+                        $evaluators = $query2->row();
+
+                        if(empty($query2->result())){
+                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">EVALUATE BIDDER</a></td>';
+                        }
+                        else{
+
+                            if($evaluators->status == '1' ){
+                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">TECHNICAL EVALUATION</a></td>';
+                            }
+                            
+                            if($evaluators->status == '2' ){
+                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->bids_id.'">FINANCIAL EVALUATION</a></td>';
+                            }
+                            if($evaluators->status == '4' || $evaluators->status == '3' || $evaluators->status == '-1' || $evaluators->status == '-2' ){
+                                $table_data .= '<td><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
+                            }
+                        }
+
+
+                }
+
+        echo $table_data;
+        
+       
+        die;
+    }
+
+    public function check_if_lowest_calculated_bid() 
+    {
+
+        $session_projects_id = $this->session->userdata("projects_id");
+
+        $sql ='  SELECT * FROM bids
+        where projects_projects_id = "'.$session_projects_id.'"'; 
+
+        $query = $this->db->query($sql);
+        foreach ($query->result() as $bids){
+
+            $sql2 ='  SELECT * FROM evaluators
+            where  bids_bids_id="'.$bids->bids_id.'"'; 
+
+            $query2 = $this->db->query($sql2);
+
+            $evaluation_passed = true;
+            $evaluated_count = 1;
+
+            foreach ($query2->result() as $res){
+
+                if($res->status == 3){
+                   $evaluated_count++;
+                }
+                else{
+                    $evaluation_passed = false;
+                    $evaluated_count = 0;
+                    break;
+                }
+            }
+            echo $evaluated_count;
+            if($evaluated_count >= 3){
+                $this->db->set('status',4);
+                $this->db->where('bids_id', $bids->bids_id);
+                $this->db->update('bids');
+            }
+        }
+    }
+
+    public function lowest_calculated_bid($id) 
+    {
+        $sql='  SELECT bids.bids_id, bids.users_user_id, bids.bid_price, bids.rank, bids.status, bids.created_on, users.companyname FROM bids
+        left join users on bids.users_user_id = users.user_id
+        where projects_projects_id = "'.$id.'" 
+        and bids.status = 4'; 
+
+
+        $query = $this->db->query($sql);
+        $bids = $query->row();
+
+        if(!empty($query->result())){
+            $table_data ="";
+
+            $table_data .='
+                <div id="lowest_bid" class="portlet box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-globe"></i>Bidder With Lowest Calculated Bid
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
+                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
+                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="lcb_data" >';
+                                $rank = 1;
+
+                                $table_data .= '<tr class="gradeX odd" role="row">
+                                <td>'.$bids->companyname.'</td>
+                                <td>₱'.number_format($bids->bid_price).'</td>';
+
+                                    $session_user_id = $this->session->userdata("user_id");
+
+                                    $sql2 ='  SELECT * FROM evaluators
+                                    where users_user_id = "'.$session_user_id.'"
+                                    and bids_bids_id="'.$bids->bids_id.'"'; 
+
+                                    $query2 = $this->db->query($sql2);
+
+                                    $evaluators = $query2->row();
+
+                                    if(empty($query2->result())){
+                                        $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">EVALUATE BIDDER</a></td>';
+                                    }
+                                    else{
+                                        if($evaluators->status == '3' ){
+                                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/post_qualification").'/'.$bids->bids_id.'">POST QUALIFICATION</a></td>';
+                                        }
+                                        if($evaluators->status == '4' ){
+                                            $table_data .= '<td><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
+                                        }
+                                    }
+                    $table_data .='
+                            </tbody>
+                        </table>
+                    </div>
+                </div>';
+
+            echo $table_data;
+            die;
+        }
+    }
+
+    
+
+
+    public function evaluate_bidder($id) 
+    {
+        // add session_projects_id to session
+        $session_projects_id = $this->session->userdata("projects_id");
+
+        $this->session->set_userdata("session_bids_id", "$id");
+
+        $this->load->view('BAC/bid-opening/evaluate_bidder_view');
+    }
+    
 
     public function financial_evaluation($id) 
     {
 
          // add session_bidder_id to session
-         $this->session->set_userdata("session_bidder_id", "$id");
+        //  $this->session->set_userdata("session_bidder_id", "$id");
+        $this->session->set_userdata("session_bids_id", "$id");
 
-         $session_projects_id = $this->session->userdata("projects_id");
- 
-         $sql='SELECT * FROM financial_documents
-             where users_user_id = "'.$id.'" 
-             and projects_projects_id = "'.$session_projects_id.'"'; 
- 
-         $query = $this->db->query($sql);
- 
-         $data = array(
-             'financial_docs_data' => $query->result(),
-         );
- 
-         $this->load->view('BAC/bid-opening/financial_evaluation_view',$data);
+         $this->load->view('BAC/bid-opening/financial_evaluation_view');
+    }
+    public function post_qualification($id) 
+    {
+        // add session_projects_id to session
+        $session_projects_id = $this->session->userdata("projects_id");
+
+        $this->session->set_userdata("session_bids_id", "$id");
+
+        $this->load->view('BAC/bid-opening/post_qualification_view');
     }
 
     public function technical_checklist_show($id) 
     {
-        $session_projects_id = $this->session->userdata("projects_id");
-
+        // $session_projects_id = $this->session->userdata("projects_id");
+        
         $sql='SELECT * FROM bid_technical_documents
-            where users_user_id = "'.$id.'"
-            and projects_projects_id = "'.$session_projects_id.'"'; 
+            where bids_bids_id = "'.$id.'" '; 
 
         $query = $this->db->query($sql);
 
@@ -283,10 +411,11 @@ class BidOpeningController extends CI_Controller
                 $id = 1;
                 foreach ($query->result() as $technical_documents)
                 {
-                    $table_data .= '<tr class="gradeX odd" role="row">
-                                    
+                    $table_data .= '
+                    <tr class="gradeX odd" role="row">
+                    
                     <td class="sorting_1">'.$technical_documents->description.'</td>
-                    <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                    <td><a class="btn img_button" href="javascript:void(0)"  data-description="'.$technical_documents->description.'" data-link='.base_url().''.$technical_documents->file_path.' >CLICK TO VIEW</a></td>
                     <td>
                         <div class="check-button">
                             <input id="radio'.$id.'" class="radio-custom" name="radio'.$index.'"  data-d_id="'.$technical_documents->bid_technical_documents_id.'" type="radio" value="1" required>
@@ -308,11 +437,9 @@ class BidOpeningController extends CI_Controller
     }
     public function financial_checklist_show($id) 
     {
-        $session_projects_id = $this->session->userdata("projects_id");
 
         $sql='SELECT * FROM financial_documents
-            where users_user_id = "'.$id.'"
-            and projects_projects_id = "'.$session_projects_id.'"'; 
+            where bids_bids_id = "'.$id.'"'; 
 
         $query = $this->db->query($sql);
 
@@ -325,7 +452,9 @@ class BidOpeningController extends CI_Controller
                     $table_data .= '<tr class="gradeX odd" role="row">
                                     
                     <td class="sorting_1">'.$financial_documents->description.'</td>
-                    <td><a class="btn img_button" data-url='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
+                  
+                    </iframe>
+                    <td><a class="btn img_button" data-description="'.$financial_documents->description.'" data-link='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
                     <td>
                         <div class="check-button">
                             <input id="radio'.$id.'" class="radio-custom" name="radio'.$index.'"  data-d_id="'.$financial_documents->financial_documents_id.'" type="radio" value="1" required>
@@ -350,6 +479,27 @@ class BidOpeningController extends CI_Controller
     {
     
         $i = 1;
+        $session_user_id = $this->session->userdata("user_id");
+        $session_bids_id = $this->session->userdata("session_bids_id");
+
+        $sql='SELECT * FROM evaluators
+        where users_user_id = "'.$session_user_id.'"
+        and bids_bids_id = "'.$session_bids_id.'"'; 
+
+        $query = $this->db->query($sql);
+       
+
+        if(empty($query->result())){
+            $evaluator_data = array(		
+                'bids_bids_id' 	=>  $session_bids_id, 
+                'users_user_id' =>  $session_user_id ,
+                'status' => 2
+            );
+
+            $this->db->insert('evaluators',$evaluator_data);
+            $insert_id = $this->db->insert_id();
+        }
+        
 
         $finding_result = true;
         foreach($this->input->post() as $data){
@@ -357,11 +507,16 @@ class BidOpeningController extends CI_Controller
             $findings_val = $this->input->post('radio'.$i);
             $tech_docs_id = $this->input->post('id'.$i);
 
-            $this->db->set('findings',$findings_val);
-            $this->db->where('bid_technical_documents_id', $tech_docs_id);
+            $evaluation_data = array(		
+                'findings' 	=>  $findings_val , 
+                'bid_technical_documents_bid_technical_documents_id ' => $tech_docs_id, 
+                'evaluators_evaluators_id' =>  $insert_id
+            );
 
-            $this->db->update('bid_technical_documents');
-
+            if(!empty($tech_docs_id))
+            {
+                $this->db->insert('technical_evaluation',$evaluation_data);
+            }
 
             if($findings_val == '0'){
                 $finding_result = false;
@@ -369,9 +524,19 @@ class BidOpeningController extends CI_Controller
            $i++;
         }
         if($finding_result == false){
+            $this->db->set('status',-1);
+            $this->db->where('users_user_id', $session_user_id);
+            $this->db->where('bids_bids_id', $session_bids_id);
+            $this->db->update('evaluators');
+
+            $this->db->set('status',0);
+            $this->db->where('bids_id', $session_bids_id);
+            $this->db->update('bids');
             print json_encode(array("status"=>"fail","message"=>"fail"));
         }
         else{
+            $this->session->set_userdata("session_bids_id", "$session_bids_id");
+            
             print json_encode(array("status"=>"success","message"=>"success"));
         }
     }
@@ -380,17 +545,34 @@ class BidOpeningController extends CI_Controller
     {
     
         $i = 1;
+        $session_user_id = $this->session->userdata("user_id");
+        $session_bids_id = $this->session->userdata("session_bids_id");
 
         $finding_result = true;
+
+
+        $sql='SELECT * FROM evaluators
+        where users_user_id = "'.$session_user_id.'"
+        and bids_bids_id = "'.$session_bids_id.'"'; 
+
+        $query = $this->db->query($sql);
+        $evaluators = $query->row();
+
         foreach($this->input->post() as $data){
 
             $findings_val = $this->input->post('radio'.$i);
             $financial_docs_id = $this->input->post('id'.$i);
 
-            $this->db->set('findings',$findings_val);
-            $this->db->where('financial_documents_id', $financial_docs_id);
+            $evaluation_data = array(		
+                'findings' 	=>  $findings_val , 
+                'financial_documents_financial_documents_id' => $financial_docs_id, 
+                'evaluators_evaluators_id' =>  $evaluators->evaluators_id
+            );
 
-            $this->db->update('financial_documents');
+            if(!empty($financial_docs_id))
+            {
+                $this->db->insert('financial_evaluation',$evaluation_data);
+            }
 
             if($findings_val == '0'){
                 $finding_result = false;
@@ -398,11 +580,263 @@ class BidOpeningController extends CI_Controller
            $i++;
         }
         if($finding_result == false){
+            $this->db->set('status',0);
+            $this->db->where('bids_id', $session_bids_id);
+            $this->db->update('bids');
+
+            $this->db->set('status',-2);
             print json_encode(array("status"=>"fail","message"=>"fail"));
         }
         else{
+            $this->db->set('status',3);
             print json_encode(array("status"=>"success","message"=>"success"));
         }
+
+        $this->db->where('users_user_id', $session_user_id);
+        $this->db->where('bids_bids_id', $session_bids_id);
+        $this->db->update('evaluators');
+    }
+
+
+
+
+    public function insert_post_qualification_findings() 
+    {
+    
+        $i = 1;
+        $session_user_id = $this->session->userdata("user_id");
+        $session_bids_id = $this->session->userdata("session_bids_id");
+
+        $sql='SELECT * FROM evaluators
+        where users_user_id = "'.$session_user_id.'"
+        and bids_bids_id = "'.$session_bids_id.'"'; 
+
+        $query = $this->db->query($sql);
+        $evaluators = $query->row();
+
+        $finding_result = true;
+        foreach($this->input->post() as $data){
+
+            $findings_val = $this->input->post('radio'.$i);
+            $tech_docs_id = $this->input->post('id'.$i);
+
+            $evaluation_data = array(		
+                'findings' 	=>  $findings_val , 
+                'bid_technical_documents_bid_technical_documents_id ' => $tech_docs_id, 
+                'evaluators_evaluators_id' =>  $evaluators->evaluators_id
+            );
+
+            if(!empty($tech_docs_id))
+            {
+                $this->db->insert('post_qualification',$evaluation_data);
+            }
+
+            if($findings_val == '0'){
+                $finding_result = false;
+            }
+           $i++;
+        }
+        if($finding_result == false){
+            $this->db->set('status',-4);
+            $this->db->where('bids_id', $session_bids_id);
+            $this->db->update('bids');
+
+            $this->db->set('status',-4);
+            print json_encode(array("status"=>"fail","message"=>"fail"));
+        }
+        else{
+            $this->db->set('status',4);
+            $this->session->set_userdata("session_bids_id", "$session_bids_id");
+            
+            print json_encode(array("status"=>"success","message"=>"success"));
+        }
+        $this->db->where('users_user_id', $session_user_id);
+        $this->db->where('bids_bids_id', $session_bids_id);
+        $this->db->update('evaluators');
+    }
+    
+    public function evaluation_result($id) 
+    {
+        $this->session->set_userdata("session_bids_id", "$id");
+        $this->load->view('BAC/bid-opening/evaluation_result_view');
+     
+    }
+    public function evaluation_result_evaluator_show($id) 
+    {
+        $sql='  SELECT evaluators.evaluators_id, evaluators.status, bids.bids_id, bids.users_user_id, bids.bid_price, bids.rank,  bids.created_on, users.user_type, users.firstname, users.lastname FROM evaluators
+        inner join users on evaluators.users_user_id = users.user_id
+        inner join bids on evaluators.bids_bids_id = bids.bids_id
+        where bids_bids_id = "'.$id.'" '; 
+
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+            
+                $start = 1;
+                foreach ($query->result() as $evaluators)
+                {
+                        $table_data .= '<tr class="gradeX odd" role="row">                    
+                        <td class="sorting_1">'.$start++.'</td>
+                        <td>'.$evaluators->firstname.' '.$evaluators->lastname.'</td>
+                        <td>'.$evaluators->user_type.'</td>
+                        <td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/technical_evaluation_result").'/'.$evaluators->evaluators_id.'">TECHNICAL EVALUATION RESULT</a>';
+
+                        // echo '<script>console.log('.$evaluators->status.');</script>';
+                        if($evaluators->status == '3' ){
+                            $table_data .= '<a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation_result").'/'.$evaluators->evaluators_id.'">FINANCIAL EVALUATION RESULT</a></td>';
+                        }
+                        if($evaluators->status == '4' ){
+                            $table_data .= '<a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation_result").'/'.$evaluators->evaluators_id.'">FINANCIAL EVALUATION RESULT</a>
+                                            <a class="btn evaluate-button"type="button" href="'.base_url("bidopening/post_qualification_evaluation_result").'/'.$evaluators->evaluators_id.'">POST QUALIFICATION RESULT</a></td>';
+                        }
+
+                }
+
+        echo $table_data;
+        die;
+    }
+
+    public function technical_evaluation_result($id) 
+    {
+        $this->session->set_userdata("session_evaluators_id", "$id");
+
+        $this->load->view('BAC/bid-opening/technical_evaluation_result_view');
+    }
+    public function technical_evaluation_result_show($id) 
+    {
+        $session_evaluators_id = $this->session->userdata("session_evaluators_id");
+        
+        $sql='SELECT bid_technical_documents.bids_bids_id ,bid_technical_documents.bid_technical_documents_id , bid_technical_documents.description,bid_technical_documents.file_path , technical_evaluation.findings 
+            FROM technical_evaluation
+            inner join bid_technical_documents on technical_evaluation.bid_technical_documents_bid_technical_documents_id = bid_technical_documents.bid_technical_documents_id
+            inner join evaluators on technical_evaluation.evaluators_evaluators_id = evaluators.evaluators_id
+            where evaluators_id = "'.$session_evaluators_id.'" '; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+
+                $index = 1;
+                $id = 1;
+                foreach ($query->result() as $technical_documents)
+                {
+                    $findings = $technical_documents->findings;
+                   
+
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$technical_documents->description.'</td>
+                    <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>';
+                    if($findings == 1){
+                        $table_data .= '<td class="passed">Passed</td>';
+                    }
+                    else{
+                        $table_data .= '<td class="failed">Failed</td>';
+                    }
+
+                    
+                    
+                    $id++;
+                    $index++;
+                }
+
+        echo $table_data;
+        die;
+    }
+    public function post_qualification_evaluation_result($id) 
+    {
+        $this->session->set_userdata("session_evaluators_id", "$id");
+
+        $this->load->view('BAC/bid-opening/post_qualification_evaluation_result_view');
+    }
+    public function post_qualification_evaluation_result_show($id) 
+    {
+        $session_evaluators_id = $this->session->userdata("session_evaluators_id");
+        
+        $sql='SELECT bid_technical_documents.bids_bids_id ,bid_technical_documents.bid_technical_documents_id , bid_technical_documents.description,bid_technical_documents.file_path , post_qualification.findings 
+            FROM post_qualification
+            inner join bid_technical_documents on post_qualification.bid_technical_documents_bid_technical_documents_id = bid_technical_documents.bid_technical_documents_id
+            inner join evaluators on post_qualification.evaluators_evaluators_id = evaluators.evaluators_id
+            where evaluators_id = "'.$session_evaluators_id.'" '; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+
+                $index = 1;
+                $id = 1;
+                foreach ($query->result() as $technical_documents)
+                {
+                    $findings = $technical_documents->findings;
+                   
+
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$technical_documents->description.'</td>
+                    <td><a class="btn img_button"href='.base_url()."".$technical_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>';
+                    if($findings == 1){
+                        $table_data .= '<td class="passed">Passed</td>';
+                    }
+                    else{
+                        $table_data .= '<td class="failed">Failed</td>';
+                    }
+
+                    
+                    
+                    $id++;
+                    $index++;
+                }
+
+        echo $table_data;
+        die;
+    }
+    public function financial_evaluation_result($id) 
+    {
+        $this->session->set_userdata("session_evaluators_id", "$id");
+
+        $this->load->view('BAC/bid-opening/financial_evaluation_result_view');
+    }
+    public function financial_evaluation_result_show($id) 
+    {
+        $session_evaluators_id = $this->session->userdata("session_evaluators_id");
+        
+        $sql='SELECT financial_documents.bids_bids_id ,financial_documents.financial_documents_id , financial_documents.description,financial_documents.file_path , financial_evaluation.findings 
+            FROM financial_evaluation
+            inner join financial_documents on financial_evaluation.financial_documents_financial_documents_id = financial_documents.financial_documents_id
+            inner join evaluators on financial_evaluation.evaluators_evaluators_id = evaluators.evaluators_id
+            where evaluators_id = "'.$session_evaluators_id.'" '; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+
+                $index = 1;
+                $id = 1;
+                foreach ($query->result() as $financial_documents)
+                {
+                    $findings = $financial_documents->findings;
+                   
+
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                    
+                    <td class="sorting_1">'.$financial_documents->description.'</td>
+                    <td><a class="btn img_button"href='.base_url()."".$financial_documents->file_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>';
+                    if($findings == 1){
+                        $table_data .= '<td class="passed">Passed</td>';
+                    }
+                    else{
+                        $table_data .= '<td class="failed">Failed</td>';
+                    }
+
+                    
+                    
+                    $id++;
+                    $index++;
+                }
+
+        echo $table_data;
+        die;
     }
 
 

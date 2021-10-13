@@ -46,7 +46,7 @@ class ProjectManagementController extends CI_Controller
                     <td>'.$projects->projects_type.'</td>
                     <td>'. $projects->submission_deadline.'</td>
                     <td>'. $projects->opening_date .'</td>
-                    <td> ₱ '.$projects->approve_budget_cost.'</td>
+                    <td> ₱ '.number_format($projects->approve_budget_cost).'</td>
                     <td>'. $projects->projects_status.'</td>
                     ';
                         
@@ -84,7 +84,7 @@ class ProjectManagementController extends CI_Controller
                 'projects_type' 	=> $this->input->post('projects_type'), 
                 'opening_date' 	=> $this->input->post('opening_date'), 
                 'submission_deadline' 	=> $this->input->post('submission_deadline'), 
-                'approve_budget_cost' 	=> $this->input->post('approve_budget_cost'), 
+                'approve_budget_cost' 	=> str_replace(',', '', $this->input->post('approve_budget_cost')), 
                 // 'projects_status' 	=> $this->input->post('projects_status'), 
                 'projects_status' 	=> 'procurement', 
                 'delete_status' 	=> '0', 
@@ -119,7 +119,7 @@ class ProjectManagementController extends CI_Controller
         $opening_date 	= $this->input->post('opening_date');
         $submission_deadline 	= $this->input->post('submission_deadline');
        
-        $approve_budget_cost 	= $this->input->post('approve_budget_cost');
+        $approve_budget_cost 	= str_replace(',', '', $this->input->post('approve_budget_cost'));
         $projects_status 	= $this->input->post('projects_status');
 
 

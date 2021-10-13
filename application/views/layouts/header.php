@@ -79,7 +79,7 @@
                             echo '<a class="nav-link" href="'.base_url().'page/admin">'.$username.'</a>';
                         }
 
-                        elseif($userType === 'BAC' || $userType === 'TWG' || $userType === 'HEAD-BAC' )
+                        elseif($userType === 'BAC' || $userType === 'TWG' || $userType === 'HEAD-BAC'  || $userType === 'HEAD-TWG')
                         {
                             // redirect('page/staff');
                             echo '<a class="nav-link" href="'.base_url().'page/staff">'.$username.'</a>';

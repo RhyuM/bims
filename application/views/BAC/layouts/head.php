@@ -67,6 +67,14 @@
 <!-- delete alert cdn -->
 <link href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css" rel="stylesheet" type="text/css"/>
 
+<!-- try pdf viewer -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js" integrity="sha512-t2JWqzirxOmR9MZKu+BMz0TNHe55G5BZ/tfTmXMlxpUY8tsTo3QMD27QGoYKZKFAraIPDhFv56HLdN11ctmiTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    
+
+<!-- using pdf.js the css -->
+<!-- <link  href="<?php echo base_url()."assets/";?>pdf-viewer/CSS/style.css" rel="stylesheet" type="text/css"/> -->
+
+
 <!-- END PAGE LEVEL STYLES -->  
 </head>
 <!-- END HEAD -->

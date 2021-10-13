@@ -59,7 +59,12 @@
     <!-- delete alert cdn -->
     <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js" type="text/javascript"></script>
 
-<!-- END PAGE LEVEL PLUGINS -->
+
+    
+    <!-- using pdf.js -->
+    <!-- <script type="text/javascript" src="<?php echo base_url()."assets/";?>pdf-viewer/JS/index.js"></script> -->
+
+
 <script>
         jQuery(document).ready(function() {       
            // initiate layout and plugins
