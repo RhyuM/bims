@@ -15,7 +15,7 @@
 				</li>
 				<li class="sidebar-search-wrapper">
 					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<form class="sidebar-search " action="extra_search" method="POST">
+					<!-- <form class="sidebar-search " action="extra_search" method="POST">
 						<a href="javascript:;" class="remove">
 						<i class="icon-close"></i>
 						</a>
@@ -25,13 +25,35 @@
 							<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
 							</span>
 						</div>
-					</form>
+					</form> -->
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+					
 				</li>
+				<li class="nav user_acc">
+					<a href="<?php echo base_url()?>profile">
+					<i class="icon-prof">
+						<?php $profile_image = $this->session->userdata("profile_image");
+						if(!empty($profile_image)){
+							echo '<img alt="" width="40" height="40" class="img-circle" src="'.base_url().$this->session->userdata("profile_image").'"/>';
+						}
+						else{
+							echo '<img alt="" width="40" height="40" class="img-circle" src="'.base_url().'/assets/images/profile-white.svg"/>';
+						} ?>
+					</i>
+					<span class="title name"><?php echo  $this->session->userdata("username");?></span>
+					</a>
+				</li>	
+
 				<li class="nav start dashboard">
 					<a href="<?php echo base_url()?>page/staff">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
+					</a>
+				</li>
+				<li class="nav">
+					<a href="<?php echo base_url()?>activity-logs">
+					<i class="fa fa-history"></i>
+					<span class="title">Activity Logs</span>
 					</a>
 				</li>
 				<li class="nav announcement">
@@ -48,6 +70,15 @@
 					<span class="arrow open"></span>
 					</a>
 					<ul class="sub-menu">
+						<?php 
+							 $session_user_type = $this->session->userdata("type");
+							 if($session_user_type == 'ADMIN'){?>
+								<li class="create_user">
+									<a href="<?php echo base_url()?>usermanagement/accounts">
+									Accounts</a>
+								</li>
+						<?php } ?>
+						
 						<li class="certified_bidder">
 							<a href="<?php echo base_url()?>usermanagement/certified-bidder">
 							List Of Certified Bidder</a>
@@ -69,7 +100,7 @@
 							<a href="<?php echo base_url()?>projectmanagement">
 							List Of Projects</a>
 						</li>
-						<li class="bids_submitted">
+						<li class="bids_submitted">	
 							<a href="#">
 							Bids Submitted</a>
 						</li>
@@ -88,19 +119,7 @@
 						</li>
 					</ul>
 				</li>
-				<li class="nav">
-					<a href="javascript:;">
-					<i class="icon-bar-chart"></i>
-					<span class="title">Bid Evaluation</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="#">
-							Technical Evaluation</a>
-						</li>
-					</ul>
-				</li>
+			
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>

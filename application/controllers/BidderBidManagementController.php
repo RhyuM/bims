@@ -10,7 +10,8 @@ class BidderBidManagementController extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
-        if ($this->session->userdata('logged_in')==false){
+        
+        if($this->session->userdata('logged_in')==false){
             redirect('loginregister');
         }
     }
@@ -23,25 +24,56 @@ class BidderBidManagementController extends CI_Controller
 
     public function ajax_table_projects_show()
     {
-        $sql="select * from projects where delete_status != 1"; 
+        $sql="select * from projects where delete_status != 1
+        ORDER BY created DESC"; 
         $query = $this->db->query($sql);
+
+        $session_user_id = $this->session->userdata("user_id");
+        $sql2='SELECT * FROM users where user_id="'.$session_user_id.'"'; 
+        $query2 = $this->db->query($sql2);
+        $status_result = $query2->row();
+        
 
         $table_data ="";
             
                 $start = 1;
                 foreach ($query->result() as $projects)
                 {
-                    $table_data .= '<tr class="gradeX odd" role="row" id="'.$projects->projects_id.'">
-                                    
-                    <td class="sorting_1">'.$start++.'</td>
-                    <td>'.$projects->projects_description.'</td>
-                    <td>'.$projects->projects_type.'</td>
-                    <td>'. $projects->opening_date .'</td>
-                    <td>Php'.number_format($projects->approve_budget_cost).'</td>
-                    <td> <a class="btn img_button"href='.base_url().$projects->ITB_path.' rel="noopener noreferrer" target="_blank">CLICK TO DOWNLOAD</a></td>
-                    <td>'. $projects->projects_status.'</td>
-                    <td><a class="btn img_button"type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">BID NOW</a></td>
-                    ';
+
+                    $deadline_date = $projects->submission_deadline;
+                    $opening_date = $projects->opening_date;
+
+                    $sched = explode(" ", $deadline_date);
+                    $sched_opening = explode(" ", $opening_date);
+
+                    date_default_timezone_set('Asia/Manila');
+
+                    $sql3='SELECT * FROM bids where projects_projects_id="'.$projects->projects_id.'" 
+                        And users_user_id="'.$session_user_id.'"'; 
+                    $query3 = $this->db->query($sql3);
+                    $result = $query3->row();
+
+                    if($sched[0] >= date('Y/m/d') || !empty($result)){
+                        $table_data .= '<tr class="gradeX odd" role="row" id="'.$projects->projects_id.'">
+                                        
+                        <td class="sorting_1">'.$start++.'</td>
+                        <td>'.$projects->projects_description.'</td>
+                        <td>'.$projects->projects_type.'</td>
+                        <td>'. $projects->opening_date .'</td>
+                        <td>'. $projects->submission_deadline .'</td>
+                        <td>₱ '.number_format($projects->approve_budget_cost).'</td>
+                        <td>'. $projects->projects_status.'</td>
+                        <td><a class="btn img_button" data-link="'.base_url()."". $projects->ITB_path.'" rel="noopener noreferrer" >VIEW ITB</a>';
+                            if($sched[0] >= date('Y/m/d')){
+                                if($status_result->status == '1'){
+                                    $table_data .='<a class="btn bid_button"type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">BID NOW</a>';
+                                }
+                            }
+                            if($sched_opening[0] <= date('Y/m/d') && empty($result)){
+                                $table_data .='<a class="btn result"type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">RESULT</a>';
+                            }
+                        $table_data .='</td>';
+                    }
                 }
 
         echo $table_data;

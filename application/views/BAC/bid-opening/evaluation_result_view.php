@@ -113,6 +113,9 @@
 				background: #af9500;
 				color: #fff!important;
 			}
+			.evaluate-button:hover {
+				background: #003924;
+			}
 		</style>
 
 
@@ -194,7 +197,7 @@
 													<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Name</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Position</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">View Results</th>
 												</tr>
 											</thead>
 											<tbody class="table_data" >

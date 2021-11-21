@@ -23,27 +23,30 @@
 					<!-- END SIDEBAR TOGGLER BUTTON -->
 				</li>
 				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-				<li class="sidebar-search-wrapper">
-					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-					<form class="sidebar-search " action="extra_search.html" method="POST">
-						<a href="javascript:;" class="remove">
-						<i class="icon-close"></i>
-						</a>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search...">
-							<span class="input-group-btn">
-							<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-							</span>
-						</div>
-					</form>
-					<!-- END RESPONSIVE QUICK SEARCH FORM -->
-				</li>
-				<li class="start dashboard">
-					<a href="http://localhost/BIMS/page/staff.html">
+				<li class="nav user_acc">
+					<a href="#">
+					<i class="icon-prof">
+						<?php $profile_image = $this->session->userdata("profile_image");
+						if(!empty($profile_image)){
+							echo '<img alt="" class="img-circle" src="'.base_url().$this->session->userdata("profile_image").'"/>';
+						}
+						else{
+							echo '<img alt="" class="img-circle" src="'.base_url().'/assets/images/profile-white.svg"/>';
+						} ?>
+					</i>
+					<span class="title name">Howdy, <?php echo  $this->session->userdata("username");?></span>
+					</a>
+				</li>	
+				<li class="nav start dashboard">
+					<a href="<?php echo base_url()?>page/staff">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
+					</a>
+				</li>
+				<li class="nav">
+					<a href="#">
+					<i class="fa fa-history"></i>
+					<span class="title">Activity Logs</span>
 					</a>
 				</li>
 				<li class="announcement">
@@ -54,18 +57,18 @@
 				</li>
 				<li class="user_management">
 					<a href="javascript:;">
-					<i class="icon-rocket"></i>
+					<i class="icon-home"></i>
 					<span class="title">User Management</span>
 					<span class="selected"></span>
 					<span class="arrow open"></span>
 					</a>
 					<ul class="sub-menu">
 						<li class="certified_bidder">
-							<a href="http://localhost/BIMS/usermanagement/certified-bidder.html">
+							<a href="<?php echo base_url()?>usermanagement/certified-bidder.html">
 							List Of Certified Bidder</a>
 						</li>
 						<li class="new_bidder_entry">
-							<a href="http://localhost/BIMS/usermanagement/new-entry.html">
+							<a href="<?php echo base_url()?>usermanagement/new-entry.html">
 							List Of New Bidder Entry</a>
 						</li>
 					</ul>
@@ -78,7 +81,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li class="list_of_project">
-							<a href="http://localhost/BIMS/projectmanagement.html">
+							<a href="<?php echo base_url()?>projectmanagement.html">
 							List Of projects</a>
 						</li>
 						<li class="bids_submitted">
@@ -89,30 +92,18 @@
 				</li>
 				<li>
 					<a href="javascript:;">
-					<i class="icon-diamond"></i>
+					<i class="icon-briefcase"></i>
 					<span class="title">Bid Opening</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="http://localhost/BIMS/bidopening.html">
+							<a href="<?php echo base_url()?>bidopening.html">
 							projects</a>
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-puzzle"></i>
-					<span class="title">Bid Evaluation</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="#">
-							Technical Evaluation</a>
-						</li>
-					</ul>
-				</li>
+			
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>

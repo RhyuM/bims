@@ -56,6 +56,9 @@
 <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/";?>global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"> -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+<!-- custom global css -->
+<link href="<?php echo base_url()."assets/"; ?>/custom/my-global-custom-css.css" rel="stylesheet" type="text/css"/>
+
 <!-- delete alert cdn -->
 <link href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css" rel="stylesheet" type="text/css"/>
 

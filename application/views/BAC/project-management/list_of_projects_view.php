@@ -8,7 +8,7 @@
 		@media (min-width: 768px)
 		{
 			.modal-dialog {
-				width: 700px;
+				/* width: 700px; */
 			}
 			.modal-body {
 				position: relative;
@@ -30,8 +30,8 @@
 		 }
 		.contact-form .input-block {
 			background-color: rgba(255, 255, 255, 0.8);
-			border: solid 1px #666;
-			width: 100%;
+			border: solid 1px #af9500;
+			/* width: 100%; */
 			height: 40px;
 			padding: 25px;
 			position: relative;
@@ -44,7 +44,7 @@
 
 		.contact-form .input-block.focus {
 			background-color: #fff;
-			border: solid 1px #666;
+			border: solid 1px #af9500;
 		}
 
 		.contact-form .input-block.textarea {
@@ -104,7 +104,25 @@
 			width: 50%;
 			margin: auto;
 		}
-		
+		.input_container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 10px;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.input_container > div {
+			width: 49%;
+		}
+		.input_container > div:first-child ,
+		.input_container > div:last-child{
+			width: 100%;
+		}
+		.input-block.textarea-block {
+			height: unset;
+		}
  </style>
  
 
@@ -136,16 +154,6 @@
 							<div class="caption">
 								<i class="fa fa-globe"></i>List Of projects
 							</div>
-							<div class="tools">
-								<a href="javascript:;" class="collapse" data-original-title="" title="">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
-								</a>
-								<a href="javascript:;" class="reload" data-original-title="" title="">
-								</a>
-								<a href="javascript:;" class="remove" data-original-title="" title="">
-								</a>
-							</div>
 						</div>
 						<div class="portlet-body">
 							<div class="table-toolbar">
@@ -153,31 +161,16 @@
 									<div class="col-md-6">
 										<div class="btn-group">
 											<!-- <button id="sample_editable_1_new" class="btn green">Add New project <i class="fa fa-plus"></i></button> -->
-										<?php if($this->session->userdata('type') == "HEAD-BAC")
+										<?php
+											$usertype = $this->session->userdata('type');
+											if($usertype == "HEAD-BAC" || $usertype == "ADMIN")
 											{?>
 												<a href="javascript:void(0);"  id="create_new_project_button" class="btn green">Create New project <i class="fa fa-plus"></i></a>
 										<?php };?>
                                         </div>
 									</div>
 									<div class="col-md-6">
-										<div class="btn-group pull-right">
-											<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-right">
-												<li>
-													<a href="javascript:;">
-													Print </a>
-												</li>
-												<li>
-													<a href="javascript:;">
-													Save as PDF </a>
-												</li>
-												<li>
-													<a href="javascript:;">
-													Export to Excel </a>
-												</li>
-											</ul>
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -185,16 +178,18 @@
 								<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 									<thead>
 										<tr role="row">
-											<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 287px;">#</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email" style="width: 472px;">Description</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" style="width: 177px;">Project Type</th>
-											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" style="width: 258px;">Bid Submission Deadline</th>
-											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" style="width: 258px;">Bid Opening Date</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Approved Budget Cost</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Status</th>
-											<?php if($this->session->userdata('type') == "HEAD-BAC")
+											<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email" >Description</th>
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email" >Project Location</th>
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" >Project Type</th>
+											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Bid Submission Deadline</th>
+											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Bid Opening Date</th>
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Approved Budget Cost</th>			
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Status</th>
+											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Total Bids</th>
+											<?php if($usertype == "HEAD-BAC" || $usertype == "ADMIN")
 											{?>
-												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Action</th>
+												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Update/Delete</th>
 											<?php };?>
 											
 										</tr>
@@ -218,55 +213,53 @@
 					<div class="modal-content">
 						<div class="modal-header" style="text-align: center;">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 style="font-weight: 600;" class="modal-title">CREATE NEW project</h4>
+							<h4 style="font-weight: 600;" class="modal-title">CREATE NEW PROJECT</h4>
 						</div>
 						<div class="modal-body">
 							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
 								<form class="form-horizontal contact-form" id="create_new_project_form" role="form" method="post" enctype="multipart/form-data">
-									<div class="form-body">
+									<div class="input_container">
+										<div class="form-body">
+											<div class="input-block textarea-block">
+												<label for="">Projects Description</label>
+												<textarea type="text" class="form-control" name="projects_description" id="projects_description" autocomplete="off" required></textarea>
+											</div>
+										</div>
+										<div class="form-body">
+											<div class="input-block">
+												<label for="">Projects Type</label>
+												<select class="form-control" name="projects_type" id="projects_type" placeholder="Enter project type" required>
+													<option></option>
+													<option>Infrastructure</option>
+													<option>Goods</option>
+												</select>
+											</div>
+										</div>
+										
 										<div class="input-block">
-											<label for="">Projects Description</label>
-											<input type="text" class="form-control" name="projects_description" id="projects_description" autocomplete="off" required>
+											<label for="" style="top: -6px; font-size: 16px;">Opening Date</label>
+												<input type="text" class="form-control" name="opening_date" id="opening_date" autocomplete="off" value="">
+										</div>
+
+										<div class="input-block">
+											<label for="" style="top: -6px; font-size: 16px;">Bid Submission Deadline</label>
+												<input type="text" class="form-control" name="submission_deadline" id="submission_deadline" autocomplete="off" value="">
+										</div>
+
+										<div class="form-body">
+											<div class="input-block">
+												<label for="">Project Location</label>
+												<input type="text" class="form-control"  name="project_location" id="project_location"  autocomplete="off" required>
+											</div>
+										</div>
+										<div class="form-body">
+											<div class="input-block">
+												<label for="">Approve Budget Cost</label>
+												<input type="text" class="form-control"  data-type="currency" name="approve_budget_cost" id="approve_budget_cost"  autocomplete="off" required>
+											</div>
 										</div>
 									</div>
-									<div class="form-body">
-										<div class="input-block">
-											<label for="">Projects Type</label>
-											<select class="form-control" name="projects_type" id="projects_type" placeholder="Enter project type" required>
-												<option></option>
-												<option>Infrastructure</option>
-												<option>Goods</option>
-											</select>
-										</div>
-									</div>
-									
-									<div class="input-block">
-										<label for="" style="top: -6px; font-size: 16px;">Opening Date</label>
-											<input type="text" class="form-control" name="opening_date" id="opening_date" autocomplete="off" value="">
-									</div>
-
-									<div class="input-block">
-										<label for="" style="top: -6px; font-size: 16px;">Bid Submission Deadline</label>
-											<input type="text" class="form-control" name="submission_deadline" id="submission_deadline" autocomplete="off" value="">
-									</div>
-
-									<div class="form-body">
-										<div class="input-block">
-											<label for="">Approve Budget Cost</label>
-											<input type="text" class="form-control"  data-type="currency" name="approve_budget_cost" id="approve_budget_cost"  autocomplete="off" required>
-										</div>
-									</div>
-
-									
-
-									<!-- hidden for user -->
-									<!-- <div class="form-body">
-										<div class="input-block">
-											<label for="">Status</label>
-											<input type="text" class="form-control" name="projects_status" id="projects_status" value="new" readonly>
-										</div>
-									</div> -->
-
+								
 									<div class="form-body invitation">
 											<label for="">Invitation To Bid</label>
 											<p style="color: #AF9500; font-size: 14px;">Accepts PDF only</p>
@@ -275,7 +268,6 @@
 									<div class="form-actions invitation">
 										<div class="row">
 											<div class="col-md-12" style="text-align: center;">
-												<!-- <input type="hidden" name="projects_id" value="<?php echo $projects_id; ?>" /> -->
 												<button type="submit"  class="btn green">Submit</button>
 												<a  type="button" data-dismiss="modal" class="btn default">Cancel</a>
 											</div>
@@ -284,10 +276,6 @@
 								</form>
 							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
 						</div>
-						<!-- <div class="modal-footer">
-							<button type="button" data-dismiss="modal" class="btn default">Close</button>
-							<button type="button" class="btn green">Save changes</button>
-						</div> -->
 					</div>
 				</div>
 			</div>
@@ -339,14 +327,6 @@
 										</div>
 									</div>
 
-									<!-- hidden for user -->
-									<!-- <div class="form-body">
-										<div class="input-block">
-											<label for="">Status</label>
-											<input type="text" class="form-control" name="p_status" id="p_status" placeholder="Enter project status" value="new" readonly>
-										</div>
-									</div> -->
-
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-12" style="text-align: center;">
@@ -360,10 +340,6 @@
 
 							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
 						</div>
-						<!-- <div class="modal-footer">
-							<button type="button" data-dismiss="modal" class="btn default">Close</button>
-							<button type="button" class="btn green">Save changes</button>
-						</div> -->
 					</div>
 				</div>
 			</div>
@@ -434,17 +410,45 @@
 		
 </script>
 <script type="text/javascript">
+	
+
 	$(function() {
-		$('input[name="opening_date"],input[name="o_date"],input[name="submission_deadline"],input[name="update_submission_deadline"]').daterangepicker({
+		var date = new Date();
+  		var minDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 20);
+
+		$('input[name="opening_date"],input[name="o_date"]').daterangepicker({
 			"autoApply": true,
 			"singleDatePicker": true,
 			"opens": "center",
 			"timePicker": true,
+			minDate: minDate,
+			
 			"timePicker24Hour": true,
 			autoUpdateInput: true,
 			locale: {
 				// format: 'MM/DD/YYYY - hh:mm A'
-				format: 'MM/DD/YYYY - HH:mm'
+				format: 'YYYY/MM/DD - HH:mm'
+			}
+		});
+	});
+
+	$(function() {
+		var date = new Date();
+  		var minDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 15);
+		var maxDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 19);
+
+		$('input[name="submission_deadline"],input[name="update_submission_deadline"]').daterangepicker({
+			"autoApply": true,
+			"singleDatePicker": true,
+			"opens": "center",
+			"timePicker": true,
+			minDate: minDate,
+			maxDate: maxDate,
+			"timePicker24Hour": true,
+			autoUpdateInput: true,
+			locale: {
+				// format: 'MM/DD/YYYY - hh:mm A'
+				format: 'YYYY/MM/DD - HH:mm'
 			}
 		});
 	});

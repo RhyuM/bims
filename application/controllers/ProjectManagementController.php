@@ -11,6 +11,9 @@ class ProjectManagementController extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        if($this->session->userdata('type') == 'BIDDER'){
+            redirect('loginregister');
+        }
         if ($this->session->userdata('logged_in')==false){
             redirect('login-register');
         }
@@ -24,43 +27,46 @@ class ProjectManagementController extends CI_Controller
 
     public function ajax_table_projects_show()
     {
-        $sql="select * from projects where delete_status != 1"; 
+        $sql="select * from projects where delete_status != 1  ORDER BY created DESC"; 
         $query = $this->db->query($sql);
-
-        $sql2 ="select user_type from users where user_type = 'HEAD-BAC' ";
-        $query2 = $this->db->query($sql2);
-        $user = $query2->result();
-       
 
         $table_data ="";
 
-        // if($query){
             
-                $start = 1;
-                foreach ($query->result() as $projects)
-                {
-                    $table_data .= '<tr class="gradeX odd" role="row" id="'.$projects->projects_id.'">
-                                    
-                    <td class="sorting_1">'.$start++.'</td>
-                    <td>'.$projects->projects_description.'</td>
-                    <td>'.$projects->projects_type.'</td>
-                    <td>'. $projects->submission_deadline.'</td>
-                    <td>'. $projects->opening_date .'</td>
-                    <td> ₱ '.number_format($projects->approve_budget_cost).'</td>
-                    <td>'. $projects->projects_status.'</td>
-                    ';
-                        
-                        if($this->session->userdata('type') == "HEAD-BAC")
-                        {
-                            $table_data .= '
-                                <td>  
-                                    <a href="javascript:void(0);"  data-projects_id="'.$projects->projects_id.'" data-projects_description="'.$projects->projects_description.'" data-projects_type="'.$projects->projects_type.'" data-opening_date="'. $projects->opening_date .'" data-submission_deadline="'. $projects->submission_deadline .'" data-approve_budget_cost="'. $projects->approve_budget_cost .'" class="editRecord btn btn-success" role="button">Update</a>
-                                    <a href="javascript:void(0);" class="btn btn-danger deleteRecord" data-projects_id="'.$projects->projects_id.'">Delete</a>
-                                </td>
-                            </tr>';
-                        }
-                }
-        // }
+            $start = 1;
+            foreach ($query->result() as $projects)
+            {
+                $usertype = $this->session->userdata('type');
+                $sql2 ='  SELECT * FROM bids
+                where projects_projects_id = "'.$projects->projects_id.'"'; 
+
+                $query2 = $this->db->query($sql2);
+
+
+                $table_data .= '<tr class="gradeX odd" role="row" id="'.$projects->projects_id.'">
+                                
+                <td class="sorting_1">'.$start++.'</td>
+                <td>'.$projects->projects_description.'</td>
+                <td>'.$projects->project_location.'</td>
+                <td>'.$projects->projects_type.'</td>
+                <td>'. $projects->submission_deadline.'</td>
+                <td>'. $projects->opening_date .'</td>
+                <td> ₱ '.number_format($projects->approve_budget_cost).'</td>
+                <td>'. $projects->projects_status.'</td>
+                <td>'. $query2->num_rows().'</td>
+                ';
+                    
+                    if($usertype == "HEAD-BAC" || $usertype == "ADMIN")
+                    {
+                        $table_data .= '
+                            <td>  
+                                <a href="javascript:void(0);"  data-projects_id="'.$projects->projects_id.'" data-projects_description="'.$projects->projects_description.'" data-projects_type="'.$projects->projects_type.'" data-opening_date="'. $projects->opening_date .'" data-submission_deadline="'. $projects->submission_deadline .'" data-approve_budget_cost="'. $projects->approve_budget_cost .'" class="editRecord btn btn-success" role="button">Update</a>
+                                <a href="javascript:void(0);" class="btn btn-danger deleteRecord" data-projects_id="'.$projects->projects_id.'">Delete</a>
+                            </td>
+                        </tr>';
+                    }
+            }
+
        
         echo $table_data;
         die;
@@ -85,8 +91,8 @@ class ProjectManagementController extends CI_Controller
                 'opening_date' 	=> $this->input->post('opening_date'), 
                 'submission_deadline' 	=> $this->input->post('submission_deadline'), 
                 'approve_budget_cost' 	=> str_replace(',', '', $this->input->post('approve_budget_cost')), 
-                // 'projects_status' 	=> $this->input->post('projects_status'), 
-                'projects_status' 	=> 'procurement', 
+                'projects_status' 	=> 'Procurement', 
+                'project_location' 	=> $this->input->post('project_location'), 
                 'delete_status' 	=> '0', 
                 'ITB_path' => "/assets/uploads/invitation-to-bid/".$data['upload_data']['file_name']
             );
@@ -108,6 +114,16 @@ class ProjectManagementController extends CI_Controller
             // echo $this->db->insert_id();
 
         }
+
+        $user_id = $this->session->userdata('user_id');
+        $projects_description = $this->input->post('projects_description');
+
+        $activity_log_data = array( 
+            'users_user_id' => $user_id, 
+            'description' => "Created New Project ($projects_description)", 
+        ); 
+
+        $this->db->insert('activity_log', $activity_log_data);
     }
 
     public function update()
@@ -129,7 +145,7 @@ class ProjectManagementController extends CI_Controller
         $this->db->set('submission_deadline', $submission_deadline);
         
         $this->db->set('approve_budget_cost', $approve_budget_cost);
-        $this->db->set('projects_status', $projects_status);
+        // $this->db->set('projects_status', $projects_status);
         $this->db->where('projects_id', $projects_id);
 
         $this->db->update('projects');

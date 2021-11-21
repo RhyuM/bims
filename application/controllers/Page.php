@@ -24,12 +24,9 @@ class Page extends CI_Controller{
     
       function staff(){
         //Allowing access to staff only
-        if($this->session->userdata('type')==='BAC' || $this->session->userdata('type')==='HEAD-BAC')
+        if($this->session->userdata('type')==='BAC' || $this->session->userdata('type')==='HEAD-BAC' || $this->session->userdata('type')==='ADMIN')
         {
-          
           $this->load->view('BAC/dashboard_view');
-
-
         }
         else if($this->session->userdata('type')==='TWG' || $this->session->userdata('type')==='HEAD-TWG')
         {

@@ -195,7 +195,7 @@
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Date & Time Submitted</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Evaluate</th>
 												</tr>
 											</thead>
 											<tbody class="table_data" >
@@ -208,7 +208,7 @@
 								<div id="qualified_bids" class="portlet box">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-globe"></i>Qualified Bids
+											<i class="fa fa-globe"></i>Bid OPening Qualified Bids
 										</div>
 									</div>
 									<div class="portlet-body">
@@ -218,7 +218,7 @@
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Rank</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">View/Evaluate</th>
 												</tr>
 											</thead>
 											<tbody class="qualified_bids" >
@@ -230,7 +230,7 @@
 								<div id="disqualified_bids" class="portlet box">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-globe"></i>Disqualified Bids
+											<i class="fa fa-globe"></i>Bid Opening Disqualified Bids
 										</div>
 									</div>
 									<div class="portlet-body">
@@ -239,7 +239,7 @@
 												<tr role="row">
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Company Name</th>
 													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Bid Price</th>
-													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Action</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Results</th>
 												</tr>
 											</thead>
 											<tbody class="disqualified_bids" >
@@ -306,7 +306,7 @@ $( document ).ready(function() {
 				
 			}
 		});
-	}, 500);
+	}, 1000);
 
 	setInterval(function(){
 		$.ajax({
@@ -317,7 +317,7 @@ $( document ).ready(function() {
 				$('.disqualified_bids').html(data);
 			}
 		});
-	}, 500);
+	}, 1000);
 	setInterval(function(){
 		$.ajax({
 			type  : 'get',
@@ -327,7 +327,7 @@ $( document ).ready(function() {
 				$('#lcb_container').html(data);
 			}
 		});
-	}, 500);
+	}, 1000);
 
 	setInterval(function(){
 		$.ajax({

@@ -47,7 +47,7 @@
         <div class="row">
           <div class="col-md-8">
             <h4>JOIN BIDDING NOW</h4>
-            <span>Register and provide your an image of your PhilGeps certificate</span>
+            <span>Register and provide an image of your PhilGeps certificate</span>
           </div>
           <div class="col-md-4">
             <a href="<?php echo base_url()?>login-register/#register-btn" class="border-button">JOIN AND BID</a>

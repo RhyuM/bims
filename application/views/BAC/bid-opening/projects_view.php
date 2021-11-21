@@ -76,14 +76,14 @@
 											<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 												<thead>
 													<tr role="row">
-														<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 287px;">#</th>
-														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email" style="width: 472px;">Description</th>
-														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" style="width: 177px;">Project Type</th>
-														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" style="width: 177px;">Bid Submission Deadline</th>
-														<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" style="width: 258px;">Bid Opening Date</th>
-														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Approve Budget Cost</th>
-														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Status</th>
-														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">View/Open</th>
+														<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Description</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">Project Type</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">Bid Submission Deadline</th>
+														<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Bid Opening Date</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Approve Budget Cost</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Status</th>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">View/Open</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -100,7 +100,7 @@
 
 															date_default_timezone_set('Asia/Manila');
 
-															if($sched[0] == date('m/d/Y'))
+															if($sched[0] == date('Y/m/d'))
 																{?>
 																<td class="sorting_1"><?php echo $start++?></td>
 																<td><?php echo $projects->projects_description?></td>
@@ -136,13 +136,13 @@
 												<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 													<thead>
 														<tr role="row">
-															<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 287px;">#</th>
-															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email" style="width: 472px;">Description</th>
-															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" style="width: 177px;">Category</th>
-															<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" style="width: 258px;">Bid Opening Date</th>
-															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Approve Budget Cost</th>
-															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Status</th>
-															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">View/Open</th>
+															<th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending">#</th>
+															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Description</th>
+															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">Category</th>
+															<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Bid Opening Date</th>
+															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Approve Budget Cost</th>
+															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Status</th>
+															<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">View/Open</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -160,13 +160,13 @@
 																
 																<script>
 																	var sched = '<?php echo $sched[2]?>';
-																	var dateToday = ' <?php echo date('m/d/Y')?>';
+																	var dateToday = ' <?php echo date('Y/m/d')?>';
 																	console.log(sched);
 																	console.log(dateToday);
 																</script>
 
 																<?php
-																if($sched[0] < date('m/d/Y'))
+																if($sched[0] < date('Y/m/d'))
 																	{?>
 																	<td class="sorting_1"><?php echo $start++ ?></td>
 																	<td><?php echo $projects->projects_description ?></td>

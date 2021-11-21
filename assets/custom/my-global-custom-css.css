@@ -1,3 +1,20 @@
+.green.btn,
+.btn-success {
+    color: #FFFFFF;
+    background-color: #003924;
+}
+
+.btn-success:focus,
+.green.btn:focus,
+.btn-success:hover,
+.green.btn:hover,
+.btn-success:active,
+.green.btn:active,
+.btn-success:active:hover,
+.green.btn:active:hover {
+    background-color: #af9500;
+}
+
 a.btn.img_button {
     background: #af9500;
     color: #fff;
@@ -40,3 +57,217 @@ body {
 .portlet-title {
     background-color: #003924!important;
 }
+
+.modal-header {
+    background: #0a3827;
+    color: #fff!important;
+    position: relative;
+    border: solid #af9500;
+}
+
+.modal-body {
+    padding: 40px 15px;
+}
+
+button.close {
+    opacity: 1!important;
+    position: absolute;
+    right: 1%;
+    top: 50%;
+    transform: translate(0, -50%);
+    filter: brightness(0) invert(1);
+}
+
+button[type="submit"] {
+    background: #af9500!important;
+}
+
+li.nav.user_acc {
+    margin-top: 40px;
+}
+
+span.title {
+    font-weight: 600;
+}
+
+ul.sub-menu a {
+    font-weight: 500!important;
+}
+
+.img-circle {
+    border-radius: 50%;
+    background: #003924;
+    object-fit: cover;
+    max-width: 40px;
+}
+
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle>img {
+    height: 29px;
+    width: 29px;
+}
+
+.page-sidebar-closed .icon-prof>.img-circle {
+    width: 20px!important;
+    height: 20px!important;
+}
+
+.page-container-bg-solid .page-content {
+    background: #F1F3FA;
+}
+
+.tabbable-line>.nav-tabs>li.active {
+    border-bottom: 4px solid #af9500;
+}
+
+.tabbable-line>.nav-tabs>li.open,
+.tabbable-line>.nav-tabs>li:hover {
+    border-bottom: 4px solid #af9500;
+}
+
+
+/* sidebar */
+
+i.icon-prof {
+    width: 20%;
+}
+
+.page-sidebar-menu-closed i.icon-prof {
+    width: 1.25em;
+}
+
+.text-success {
+    color: #005841;
+}
+
+li.nav.user_acc {
+    margin-bottom: 20px;
+}
+
+
+/* end sidebar */
+
+@media (min-width: 1025px) {
+    .modal-dialog {
+        width: 60%;
+    }
+}
+
+
+/* --------------------------loading animation square ------------------------*/
+
+.spinner-box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    z-index: 0;
+}
+
+
+/* X-ROTATING BOXES */
+
+.configure-border-1 {
+    width: 115px;
+    height: 115px;
+    padding: 3px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0a503e;
+    animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
+}
+
+.configure-core {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.configure-border-2 {
+    width: 115px;
+    height: 115px;
+    padding: 3px;
+    left: -115px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(150 129 10);
+    transform: rotate(45deg);
+    animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
+}
+
+
+/* KEYFRAMES */
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes spin3D {
+    from {
+        transform: rotate3d(.5, .5, .5, 360deg);
+    }
+    to {
+        transform: rotate3d(0deg);
+    }
+}
+
+@keyframes configure-clockwise {
+    0% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes configure-xclockwise {
+    0% {
+        transform: rotate(45deg);
+    }
+    25% {
+        transform: rotate(-45deg);
+    }
+    50% {
+        transform: rotate(-135deg);
+    }
+    75% {
+        transform: rotate(-225deg);
+    }
+    100% {
+        transform: rotate(-315deg);
+    }
+}
+
+@keyframes pulse {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: .25;
+        transform: scale(.75);
+    }
+}
+
+
+/*-------- end --------- */

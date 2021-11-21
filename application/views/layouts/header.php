@@ -73,13 +73,13 @@
                         echo '<a class="nav-link" href="'.base_url().'login-register">Login/Register</a>';
                      }
                      else{
-                        if($userType === 'admin')
-                        {
-                            // redirect('page/admin');
-                            echo '<a class="nav-link" href="'.base_url().'page/admin">'.$username.'</a>';
-                        }
+                        // if($userType === 'admin')
+                        // {
+                        //     // redirect('page/admin');
+                        //     echo '<a class="nav-link" href="'.base_url().'page/admin">'.$username.'</a>';
+                        // }
 
-                        elseif($userType === 'BAC' || $userType === 'TWG' || $userType === 'HEAD-BAC'  || $userType === 'HEAD-TWG')
+                        if($userType === 'BAC' || $userType === 'TWG' || $userType === 'HEAD-BAC'  || $userType === 'HEAD-TWG'  || $userType === 'ADMIN')
                         {
                             // redirect('page/staff');
                             echo '<a class="nav-link" href="'.base_url().'page/staff">'.$username.'</a>';

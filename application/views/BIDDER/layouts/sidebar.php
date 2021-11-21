@@ -17,22 +17,21 @@
 					</div>
 					<!-- END SIDEBAR TOGGLER BUTTON -->
 				</li>
-				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-				<li class="sidebar-search-wrapper">
-					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<form class="sidebar-search " action="extra_search.html" method="POST">
-						<a href="javascript:;" class="remove">
-						<i class="icon-close"></i>
-						</a>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search...">
-							<span class="input-group-btn">
-							<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-							</span>
-						</div>
-					</form>
-					<!-- END RESPONSIVE QUICK SEARCH FORM -->
-				</li>
+
+				<li class="nav user_acc">
+					<a href="<?php echo base_url()?>profile">
+					<i class="icon-prof">
+						<?php $profile_image = $this->session->userdata("profile_image");
+						if(!empty($profile_image)){
+							echo '<img alt="" class="img-circle" src="'.base_url().$this->session->userdata("profile_image").'"/>';
+						}
+						else{
+							echo '<img alt="" class="img-circle" src="'.base_url().'/assets/images/profile-white.svg"/>';
+						} ?>
+					</i>
+					<span class="title name"><?php echo  $this->session->userdata("username");?></span>
+					</a>
+				</li>	
 				<li class="nav dashboard">
 					<a href="<?php echo base_url()?>page/bidder.html">
 					<i class="icon-home"></i>
@@ -59,7 +58,7 @@
 				</li>
 				<li class="nav">
 					<a href="javascript:;">
-					<i class="icon-diamond"></i>
+					<i class="icon-briefcase"></i>
 					<span class=" title">Bid Management</span>
 					<span class="arrow "></span>
 					</a>
@@ -93,7 +92,7 @@
 				<li class="nav">
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
-					<span class="title">Pos Award Management</span>
+					<span class="title">Awarding</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">

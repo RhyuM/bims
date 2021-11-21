@@ -8,9 +8,13 @@
 	.portlet-title {
 		background-color: #003924!important;
 	}
-	a.btn.img_button {
+	a.btn.bid_button {
 		background: #af9500;
 		color: #fff;
+	}
+	.result {
+		background: #005841!important;
+		color: #fff!important;
 	}
  </style>
  
@@ -61,8 +65,8 @@
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Description</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points" >Project Type</th>
 											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Bid Opening Date</th>
+											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Bid Submission Deadline</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Approved Budget Cost</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Invitation To Bid</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">Status</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Action</th>
 										</tr>
@@ -72,13 +76,39 @@
 									</tbody>
 								</table>
 
-							</div><div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 15 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div>
+							</div>
 						</div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->
 				</div>
 			</div>
-
+			<!-- modal for view file -->
+			<div id="view_file" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header" style="text-align: center;">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="pdf-description" style="font-weight: 600;" class="modal-title"></h4>
+							</div>
+							<div class="modal-body">
+								<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+								<div class="spinner-box ">
+									<div class="configure-border-1">  
+										<div class="configure-core"></div>
+									</div>  
+									<div class="configure-border-2">
+										<div class="configure-core"></div>
+									</div> 
+								</div>
+								<div id="display_file"> 
+								
+								</div>
+								</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- modal end -->
 			
 			<!-- END PAGE CONTENT-->
 		</div>
@@ -104,6 +134,28 @@
 				
 				$('.table_data').html(data);
 			}
+		});
+
+		// show modal and assign value to inputs
+		$('.table_data').on('click','.img_button',function(){
+			$('.spinner-box').fadeIn();
+			$('#view_file').modal('toggle');
+			
+			var imageSource = $(this).attr('data-link');
+			var description = $(this).attr('data-description');
+			// var description = $(this).parent().parent().find('.description_name').text();
+			
+			$(".pdf-description").text(description);
+			var file_div="<object class='pdfembed1' data='"+imageSource+"' type='application/pdf' width='100%' height='800'><embed class='pdfembed2' src='"+imageSource+"' type='application/pdf' /></object>";
+			var file_image ="<img class='img_file' src='"+imageSource+"' width='100%' height='800'>";
+			if (imageSource.indexOf(".pdf") >= 0){
+				jQuery('#display_file ').html(file_div);
+			}
+			else{
+				jQuery('#display_file ').html(file_image);
+			}
+
+			$('.spinner-box').fadeOut(3000);
 		});
 	});
 </script>

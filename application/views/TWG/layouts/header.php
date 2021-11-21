@@ -265,7 +265,14 @@
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="<?php echo base_url()."assets/"; ?>admin/layout/img/avatar3_small.jpg"/>
+					<?php 
+						$profile_image = $this->session->userdata("profile_image");
+						if(!empty($profile_image)){
+							echo '<img alt="" class="img-circle" src="'.base_url().$this->session->userdata("profile_image").'"/>';
+						}
+						else{
+							echo '<img alt="" class="img-circle" src="'.base_url().'/assets/images/profile-white.svg"/>';
+						} ?>
 					<span class="username username-hide-on-mobile">
 					<?php echo $this->session->userdata('fname'); $serial = $this->session->userdata('serial');?></span>
 					<i class="fa fa-angle-down"></i>

@@ -54,6 +54,51 @@
 	form.login-form {
 		color: #ff3333;
 	}
+
+	.login_field,
+	.width50 {
+		width: 50%;
+		margin: 20px auto!important;
+	}
+
+	button.btn.btn-success.uppercase {
+		background: #AF9500;
+	}
+
+	.create-account {
+		background: #fff!important;
+	}
+	.create-account a {
+		color: #003924!important;
+	}
+
+	p.ptext {
+		color: #fff;
+	}
+
+	.info-text.login_field {
+		text-align: center;
+	}
+	.login .content h3 {
+		color: #ffffff;
+	}
+
+	h3.form-title {
+		margin-top: 50px;
+	}
+	.create-account:hover {
+		background: #af9500!important;
+	}
+	.create-account:hover  a {
+		color: #fff!important;
+	}
+	.login .content {
+		background-color: rgb(255 255 255 / 15%)!important;
+	}	
+	#register-back-btn:hover {
+		color: #ffffff;
+		background-color: #af9500;
+	}
 </style>
 <div class="main-container" style="background-image: url('<?php echo base_url()."assets/"; ?>images/testbg2.jpg');">
 	<div class="sub">
@@ -69,54 +114,40 @@
 				<!-- BEGIN LOGIN FORM -->
 				<div>
 					<form class="login-form" action="<?php echo site_url('loginregister/auth');?>" method="post">
-						<h3 class="form-title" style="margin-bottom: 4vh;">Login</h3>
+						<h3 class="form-title" style="margin-bottom: 4vh;">LOGIN</h3>
 						
 						<?php 
 								if (!empty($this->session->flashdata('msg') )) {
-									echo '<div class="alert alert-danger">
+									echo '<div class="alert alert-danger login_field">
 											<button class="close" data-close="alert"></button>
 											<span>'.$this->session->flashdata('msg').'</span>
 										</div>';
 								}
 								else{
-									echo '<div class="alert alert-danger display-hide">
+									echo '<div class="alert alert-danger display-hide login_field">
 											<button class="close" data-close="alert"></button>
 											<span>Username or Password is Wrong</span>
 										</div>';
 								}
 						?>
 						
-						<div class="form-group">
+						<div class="form-group login_field">
 							<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 							<label class="control-label visible-ie8 visible-ie9">Username</label>
 							<input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="on" placeholder="Email" name="email" required/>
 						</div>
-						<div class="form-group">
+						<div class="form-group login_field">
 							<label class="control-label visible-ie8 visible-ie9">Password</label>
 							<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" required/>
 						</div>
-						<div class="form-actions">
+						<div class="form-actions login_field">
 							<button type="submit" class="btn btn-success uppercase">Login</button>
 							<label class="rememberme check">
 							<input type="checkbox" name="remember" value="remember-me"/>Remember </label>
 							<a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
 						</div>
-						<div class="login-options">
-							<h4>Or login with</h4>
-							<ul class="social-icons">
-								<li>
-									<a class="social-icon-color facebook" data-original-title="facebook" href="javascript:;"></a>
-								</li>
-								<li>
-									<a class="social-icon-color twitter" data-original-title="Twitter" href="javascript:;"></a>
-								</li>
-								<li>
-									<a class="social-icon-color googleplus" data-original-title="Goole Plus" href="javascript:;"></a>
-								</li>
-								<li>
-									<a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
-								</li>
-							</ul>
+						<div class="info-text login_field">
+							<p class="ptext">Doesn't Have An Account Yet?</p>
 						</div>
 						<div class="create-account">
 							<p>
@@ -126,9 +157,9 @@
 					</form>
 					<!-- END LOGIN FORM -->
 					<!-- BEGIN FORGOT PASSWORD FORM -->
-					<form class="forget-form" action="index.html" method="post">
-						<h3>Forget Password ?</h3>
-						<p>
+					<form class="forget-form width50"  method="post">
+						<h3 style="margin-bottom: 4vh; color: #ffffff;">Forget Password ?</h3>
+						<p class="ptext">
 							Enter your e-mail address below to reset your password.
 						</p>
 						<div class="form-group">
@@ -154,12 +185,12 @@
 				?>
 		
 				<form id="regformid" class="register-form" method="post" enctype="multipart/form-data">
-					<h3 style="margin-bottom: 4vh;">Register</h3>
+					<h3 style="margin-bottom: 4vh;" class="form-title">REGISTER</h3>
 
 					<div class="row">
 						<div class="col-md-6">
 							<p class="hint">	
-								Enter your personal details below:
+								Enter Your Personal Details Below:
 							</p>
 							<div class="form-group">
 								<label class="control-label visible-ie8 visible-ie9">First Name</label>
@@ -187,7 +218,7 @@
 
 						<div class="col-md-6">
 							<p class="hint">
-								Enter your account details below:
+								Enter Your Account Details Below:
 							</p>
 							<div class="form-group">
 								<label class="control-label visible-ie8 visible-ie9">Username</label>
@@ -201,15 +232,16 @@
 								<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
 								<input class="form-control placeholder-no-fix" type="password" placeholder="Re-type Your Password" name="rpassword" id="rpassword"/>
 							</div>
-						</div>
-						<div class="col-md-12">
 							<p class="hint">
-								Upload your PhilGeps certificate below to verify that you are a certified Bidder:
+								PhilGeps Certificate:
 							</p>
 							<div class="form-group">
 								<label class="control-label visible-ie8 visible-ie9">PhilGeps Certificate</label>
 								<input class="form-control form-control-lg" name="file" id="image_file" type="file" />
 							</div>
+						</div>
+						<div class="col-md-12">
+							
 
 							<div class="form-group margin-top-20 margin-bottom-20">
 								<label class="check">
@@ -275,6 +307,26 @@
 				});
 		
 		});
+		$('.forget-form').on('submit', function(e) {
+			e.preventDefault();
+			// var regdata = $(this).serialize();
+				$.ajax({
+					url: "<?php echo base_url();?>loginregister/send",
+					type: "POST",
+					// data: regdata,
+					data:new FormData(this),
+					processData:false,
+					contentType:false,
+					cache:false,
+					async:false,
+					success: function(response){
+						alert("response");
+						// window.location = 'login-register';
+					}
+				});
+		
+		});
+		
 
 		if ( window.location.hash === '#register-btn' ){
 			

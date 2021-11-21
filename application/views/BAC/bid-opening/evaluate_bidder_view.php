@@ -299,7 +299,7 @@
 							<!-- END ALERTS PORTLET-->
 						</div>
 					</div>
-					<!-- modal for create new project -->
+					<!-- modal for view file -->
 					<div id="view_file" class="modal fade in" tabindex="-1" aria-hidden="true" style="display: none; padding-right: 17px;">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -309,13 +309,17 @@
 								</div>
 								<div class="modal-body">
 									<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
-
-									<!-- <iframe class='pdfembed' src='' width='100%' height='900px'></iframe> -->
-										<object class="pdfembed1" data="" type="application/pdf" width="100%" height="800">
-											<embed class="pdfembed2" src="" type="application/pdf" />
-										</object>
-
-										
+									<div class="spinner-box ">
+										<div class="configure-border-1">  
+											<div class="configure-core"></div>
+										</div>  
+										<div class="configure-border-2">
+											<div class="configure-core"></div>
+										</div> 
+									</div>
+									<div id="display_file"> 
+									
+									</div>
 									</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
 								</div>
 							</div>
@@ -348,16 +352,25 @@
 
 	// show modal and assign value to inputs
 	$('.table_data').on('click','.img_button',function(){
+		$('.spinner-box').fadeIn();
 		$('#view_file').modal('toggle');
-		var imageSource = $(this).attr('data-link');
-		var description = $(this).attr('data-description');
-		console.log(description);
-		$(".pdf-description").text(description);
-
 		
-		$(".pdfembed1").attr("data",imageSource);
-		$(".pdfembed2").attr("src",imageSource);
-		// $(".pdfembed").attr("src",'<?php echo base_url()?>'+'assets/pdfjs/web/viewer.html?file=' +imageSource);
+		var imageSource = $(this).attr('data-link');
+		console.log(imageSource);
+		// var description = $(this).attr('data-description');
+		var description = $(this).parent().parent().find('.description_name').text();
+		
+		$(".pdf-description").text(description);
+		var file_div="<object class='pdfembed1' data='"+imageSource+"' type='application/pdf' width='100%' height='800'><embed class='pdfembed2' src='"+imageSource+"' type='application/pdf' /></object>";
+		var file_image ="<img class='img_file' src='"+imageSource+"' width='100%' height='800'>";
+		if (imageSource.indexOf(".pdf") >= 0){
+			jQuery('#display_file ').html(file_div);
+		}
+		else{
+			jQuery('#display_file ').html(file_image);
+		}
+
+		$('.spinner-box').fadeOut(3000);
 	});
 
 
