@@ -5,6 +5,10 @@
  ?>
  
  <style>
+		p.info-text {
+			color: #005841;
+			font-size: 14px;
+		}
 	 	.green.btn {
 			background-color: #0a503e;
 			opacity: 0.8;
@@ -164,25 +168,29 @@
 									</div>
 								</div>
 							</div>
-							<div id="sample_1_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable">
-								<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
-									<thead>
-										<tr role="row">
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">First Name</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Last Name</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">User Type</th>
-											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >User Name</th>
-											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Email</th>
-											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Address</th>
-										</tr>
-									</thead>
-									<tbody class="table_data" > 
+							<form id="users_form">
+									<input type="hidden" class="form-control" id="user_type" name="user_type">
+                                    <input type="hidden" class="form-control" id="user_id" name="user_id">
+								<div id="sample_1_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select> records</label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable">
 									
-									</tbody>
-								</table>
-
-							</div>
-						
+										<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+											<thead>
+												<tr role="row">
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">First Name</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email">Last Name</th>
+													<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Points">User Type</th>
+													<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >User Name</th>
+													<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Email</th>
+													<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Address</th>
+													<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending">Edit Position</th>
+												</tr>
+											</thead>
+											<tbody class="table_data" > 
+											
+											</tbody>
+										</table>
+								</div>
+							</form>
 						</div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->
@@ -208,8 +216,6 @@
 												<option></option>
 												<option>BAC</option>
 												<option>TWG</option>
-												<option>HEAD-BAC</option>
-												<option>HEAD-TWG</option>
 											</select>
 										</div>
 									</div>
@@ -340,7 +346,7 @@
             $('#create_new_user_button').click(function(){
 				$('#create_new_user').modal("toggle");
 			});
-			// get data from project table
+			// get data from users table
 			$.ajax({
 				type  : 'get',
 				url   : '<?php echo base_url('userManagementController/show_users')?>',
@@ -351,11 +357,42 @@
 				}
 			});
 
+			setInterval(function(){ 
+				$.ajax({
+					type  : 'get',
+					url   : '<?php echo base_url('userManagementController/show_users')?>',
+					async : true,
+					success : function(data){
+						
+						$('.table_data').html(data);
+					}
+				});
 
-            //Add new project
+			 }, 1000);
+		
+			 $('#users_form').on('click','.change_type',function(){
+				var id = $(this).attr('data-user_id');
+				var user_type = $(this).attr('data-user_type');
+				console.log(id);
+				console.log(user_type);
+				$("input#user_type").val(user_type);
+				$("input#user_id").val(id);
+
+				$.ajax({
+					url: "<?php echo base_url(); ?>userManagementController/change_user_type",
+					type: "POST",
+					data : $('#users_form').serialize(),
+					async:false,
+					success: function(response){
+						swal("ASSIGN AS NEW HEAD!", "Successfully!", "success");
+					}
+				});
+			});
+
+            //Add new user
             jQuery('#create_new_user_form').on('submit',function(e){
                 e.preventDefault();
-
+				
 				$.ajax({
 					url: "<?php echo base_url(); ?>userManagementController/create_user",
 					type: "POST",
@@ -389,6 +426,25 @@
 				});
 			
             });
+
+			// jQuery('#users_form').on('submit',function(e){
+            //     e.preventDefault();
+
+			// 	$.ajax({
+			// 		url: "<?php echo base_url(); ?>userManagementController/change_user_type",
+			// 		type: "POST",
+			// 		// data: regdata,
+			// 		data:new FormData(this),
+			// 		processData:false,
+			// 		contentType:false,
+			// 		cache:false,
+			// 		async:false,
+			// 		success: function(response){
+			// 			swal("ASSIGN AS NEW HEAD!", "Successfully!", "success");
+			// 		}
+			// 	});
+			
+            // });
 
         });
 	</script>

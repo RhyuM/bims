@@ -379,7 +379,7 @@ div#popover-password {
 													<div class="form-group">
 													<label class="control-label" for="passwordinput">Re-type New Password <span id="popover-cpassword" class="hide pull-right block-help"><i class="fa fa-info-circle text-danger" aria-hidden="true"></i> Password don't match</span></label>
 														<div class="">
-															<input type="password" name="passconf" id="passconf"  class="form-control input-md">
+															<input type="password" name="passconf" id="passconf"  class="form-control input-md" required>
 														</div>
 													</div>
 

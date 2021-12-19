@@ -35,6 +35,7 @@ $route['bidopening/post_qualification/(:any)'] = 'BidopeningController/post_qual
 $route['post_qualification_report/(:any)'] = 'BidopeningController/convertpdf/$1';
 
 $route['projectmanagement'] = 'ProjectManagementController/index';
+$route['projectmanagement/documents/(:any)'] = 'ProjectManagementController/project_documents/$1';
 $route['projectmanagement/create'] = 'ProjectManagementController/create';
 
 $route['usermanagement/certified-bidder'] = 'UserManagementController/index';

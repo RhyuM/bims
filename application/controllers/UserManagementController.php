@@ -68,13 +68,27 @@ class UserManagementController extends CI_Controller
                 foreach ($query->result() as $users)
                 {
                     $table_data .= '<tr class="gradeX odd" role="row">
-                    <td>'.$users->firstname.'</td>
-                    <td>'.$users->lastname.'</td>
-                    <td class="sorting_1">'.$users->user_type.'</td>
-                    <td>'.$users->username.'</td>
-                    <td>'.$users->email.'</td>
-                    <td>'. $users->address.'</td>
-                </tr>';
+                        <td>'.$users->firstname.'</td>
+                        <td>'.$users->lastname.'</td>
+                        <td class="sorting_1">'.$users->user_type.'</td>
+                        <td>'.$users->username.'</td>
+                        <td>'.$users->email.'</td>
+                        <td>'. $users->address.'</td>';
+
+                    if($users->user_type == 'BAC'){
+                        $table_data .= '<td>
+                                            <a data-user_id="'.$users->user_id.'" data-user_type="HEAD-BAC" type="submit" class="btn primary-button change_type">ASIGN AS HEAD BAC</a>
+                                        </td>';
+                    }
+                    else if($users->user_type == 'TWG'){
+                        $table_data .= '<td>
+                                            <a data-user_id="'.$users->user_id.'" data-user_type="HEAD-TWG" type="submit" class="btn primary-button change_type">ASIGN AS HEAD TWG</a>
+                                        </td>';
+                    }
+                    else{
+                        $table_data .= '<td><p class="info-text">CURRENT HEAD</p></td>';
+                    }
+                    $table_data .= '</tr>';
                 }
         }
        
@@ -96,7 +110,33 @@ class UserManagementController extends CI_Controller
 
         $this->db->insert('users',$data);
     }
+
+    public function change_user_type()
+    {
+        $user_type = $this->input->post('user_type');
+        $user_id = $this->input->post('user_id');
+
+        $sql='select * from users where user_type="'.$user_type.'" '; 
+        $query = $this->db->query($sql);
+        $users_data = $query->row();
+
+        if (!empty($users_data)) {
+            if($user_type == 'HEAD-BAC'){
+                $this->db->set('user_type','BAC');
+            }
+            else if($user_type == 'HEAD-TWG'){
+                $this->db->set('user_type','TWG');
+            }
     
+            $this->db->where('user_id', $users_data->user_id);
+            $this->db->update('users');
+        }
+       
+
+        $this->db->set('user_type',$user_type);
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users');
+    }
 
     public function ajax_table_show_certified_users()
     {
@@ -179,9 +219,8 @@ class UserManagementController extends CI_Controller
 
         $this->db->update('users');
 
-        $sql='select user_id, firstname, lastname from users
+        $sql='SELECT user_id, firstname, lastname FROM users
             where user_id = "'.$user_id.'" '; 
-
         $query = $this->db->query($sql);
         $users = $query->row();
 

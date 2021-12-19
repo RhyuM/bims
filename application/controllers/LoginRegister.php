@@ -109,8 +109,7 @@ class LoginRegister extends CI_Controller{
                     'username' => $this->input->post('username'), 
                     'email' => $this->input->post('email'), 
                     'password' => md5($this->input->post('password')), 
-                    'status' => '0', 
-                    'imgpath' => ""
+                    'status' => '0'
                 ); 
 
                 $this->db->insert('users', $userData);
@@ -122,6 +121,21 @@ class LoginRegister extends CI_Controller{
                     'file_path' => "assets/uploads/technical-docs/".$data['upload_data']['file_name']
                 ); 
                 $this->db->insert('technical_documents', $certificate_data);
+
+
+                $sql='SELECT * FROM users
+                where user_type ="ADMIN" OR user_type ="BAC" OR user_type ="HEAD-BAC"'; 
+        
+                $query = $this->db->query($sql);
+                foreach ($query->result() as $res)
+                {
+                    $notification_data = array( 
+                        'users_user_id' => $res->user_id, 
+                        'description' => 'New Registration', 
+                        'status' => 0
+                    ); 
+                    $this->db->insert('notification', $notification_data);
+                }
 
 
                 $user_id  =  $last_id;

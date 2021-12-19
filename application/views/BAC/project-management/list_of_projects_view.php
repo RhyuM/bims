@@ -189,7 +189,7 @@
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Total Bids</th>
 											<?php if($usertype == "HEAD-BAC" || $usertype == "ADMIN")
 											{?>
-												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">Update/Delete</th>
+												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">View/Update/Delete</th>
 											<?php };?>
 											
 										</tr>
@@ -287,47 +287,59 @@
 					<div class="modal-content">
 						<div class="modal-header" style="text-align: center;">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 style="font-weight: 600;" class="modal-title">Update</h4>
+							<h4 style="font-weight: 600;" class="modal-title">UPDATE PROJECT</h4>
 						</div>
 						<div class="modal-body">
 							<div class="slimScrollDiv" style="position: relative;  width: auto; height: auto"><div class="scroller" style="height: auto;  width: auto; padding-right: 0px;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
-								
 								<form class="form-horizontal contact-form" id="update_project" role="form" method="post">
-									<div class="form-body">
+									<div class="input_container">
+										<div class="form-body">
+											<div class="input-block textarea-block">
+												<label for="">Projects Description</label>
+												<textarea type="text" class="form-control" name="p_description" id="p_description" autocomplete="off" required></textarea>
+											</div>
+										</div>
+										<div class="form-body">
+											<div class="input-block">
+												<label for="">Projects Type</label>
+												<select class="form-control" name="p_type" id="p_type" placeholder="Enter project type" required>
+													<option></option>
+													<option>Infrastructure</option>
+													<option>Goods</option>
+												</select>
+											</div>
+										</div>
+										
 										<div class="input-block">
-											<label for="">Projects Description</label>
-											<input type="text" class="form-control" name="p_description" id="p_description"  autocomplete="off" required>
+											<label for="" style="top: -6px; font-size: 16px;">Opening Date</label>
+												<input type="text" class="form-control" name="o_date" id="o_date" autocomplete="off" value="">
+										</div>
+
+										<div class="input-block">
+											<label for="" style="top: -6px; font-size: 16px;">Bid Submission Deadline</label>
+												<input type="text" class="form-control" name="update_submission_deadline" id="update_submission_deadline" autocomplete="off" value="">
+										</div>
+
+										<div class="form-body">
+											<div class="input-block">
+												<label for="">Project Location</label>
+												<input type="text" class="form-control"  name="update_project_location" id="update_project_location"  autocomplete="off" required>
+											</div>
+										</div>
+										<div class="form-body">
+											<div class="input-block">
+												<label for="">Approve Budget Cost</label>
+												<input type="text" class="form-control"  data-type="currency" name="abc" id="abc"  autocomplete="off" required>
+											</div>
 										</div>
 									</div>
-									<div class="form-body">
-										<div class="input-block">
-											<label for="">Projects Type</label>
-											<select class="form-control" name="p_type" id="p_type" placeholder="Enter project type" required>
-												<option></option>
-												<option>Infrastructure</option>
-												<option>Goods</option>
-											</select>
-										</div>
-									</div>
-									
-									<div class="input-block">
-										<label for="" style="top: -6px; font-size: 16px;">Opening Date</label>
-											<input type="text" class="form-control" name="o_date" id="o_date" autocomplete="off" value="">
-									</div>
-
-									<div class="input-block">
-										<label for="" style="top: -6px; font-size: 16px;">Bid Submission Deadline</label>
-											<input type="text" class="form-control" name="update_submission_deadline" id="update_submission_deadline" autocomplete="off" value="">
-									</div>
-
-									<div class="form-body">
-										<div class="input-block">
-											<label for="">Approve Budget Cost</label>
-											<input type="text" class="form-control" data-type="currency" name="abc" id="abc"  autocomplete="off" required>
-										</div>
-									</div>
-
-									<div class="form-actions">
+								
+									<!-- <div class="form-body invitation">
+											<label for="">Invitation To Bid</label>
+											<p style="color: #AF9500; font-size: 14px;">Accepts PDF only</p>
+											<input type="file" class="form-control" name="file" id="invitation_to_bid" required>
+									</div> -->
+									<div class="form-actions invitation">
 										<div class="row">
 											<div class="col-md-12" style="text-align: center;">
 												<input type="hidden" name="projects_id" id="projects_id" class="form-control">
@@ -337,13 +349,14 @@
 										</div>
 									</div>
 								</form>
-
 							</div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- modal end -->
+
+			
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
@@ -526,6 +539,8 @@
 				$("#p_description").val($(this).data('projects_description'));
 				$("#p_type").val($(this).data('projects_type'));
 				$("#o_date").val($(this).data('opening_date'));
+				$("#update_project_location").val($(this).data('project_location'));
+				
 				$("#update_submission_deadline").val($(this).data('submission_deadline'));
 
 				
@@ -556,10 +571,11 @@
                 var edit_p_description = $('#p_description').val();
                 var edit_p_type = $('#p_type').val();
                 var edit_o_date = $('#o_date').val();
+				var p_location = $('#update_project_location').val();
 				var edit_submission_deadline= $('#update_submission_deadline').val();
 				
                 var edit_abc = $('#abc').val();
-                var edit_p_status = $('#p_status').val();
+                // var edit_p_status = $('#p_status').val();
 				
                 var ajaxurl = "<?php echo base_url(); ?>projectManagementController/update";
 
@@ -570,7 +586,8 @@
 							opening_date: edit_o_date,
 							submission_deadline: edit_submission_deadline,
 							approve_budget_cost: edit_abc,
-							projects_status: edit_p_status
+							project_location: p_location,
+							// projects_status: edit_p_status
 						};
 						
                 jQuery.post(ajaxurl, data, function(response) {

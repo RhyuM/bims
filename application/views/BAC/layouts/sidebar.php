@@ -50,18 +50,23 @@
 					<span class="title">Dashboard</span>
 					</a>
 				</li>
-				<li class="nav">
-					<a href="<?php echo base_url()?>activity-logs">
-					<i class="fa fa-history"></i>
-					<span class="title">Activity Logs</span>
-					</a>
-				</li>
-				<li class="nav announcement">
+				<?php 
+					$session_user_type = $this->session->userdata("type");
+					if($session_user_type == 'ADMIN'){?>
+						<li class="nav">
+							<a href="<?php echo base_url()?>activity-logs">
+							<i class="fa fa-history"></i>
+							<span class="title">Activity Logs</span>
+							</a>
+						</li>
+				<?php } ?>
+				
+				<!-- <li class="nav announcement">
 					<a href="javascript:;">
 					<i class="fas fa fa-bullhorn"></i>
 					<span class="title">Announcement</span>
 					</a>
-				</li>
+				</li> -->
 				<li class="nav user_management">
 					<a href="javascript:;">
 					<i class="fa fa-users"></i>
@@ -89,36 +94,39 @@
 						</li>
 					</ul>
 				</li>
-				<li class="nav project_management">
-					<a href="javascript:;">
-					<i class="icon-diamond"></i>
-					<span class="title">Project Management</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li class="list_of_project">
-							<a href="<?php echo base_url()?>projectmanagement">
-							List Of Projects</a>
-						</li>
-						<li class="bids_submitted">	
-							<a href="#">
-							Bids Submitted</a>
-						</li>
-					</ul>
-				</li>
-				<li class="nav">
-					<a href="javascript:;">
-					<i class="icon-briefcase"></i>
-					<span class="title">Bid Opening</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="<?php echo base_url()?>bidopening">
-							Projects</a>
-						</li>
-					</ul>
-				</li>
+				<?php if($session_user_type != 'ADMIN'){?>
+					<li class="nav project_management">
+						<a href="javascript:;">
+						<i class="icon-diamond"></i>
+						<span class="title">Project Management</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li class="list_of_project">
+								<a href="<?php echo base_url()?>projectmanagement">
+								List Of Projects</a>
+							</li>
+							<!-- <li class="bids_submitted">	
+								<a href="#">
+								Bids Submitted</a>
+							</li> -->
+						</ul>
+					</li>
+				
+					<li class="nav">
+						<a href="javascript:;">
+						<i class="icon-briefcase"></i>
+						<span class="title">Bid Opening</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="<?php echo base_url()?>bidopening">
+								Projects</a>
+							</li>
+						</ul>
+					</li>
+				<?php }?>
 			
 			<!-- END SIDEBAR MENU -->
 		</div>

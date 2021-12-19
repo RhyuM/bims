@@ -102,6 +102,8 @@
       }
       
     </script>
+
+    
     <script>
       $(document).ready( function () {
           $('#invitations_table').DataTable();

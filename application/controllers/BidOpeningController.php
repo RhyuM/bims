@@ -156,9 +156,6 @@ class BidOpeningController extends CI_Controller
         and bids.status != 0
         ORDER BY bid_price DESC'; 
         $query = $this->db->query($sql);
-
-
-
     
         $table_data ="";
                 $rank = 1;

@@ -255,9 +255,9 @@
 		});
 
 		// approve certificate function
-		$('#approve_certificate_form').submit('click',function(e){
+		$('#approve_certificate_form').on('click', '#approve-certificate-button',function(e){
             e.preventDefault();
-
+			console.log();
 			var u_id = $('#user_id').val();
 			// alert(u_id);
 			console.log(u_id +" this is id");
@@ -270,26 +270,15 @@
 					
 			jQuery.post(ajaxurl, data, function(response) {
 				$.ajax({
-					type  : 'post',
-					url   : '<?php echo site_url('UserManagementController/approve_certificate')?>',
+					type  : 'get',
+					url   : '<?php echo site_url('UserManagementController/ajax_table_show_new_bidder_entry')?>',
 					async : true,
 					success : function(data){
-						// $('.table_data').html(data);
-						$.ajax({
-							type  : 'get',
-							url   : '<?php echo site_url('UserManagementController/ajax_table_show_new_bidder_entry')?>',
-							async : true,
-							success : function(data){
-								
-								$('.table_data').html(data);
-								swal("Confirm!", "User has been confirm!", "success");
-							}
-						});
-						$('#view_file').modal('hide');
+						$('.table_data').html(data);
+						swal("Confirm!", "User has been confirm!", "success");
 					}
-
 				});
-														
+				$('#view_file').modal('hide');													
 			}).fail(function(xhr, status, error) {
 					console.log(status);
 					console.log(error);

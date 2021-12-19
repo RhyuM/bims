@@ -249,8 +249,7 @@ class BidderBidManagementController extends CI_Controller
 
         $sql='  SELECT * FROM bims_db.bids
                 inner join projects on bids.projects_projects_id = projects.projects_id
-                where users_user_id = "'.$users_user_id.'"
-                and status = "1" '; 
+                where users_user_id = "'.$users_user_id.'"'; 
 
         $query = $this->db->query($sql);
 
