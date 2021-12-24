@@ -65,7 +65,7 @@ class BidderBidManagementController extends CI_Controller
                         <td>'. $projects->projects_status.'</td>
                         <td><a class="btn img_button" data-link="'.base_url()."". $projects->ITB_path.'" rel="noopener noreferrer" >VIEW ITB</a>';
                             if($sched[0] >= date('Y/m/d')){
-                                if($status_result->status == '1'){
+                                if($status_result->status == '1' && empty($result)){
                                     $table_data .='<a class="btn bid_button"type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">BID NOW</a>';
                                 }
                             }
@@ -265,9 +265,9 @@ class BidderBidManagementController extends CI_Controller
                     <td>'.$projects_bid->projects_type.'</td>
                     <td>'. $projects_bid->opening_date .'</td>
                     <td>₱'.number_format($projects_bid->approve_budget_cost).'</td>
-                    <td>₱'.number_format($projects_bid->bid_price).'</td>
-                    <td><a class="btn img_button"type="button" href="#">WITHDRAW BID</a></td>
-                    ';
+                    <td>₱'.number_format($projects_bid->bid_price).'</td>';
+
+                    // $table_data .= ' <td><a class="btn img_button"type="button" href="#">WITHDRAW BID</a></td>';
                 }
 
         echo $table_data;

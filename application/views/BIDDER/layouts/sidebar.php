@@ -47,10 +47,6 @@
 					</a>
 					<ul class="sub-menu">
 						<li class="">
-							<a href="#">
-							My Account</a>
-						</li>
-						<li class="">
 							<a href="<?php echo base_url()?>usermanagement/my-documents">
 							My Documents</a>
 						</li>
@@ -63,10 +59,10 @@
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						<li class="">
+						<!-- <li class="">
 							<a href="#">
 							Search Active Projects</a>
-						</li>
+						</li> -->
 						<li class="active">
 							<a href="<?php echo base_url()?>bidderbidmanagement/list-of-projects">
 							New Projects</a>
@@ -75,7 +71,7 @@
 							<a href="<?php echo base_url()?>bidderbidmanagement/my_active_bids">
 							My Active Bids</a>
 						</li>
-						<li class="">
+						<!-- <li class="">
 							<a href="#">
 							Bid Opening(Live)</a>
 						</li>
@@ -86,10 +82,10 @@
 						<li class="">
 							<a href="#">
 							My Withdrawn Bids</a>
-						</li>
+						</li> -->
 					</ul>
 				</li>
-				<li class="nav">
+				<!-- <li class="nav">
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
 					<span class="title">Awarding</span>
@@ -101,7 +97,7 @@
 							Awards Declaration</a>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 
 			<!-- END SIDEBAR MENU -->
 		</div>

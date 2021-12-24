@@ -1,7 +1,27 @@
 <?php 
     $this->load->view('BAC/layouts/head');
     $this->load->view('BAC/layouts/header');
-    $this->load->view('BAC/layouts/sidebar');
+	$this->load->view('BAC/layouts/sidebar');
+
+	date_default_timezone_set('Asia/Manila');
+
+	$date = new DateTime("now");
+
+	$curr_date = $date->format('Y-m-d ');
+	
+	$this->db->select('*');
+	$this->db->from('users'); 
+	$this->db->where('DATE(created)',$curr_date);
+	$query = $this->db->get();
+	$count_reg = $query->num_rows();
+
+
+	$this->db->select('*');
+	$this->db->from('projects'); 
+	$this->db->where('DATE(opening_date)',$curr_date);
+	$query2 = $this->db->get();
+	$count_proj_o = $query2->num_rows();
+
 ?>
 
 
@@ -32,13 +52,13 @@
 						</div>
 						<div class="details">
 							<div class="number">
-								 0
+								 <?php echo $count_reg ?>
 							</div>
 							<div class="desc">
 								 Registrations today
 							</div>
 						</div>
-						<a class="more green-dark" href="javascript:;">
+						<a class="more green-dark" href="<?php echo base_url()?>usermanagement/new-entry">
 						View more <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -50,13 +70,13 @@
 						</div>
 						<div class="details">
 							<div class="number">
-								 0
+							<?php echo $count_proj_o ?>
 							</div>
 							<div class="desc">
 								 Projects to be open today
 							</div>
 						</div>
-						<a class="more" href="javascript:;">
+						<a class="more" href="<?php echo base_url()?>bidopening">
 						View more <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>

@@ -63,7 +63,7 @@
 											<th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Joined: activate to sort column ascending" >Bid Opening Date</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Approved Budget Cost</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status">My Bid Price</th>
-											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Action</th>
+											<!-- <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Action</th> -->
 										</tr>
 									</thead>
 									<tbody class="table_data" >
