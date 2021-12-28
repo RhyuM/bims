@@ -847,7 +847,33 @@ class BidOpeningController extends CI_Controller
 
         $this->db->insert('post_qualification',$evaluation_data);
 
+        $this->check_post_qualification_findings_result($evaluators->evaluators_id);
+
     }
+
+    public function check_post_qualification_findings_result($evaluator_id) 
+    {
+    
+        $session_user_id = $this->session->userdata("user_id");
+        $session_bids_id = $this->session->userdata("session_bids_id");
+
+        $sql='SELECT * FROM post_qualification
+        where evaluators_evaluators_id = "'.$evaluator_id.'"'; 
+
+        $query = $this->db->query($sql);
+
+        $passCount = $query->num_rows();
+
+        if($passCount == 23){
+            $this->db->set('status',5);
+            $this->db->where('bids_id',  $session_bids_id);
+            $this->db->update('bids');
+        }
+
+    }
+
+    
+
     public function submit_post_qualification_findings() 
     {
     

@@ -20,6 +20,8 @@ class BidderBidManagementController extends CI_Controller
     {
         $this->load->view('BIDDER/bid-management/list_of_projects_view');
     }
+
+  
     
 
     public function ajax_table_projects_show()
@@ -242,6 +244,42 @@ class BidderBidManagementController extends CI_Controller
     {   
         $this->load->view('BIDDER/bid-management/my_active_bids_view');
     }
+
+    public function projects_won()
+    {
+        $this->load->view('BIDDER/bid-management/projects_won_view');
+    }
+
+    public function projects_won_show()
+    {
+        $users_user_id = $this->session->userdata('user_id');
+
+        $sql='  SELECT * FROM bims_db.bids
+                inner join projects on bids.projects_projects_id = projects.projects_id
+                where bids.status = "5"'; 
+
+        $query = $this->db->query($sql);
+
+        $table_data ="";
+            
+                foreach ($query->result() as $projects_bid)
+                {
+                    $table_data .= '<tr class="gradeX odd" role="row" id="'.$projects_bid->projects_id.'">
+                    <td>'.$projects_bid->rank.'</td>
+                    <td>'.$projects_bid->projects_description.'</td>
+                    <td>'.$projects_bid->projects_type.'</td>
+                    <td>'. $projects_bid->opening_date .'</td>
+                    <td>₱'.number_format($projects_bid->approve_budget_cost).'</td>
+                    <td>₱'.number_format($projects_bid->bid_price).'</td>';
+
+                    // $table_data .= ' <td><a class="btn img_button"type="button" href="#">WITHDRAW BID</a></td>';
+                }
+
+        echo $table_data;
+        die;
+    }
+
+
 
     public function my_active_bids_show()
     {

@@ -46,4 +46,7 @@ $route['usermanagement/accounts'] = 'UserManagementController/accounts';
 // bidder
 $route['bidderbidmanagement/list-of-projects'] = 'BidderBidManagementController/index';
 $route['bidderbidmanagement/my_active_bids'] = 'BidderBidManagementController/my_active_bids';
+
+$route['bidderbidmanagement/projects_won'] = 'BidderBidManagementController/projects_won';
+
 $route['usermanagement/my-documents'] = 'BidderUserManagementController/index';

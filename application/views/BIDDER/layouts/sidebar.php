@@ -85,19 +85,19 @@
 						</li> -->
 					</ul>
 				</li>
-				<!-- <li class="nav">
-					<a href="javascript:;">
+				<li class="nav">
+					<a href="<?php echo base_url()?>bidderbidmanagement/projects_won">
 					<i class="icon-diamond"></i>
-					<span class="title">Awarding</span>
-					<span class="arrow "></span>
+					<span class="title">Projects Won</span>
+					<!-- <span class="arrow "></span> -->
 					</a>
-					<ul class="sub-menu">
+					<!-- <ul class="sub-menu">
 						<li class="">
 							<a href="#">
 							Awards Declaration</a>
 						</li>
-					</ul>
-				</li> -->
+					</ul> -->
+				</li>
 
 			<!-- END SIDEBAR MENU -->
 		</div>
