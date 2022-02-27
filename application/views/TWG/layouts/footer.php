@@ -204,6 +204,50 @@
 <!-- END JAVASCRIPTS -->
 
 <script>
+	$('#header_notification_bar').on('show.bs.dropdown', function (){
+        $('#header_notification_bar').on('hidden.bs.dropdown', function (){
+                $.ajax({
+                    type  : 'post',
+                    url   : '<?php echo base_url('NotificationController/update_notifications')?>',
+                    async : true,
+                    success : function(data){
+                        $.ajax({
+                            type  : 'get',
+                            url   : '<?php echo base_url('NotificationController/show_notifications')?>',
+                            async : true,
+                            success : function(data){
+                                $('#header_notification_bar').html(data);
+                            }
+                        });
+                    }
+                });
+       
+        });
+     
+    });
+
+    $.ajax({
+        type  : 'get',
+        url   : '<?php echo base_url('NotificationController/show_notifications')?>',
+        async : true,
+        success : function(data){
+            $('#header_notification_bar').html(data);
+        }
+    });
+
+    setInterval(function(){ 
+        $.ajax({
+            type  : 'get',
+            url   : '<?php echo base_url('NotificationController/show_notifications')?>',
+            async : true,
+            success : function(data){
+                $('#header_notification_bar').html(data);
+            }
+        });
+    }, 5000);
+</script>
+
+<script>
     $(function () {
         setNavigation();
     });

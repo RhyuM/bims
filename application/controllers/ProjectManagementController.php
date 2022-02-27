@@ -165,7 +165,7 @@ class ProjectManagementController extends CI_Controller
                 <td>'.$total_num_of_bids.'</td>
                 ';
                     
-                    if($usertype == "HEAD-BAC" || $usertype == "ADMIN")
+                    if($usertype == "HEAD-BAC" || $usertype == "BAC-SECRETARIAT")
                     {
                         $table_data .= '
                             <td>  

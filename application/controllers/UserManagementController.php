@@ -57,7 +57,7 @@ class UserManagementController extends CI_Controller
     }
     public function show_users()
     {
-        $sql="SELECT * from users where user_type IN ('HEAD-BAC','BAC','HEAD-TWG','TWG')";
+        $sql="SELECT * from users where user_type IN ('BAC-SECRETARIAT','HEAD-BAC','BAC','HEAD-TWG','TWG')";
 
         $query = $this->db->query($sql);
         $table_data ="";
@@ -75,15 +75,19 @@ class UserManagementController extends CI_Controller
                         <td>'.$users->email.'</td>
                         <td>'. $users->address.'</td>';
 
-                    if($users->user_type == 'BAC'){
+                    if($users->user_type == 'BAC' && $users->user_type != 'BAC-SECRETARIAT'){
                         $table_data .= '<td>
                                             <a data-user_id="'.$users->user_id.'" data-user_type="HEAD-BAC" type="submit" class="btn primary-button change_type">ASIGN AS HEAD BAC</a>
+                                            <a data-user_id="'.$users->user_id.'" data-user_type="BAC-SECRETARIAT" type="submit" class="btn primary-button change_type">ASIGN AS SECRETARIAT</a>
                                         </td>';
                     }
                     else if($users->user_type == 'TWG'){
                         $table_data .= '<td>
                                             <a data-user_id="'.$users->user_id.'" data-user_type="HEAD-TWG" type="submit" class="btn primary-button change_type">ASIGN AS HEAD TWG</a>
                                         </td>';
+                    }
+                    else if($users->user_type == 'BAC-SECRETARIAT'){
+                        $table_data .= '<td><p class="info-text">CURRENT BAC SECRETARIAT</p></td>';
                     }
                     else{
                         $table_data .= '<td><p class="info-text">CURRENT HEAD</p></td>';
@@ -122,6 +126,9 @@ class UserManagementController extends CI_Controller
 
         if (!empty($users_data)) {
             if($user_type == 'HEAD-BAC'){
+                $this->db->set('user_type','BAC');
+            }
+            else if($user_type == 'BAC-SECRETARIAT'){
                 $this->db->set('user_type','BAC');
             }
             else if($user_type == 'HEAD-TWG'){

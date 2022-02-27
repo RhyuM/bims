@@ -19,7 +19,7 @@ class LoginRegister extends CI_Controller{
             //     redirect('page/admin');
             // }
              // access login for Bid and Awards Committe
-            if($session_user_type == 'BAC' || $session_user_type == 'HEAD-BAC' || $session_user_type == 'Admin')
+            if($session_user_type == 'BAC' || $session_user_type == 'HEAD-BAC' || $session_user_type == 'BAC-SECRETARIAT' || $session_user_type == 'Admin')
             {
                 redirect('page/staff');
             }
@@ -69,7 +69,7 @@ class LoginRegister extends CI_Controller{
             //     redirect('page/admin');
             // }
              // access login for Bid and Awards Committe
-            if($type === 'BAC' || $type === 'HEAD-BAC' || $type === 'ADMIN' )
+            if($type === 'BAC' || $type === 'HEAD-BAC' || $type === 'BAC-SECRETARIAT' || $type === 'ADMIN' )
             {
                 redirect('page/staff');
             }

@@ -346,7 +346,7 @@ class BidOpeningController extends CI_Controller
                                             </td>';
                                         }
                                     }
-                                    else if($session_user_type == 'HEAD-BAC' && $bids->status == '4' ){
+                                    else if($session_user_type == 'HEAD-BAC' || $session_user_type == 'BAC-SECRETARIAT'  && $bids->status == '4' ){
                                         $table_data .= '<td>
                                             <a class="btn evaluate-button button_green" type="button" href="'.base_url("post_qualification_report").'/'.$bids->bids_id.'">REPORT</a>
                                         </td>';

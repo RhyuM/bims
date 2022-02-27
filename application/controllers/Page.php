@@ -27,7 +27,7 @@ class Page extends CI_Controller{
         
 
         //Allowing access to staff only
-        if($this->session->userdata('type')==='BAC' || $this->session->userdata('type')==='HEAD-BAC' || $this->session->userdata('type')==='ADMIN')
+        if($this->session->userdata('type')==='BAC' || $this->session->userdata('type')==='HEAD-BAC' || $this->session->userdata('type')==='BAC-SECRETARIAT' || $this->session->userdata('type')==='ADMIN')
         {
           $this->load->view('BAC/dashboard_view');
         }
