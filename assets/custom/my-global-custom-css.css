@@ -4,6 +4,10 @@
     background-color: #003924;
 }
 
+td.td_button {
+    display: flex!important;
+}
+
 .btn-success:focus,
 .green.btn:focus,
 .btn-success:hover,
@@ -31,7 +35,6 @@ a.btn.img_button {
 }
 
 .table thead tr th {
-    font-size: 16px!important;
     font-weight: 700!important;
 }
 

@@ -196,7 +196,7 @@
 
                     <div class="alert alert-block fade in">
                         <button type="button" class="close" data-dismiss="alert"></button>
-                        <h4 class="info_text" style="margin-bottom: 0px;"><i class="fa fa-exclamation-triangle"></i> Bid and Awards Committe(BAC) and Technical Working Group(TWG) head should decript the key to proceed</h4>  
+                        <h4 class="info_text" style="margin-bottom: 0px; font-size: 14px;"><i class="fa fa-exclamation-triangle"></i> Bid and Awards Committe(BAC) and Technical Working Group(TWG) head should decript the key to proceed</h4>  
                     </div>
                     <div class="portlet box">
                         <div class="portlet-title">

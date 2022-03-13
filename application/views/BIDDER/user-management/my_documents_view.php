@@ -36,7 +36,11 @@
 		background: #005841;
 		color: #fff!important;
 	}
-	
+	a.btn.back_button {
+		float: right;
+		background: #af9500;
+		color: #ffffff;
+	}
  </style>
 
 
@@ -76,7 +80,7 @@
 										<h2 style="font-weight: 600;">Technical Documents</h2>
 									</div>
 									<div class="col-md-6">
-										
+									<a class="btn back_button" type="button" onclick="history.back()">Back</a>
 									</div>
 								</div>
 							</div>
@@ -96,7 +100,7 @@
 													<tr class="documents_1">
 														<td class="sorting_1">1</td>
 														<td class="description_name">DTI</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs1)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs1.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -113,7 +117,7 @@
 													<tr class="documents_2">
 														<td class="sorting_1">2</td>
 														<td class="description_name">Valid and current Mayor’s permit/municipal license</td>
-														<td class>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs2)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs2.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -130,7 +134,7 @@
 													<tr class="documents_3">
 														<td class="sorting_1">3</td>
 														<td class="description_name">Tax Clearance</td>
-														<td>
+														<td class="td_button"> 
 															<?php 
 																if(!empty($docs3)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs3.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -148,7 +152,7 @@
 													<tr class="documents_4">
 														<td class="sorting_1">4</td>
 														<td class="description_name">Statement Completed Government and Private Construction Contract</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs4)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs4.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -166,7 +170,7 @@
 													<tr class="documents_5">
 														<td class="sorting_1">5</td>
 														<td class="description_name">Statement of All Ongoing Government and Private Construction Contract including Contracts Awarded but Not Yet Started</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs5)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs5.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -183,7 +187,7 @@
 													<tr class="documents_6">
 														<td class="sorting_1">6</td>
 														<td class="description_name">Valid PCAB license</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs6)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs6.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -201,7 +205,7 @@
 													<tr class="documents_7">
 														<td class="sorting_1">7</td>
 														<td class="description_name">Audited financial statements and current assets and liabilities</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs7)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs7.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -219,7 +223,7 @@
 													<tr class="documents_8">
 														<td class="sorting_1">8</td>
 														<td class="description_name">Net Financial Contracting Capacity (NFCC)</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs8)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs8.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -237,7 +241,7 @@
 													<tr class="documents_9">
 														<td class="sorting_1">9</td>
 														<td class="description_name">Bid Security/Bid Securing Declaration</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs9)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs9.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -255,7 +259,7 @@
 													<tr class="documents_10">
 														<td class="sorting_1">10</td>
 														<td class="description_name">Contractor’s Organizational Chart for the contract</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs10)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs10.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -271,7 +275,7 @@
 													<tr class="documents_11">
 														<td class="sorting_1">11</td>
 														<td class="description_name">List of Qualification of Key Personnel Proposed to be Assigned to the Contract</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs11)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs11.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -288,7 +292,7 @@
 													<tr class="documents_12">
 														<td class="sorting_1">12</td>
 														<td class="description_name">List of Equipment, Owned or Leased and/or under purchased agreements</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs12)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs12.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -305,7 +309,7 @@
 													<tr class="documents_13">
 														<td class="sorting_1">13</td>
 														<td class="description_name">Omnibus Sworn Statement</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs13)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs13.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -322,7 +326,7 @@
 													<tr class="documents_14">
 														<td class="sorting_1">14</td>
 														<td class="description_name">Affidavit of Site Inspection</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs14)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs14.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -339,7 +343,7 @@
 													<tr class="documents_15">
 														<td class="sorting_1">15</td>
 														<td class="description_name">PhilGEPS Registration Certificate</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs15)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs15.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -356,7 +360,7 @@
 													<tr class="documents_16">
 														<td class="sorting_1">16</td>
 														<td class="description_name">Safety and Health Program</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs16)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs16.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -373,7 +377,7 @@
 													<tr class="documents_17">
 														<td class="sorting_1">17</td>
 														<td class="description_name">Income Tax Return (ITR)</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs17)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs17.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -390,7 +394,7 @@
 													<tr class="documents_18">
 														<td class="sorting_1">18</td>
 														<td class="description_name">Construction Method</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs18)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs18.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -407,7 +411,7 @@
 													<tr class="documents_19">
 														<td class="sorting_1">19</td>
 														<td class="description_name">Equipment Utilization Schedule</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs19)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs19.' rel="noopener noreferrer" target="_blank">VIEW</a>';
@@ -424,7 +428,7 @@
 													<tr class="documents_20">
 														<td class="sorting_1">20</td>
 														<td class="description_name">Manpower Utilization Schedule</td>
-														<td>
+														<td class="td_button">
 															<?php 
 																if(!empty($docs20)) {
 																	echo '<a class="btn img_button"data-link='.base_url()."".$docs20.' rel="noopener noreferrer" target="_blank">VIEW</a>';

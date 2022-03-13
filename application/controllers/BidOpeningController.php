@@ -122,7 +122,7 @@ class BidOpeningController extends CI_Controller
                         <td>'.$bids->companyname.'</td>
                         <td>₱'.number_format($bids->bid_price).'</td>
                         <td>'.date("Y/m/d - H:m", strtotime($bids->created_on)).'</td>';
-                        $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">EVALUATE BIDDER</a></td>';
+                        $table_data .= '<td class="td_button"><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">EVALUATE BIDDER</a></td>';
                     }
                         // else{
                         //     if($evaluators->status == '1' ){
@@ -181,10 +181,10 @@ class BidOpeningController extends CI_Controller
                         <td>₱'.number_format($bids->bid_price).'</td>';
 
                             if($evaluators->status == '2' ){
-                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->bids_id.'">FINANCIAL EVALUATION</a></td>';
+                                $table_data .= '<td class="td_button"><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->bids_id.'">FINANCIAL EVALUATION</a></td>';
                             }
                             if($evaluators->status == '4' || $evaluators->status == '3' || $evaluators->status == '-1' || $evaluators->status == '-2' || $evaluators->status == '-4'){
-                                $table_data .= '<td><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
+                                $table_data .= '<td class="td_button"><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
                             }
                     }
 
@@ -223,14 +223,14 @@ class BidOpeningController extends CI_Controller
                         <td>'.$bids->companyname.'</td>              
                         <td>₱'.number_format($bids->bid_price).'</td>';
                             if($evaluators->status == '1' ){
-                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">TECHNICAL EVALUATION</a></td>';
+                                $table_data .= '<td class="td_button"><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/evaluate_bidder").'/'.$bids->bids_id.'">TECHNICAL EVALUATION</a></td>';
                             }
                             
                             if($evaluators->status == '2' ){
-                                $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->bids_id.'">FINANCIAL EVALUATION</a></td>';
+                                $table_data .= '<td class="td_button"><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/financial_evaluation").'/'.$bids->bids_id.'">FINANCIAL EVALUATION</a></td>';
                             }
                             if($evaluators->status == '-4' || $evaluators->status == '3' || $evaluators->status == '-1' || $evaluators->status == '-2' ){
-                                $table_data .= '<td><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
+                                $table_data .= '<td class="td_button"><a class="btn evaluate-button button_green" type="button" href="'.base_url("bidopening/evaluation_result").'/'.$bids->bids_id.'">EVALUATION RESULTS</a></td>';
                             }
                     }
 
@@ -337,7 +337,7 @@ class BidOpeningController extends CI_Controller
                                 
                                     if($session_user_type == 'HEAD-TWG'){
                                         if($evaluators->status == '3' ){
-                                            $table_data .= '<td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/post_qualification").'/'.$bids->bids_id.'">POST QUALIFICATION</a></td>';
+                                            $table_data .= '<td class="td_button"><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/post_qualification").'/'.$bids->bids_id.'">POST QUALIFICATION</a></td>';
                                         }
                                         else if($evaluators->status == '4' ){
                                             $table_data .= '<td>
@@ -347,7 +347,7 @@ class BidOpeningController extends CI_Controller
                                         }
                                     }
                                     else if($session_user_type == 'HEAD-BAC' || $session_user_type == 'BAC-SECRETARIAT'  && $bids->status == '4' ){
-                                        $table_data .= '<td>
+                                        $table_data .= '<td class="td_button">
                                             <a class="btn evaluate-button button_green" type="button" href="'.base_url("post_qualification_report").'/'.$bids->bids_id.'">REPORT</a>
                                         </td>';
                                     }
@@ -968,7 +968,7 @@ class BidOpeningController extends CI_Controller
                         <td class="sorting_1">'.$start++.'</td>
                         <td>'.$evaluators->firstname.' '.$evaluators->lastname.'</td>
                         <td>'.$evaluators->user_type.'</td>
-                        <td><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/technical_evaluation_result").'/'.$evaluators->evaluators_id.'">TECHNICAL EVALUATION RESULT</a>';
+                        <td class="td_button"><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/technical_evaluation_result").'/'.$evaluators->evaluators_id.'">TECHNICAL EVALUATION RESULT</a>';
 
                         // echo '<script>console.log('.$evaluators->status.');</script>';
                         if($evaluators->status == '3' ){

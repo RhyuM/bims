@@ -76,13 +76,13 @@ class UserManagementController extends CI_Controller
                         <td>'. $users->address.'</td>';
 
                     if($users->user_type == 'BAC' && $users->user_type != 'BAC-SECRETARIAT'){
-                        $table_data .= '<td>
+                        $table_data .= '<td class="td_button">
                                             <a data-user_id="'.$users->user_id.'" data-user_type="HEAD-BAC" type="submit" class="btn primary-button change_type">ASIGN AS HEAD BAC</a>
                                             <a data-user_id="'.$users->user_id.'" data-user_type="BAC-SECRETARIAT" type="submit" class="btn primary-button change_type">ASIGN AS SECRETARIAT</a>
                                         </td>';
                     }
                     else if($users->user_type == 'TWG'){
-                        $table_data .= '<td>
+                        $table_data .= '<td class="td_button">
                                             <a data-user_id="'.$users->user_id.'" data-user_type="HEAD-TWG" type="submit" class="btn primary-button change_type">ASIGN AS HEAD TWG</a>
                                         </td>';
                     }
@@ -202,7 +202,7 @@ class UserManagementController extends CI_Controller
                     <td>'. $users->address.'</td>
                     <td>'.$status.'</td>
                     <td>'. $users->created.'</td>
-                    <td>
+                    <td class="td_button">
                         <a href="javascript:void(0);"  data-link="'.base_url().$res->file_path.'" data-user_id="'.$users->user_id.'" class="btn btn-success img_button" role="button">View Cirtificate</a>            
                     </td>
                     

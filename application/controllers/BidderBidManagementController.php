@@ -65,7 +65,7 @@ class BidderBidManagementController extends CI_Controller
                         <td>'. $projects->submission_deadline .'</td>
                         <td>₱ '.number_format($projects->approve_budget_cost).'</td>
                         <td>'. $projects->projects_status.'</td>
-                        <td><a class="btn img_button" data-link="'.base_url()."". $projects->ITB_path.'" rel="noopener noreferrer" >VIEW ITB</a>';
+                        <td class="td_button"><a class="btn img_button" data-link="'.base_url()."". $projects->ITB_path.'" rel="noopener noreferrer" >VIEW ITB</a>';
                             if($sched[0] >= date('Y/m/d')){
                                 if($status_result->status == '1' && empty($result)){
                                     $table_data .='<a class="btn bid_button"type="button" href="'.base_url("BidderBidManagementController/bid_now") .'/'.$projects->projects_id .'">BID NOW</a>';
