@@ -22,12 +22,15 @@
 	$query2 = $this->db->get();
 	$count_proj_o = $query2->num_rows();
 
+	$bg_link =   base_url().'assets/images/testbg2.jpg';
+	echo $bg_link;
 ?>
 
 
+
 <!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
-		<div class="page-content">
+<div class="page-content-wrapper" >
+		<div class="page-content" >
 			
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
@@ -108,5 +111,12 @@
     
     <?php
         $this->load->view('BAC/layouts/quick_sidebar');
-        $this->load->view('BAC/layouts/footer');
+		$this->load->view('BAC/layouts/footer');
+		
+		echo '<script> 
+					jQuery( window ).load(function() {
+						jQuery(".page-content").attr("background-image:","url("'.$bg_link.'")");
+						 console.log("test");
+					});  
+			<script>';
     ?>

@@ -94,7 +94,7 @@
 																<?php
 																		if($sched[2] <= date('HH:mm'))
 																		{?>
-																			<a href="<?php echo base_url("bidopening/bid_openers") ?>/<?php echo $projects->projects_id ?>">open</a>
+																			<a class="open_bid" data-project_id="<?php echo $projects->projects_id ?>" href="<?php echo base_url("bidopening/bid_openers") ?>/<?php echo $projects->projects_id ?>">open</a>
 																		<?php }?>
 																</td>
 															<?php }?>
@@ -156,7 +156,7 @@
 																	<td><?php echo number_format($projects->approve_budget_cost)?></td>
 																	<td><?php echo $projects->projects_status?></td>
 																	<td>
-																		<a href="<?php echo base_url("bidopening/bid_openers") ?>/<?php echo $projects->projects_id ?>">open</a>
+																		<a class="open_bid" data-project_id="<?php echo $projects->projects_id ?>" href="<?php echo base_url("bidopening/bid_openers") ?>/<?php echo $projects->projects_id ?>">open</a>
 																	</td>
 																<?php }?>
 																</tr>
@@ -184,3 +184,30 @@
 			$this->load->view('BAC/layouts/quick_sidebar');
 			$this->load->view('BAC/layouts/footer');
 		?>
+
+		<script>
+			jQuery(".open_bid").click(function(e){
+				var p_id = jQuery(this).data('project_id');
+				var link = jQuery(this).attr("href");
+				e.preventDefault();
+				jQuery.ajax({
+					type : 'post',
+					url:  '<?php echo base_url('BidOpeningController/check_if_project_has_bid')?>',
+					data : { 
+							projects_id: p_id
+							},
+					async : true,
+					success : function(response){	
+						if(response == 0){
+							e.preventDefault();
+							console.log(response);
+							swal("Project Doesn't Have a Bid Yet ");
+						}else{
+							console.log(response+" n");
+							location.href = link;
+						}
+						
+					}
+				});
+			});
+		</script>

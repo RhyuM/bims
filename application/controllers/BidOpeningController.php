@@ -36,6 +36,8 @@ class BidOpeningController extends CI_Controller
     }
     
 
+   
+
     public function bid_openers($id) 
     {
 
@@ -1277,10 +1279,20 @@ class BidOpeningController extends CI_Controller
     public function check_opener_decrypt_project_status() 
     {
 
-        $sql="Select * from project_openers where users_users_id='1' ";    
+        $sql = "Select * from project_openers where users_users_id='1' ";    
         $query = $this->db->query($sql);
 
     }
 
-  
+    public function check_if_project_has_bid(){
+        $projects_id = $this->input->post('projects_id');
+
+        $sql =' SELECT * FROM bids
+            where projects_projects_id = "'.$projects_id.'"'; 
+
+        $query = $this->db->query($sql);
+        $total_num_of_bids = $query->num_rows();
+        echo $total_num_of_bids;
+        die;
+    }
 }
