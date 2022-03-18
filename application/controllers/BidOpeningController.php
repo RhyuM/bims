@@ -884,18 +884,7 @@ class BidOpeningController extends CI_Controller
             $this->db->where('bids_id',  $session_bids_id);
             $this->db->update('bids');
 
-            // For updating the status
-            $sql3 ='SELECT projects_status FROM projects
-            where projects_id = "'.$session_projects_id.'"'; 
-
-            $query3 = $this->db->query($sql3);
-            $projects_data = $query3->row();
-
-            if(!empty($projects_data) && $projects_data->projects_status == 'Post-Qualification' ){
-                $this->db->set('projects_status','Awarding');
-                $this->db->where('projects_id',$id);
-                $this->db->update('projects');
-            }
+            
         }
 
     }
@@ -907,6 +896,7 @@ class BidOpeningController extends CI_Controller
     
         $session_user_id = $this->session->userdata("user_id");
         $session_bids_id = $this->session->userdata("session_bids_id");
+        $session_projects_id = $this->session->userdata("projects_id");
 
         $sql='SELECT * FROM post_qualification
             inner join evaluators on post_qualification.evaluators_evaluators_id = evaluators.evaluators_id
@@ -945,6 +935,19 @@ class BidOpeningController extends CI_Controller
                     $this->db->where('users_user_id', $session_user_id);
                     $this->db->where('bids_bids_id', $session_bids_id);
                     $this->db->update('evaluators');
+
+                    // For updating the status
+                    $sql3 ='SELECT projects_status FROM projects
+                    where projects_id = "'.$session_projects_id.'"'; 
+
+                    $query3 = $this->db->query($sql3);
+                    $projects_data = $query3->row();
+
+                    if(!empty($projects_data) && $projects_data->projects_status == 'Post-Qualification' ){
+                        $this->db->set('projects_status','Awarding');
+                        $this->db->where('projects_id',$session_projects_id);
+                        $this->db->update('projects');
+                    }
                 }
                 else{
                     print json_encode(array("status"=>"fail2","message"=>"Please complete the evaluation"));
