@@ -586,6 +586,18 @@ class BidOpeningController extends CI_Controller
 
         $data =  $this->get_post_qualification($id) ;
 
+        $sql3 ='SELECT projects_status FROM projects
+            where projects_id = "'.$id.'"'; 
+
+        $query3 = $this->db->query($sql3);
+        $projects_data = $query3->row();
+
+        if(!empty($projects_data) && $projects_data->projects_status == 'Bid-Opening' ){
+            $this->db->set('projects_status','Post-Qualification');
+            $this->db->where('projects_id',$id);
+            $this->db->update('projects');
+        }
+
         $this->load->view('BAC/bid-opening/post_qualification_view', $data);
     }
 
@@ -870,6 +882,19 @@ class BidOpeningController extends CI_Controller
             $this->db->set('status',5);
             $this->db->where('bids_id',  $session_bids_id);
             $this->db->update('bids');
+
+            // For updating the status
+            $sql3 ='SELECT projects_status FROM projects
+            where projects_id = "'.$id.'"'; 
+
+            $query3 = $this->db->query($sql3);
+            $projects_data = $query3->row();
+
+            if(!empty($projects_data) && $projects_data->projects_status == 'Post-Qualification' ){
+                $this->db->set('projects_status','Awarding');
+                $this->db->where('projects_id',$id);
+                $this->db->update('projects');
+            }
         }
 
     }
@@ -1207,8 +1232,22 @@ class BidOpeningController extends CI_Controller
 
             if ( $query2->num_rows() == 2){
             
-            $openers_data .=    '<div style="text-align: center; margin-top: 20px;"><a href="'.base_url("bidopening/bids_opened").'/'.$id.'" class="btn continue">CONTINUE</a></div>';
+                $openers_data .=    '<div style="text-align: center; margin-top: 20px;"><a href="'.base_url("bidopening/bids_opened").'/'.$id.'" class="btn continue">CONTINUE</a></div>';
             }
+
+            // For updating the status to Bid Opening code
+            $sql3 ='SELECT projects_status FROM projects
+            where projects_id = "'.$id.'"'; 
+
+            $query3 = $this->db->query($sql3);
+            $projects_data = $query3->row();
+
+            if(!empty($projects_data) && $projects_data->projects_status == 'Procurement' ){
+                $this->db->set('projects_status','Bid-Opening');
+                $this->db->where('projects_id',$id);
+                $this->db->update('projects');
+            }
+
         echo $openers_data;
         die;
 
