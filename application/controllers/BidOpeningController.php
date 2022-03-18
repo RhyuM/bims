@@ -337,7 +337,7 @@ class BidOpeningController extends CI_Controller
                                 <td>'.$bids->rank.'</td>
                                 <td>₱'.number_format($bids->bid_price).'</td>';
                                 
-                                    if($session_user_type == 'HEAD-TWG'){
+                                    if($session_user_type == 'HEAD-TWG' && !empty($evaluators->status)){
                                         if($evaluators->status == '3' ){
                                             $table_data .= '<td class="td_button"><a class="btn evaluate-button"type="button" href="'.base_url("bidopening/post_qualification").'/'.$bids->bids_id.'">POST QUALIFICATION</a></td>';
                                         }
@@ -348,11 +348,11 @@ class BidOpeningController extends CI_Controller
                                             </td>';
                                         }
                                     }
-                                    else if($session_user_type == 'HEAD-BAC' || $session_user_type == 'BAC-SECRETARIAT'  && $bids->status == '4' ){
-                                        $table_data .= '<td class="td_button">
-                                            <a class="btn evaluate-button button_green" type="button" href="'.base_url("post_qualification_report").'/'.$bids->bids_id.'">REPORT</a>
-                                        </td>';
-                                    }
+                                    // else if($session_user_type == 'HEAD-BAC' || $session_user_type == 'BAC-SECRETARIAT'  && $bids->status == '4' ){
+                                    //     $table_data .= '<td class="td_button">
+                                    //         <a class="btn evaluate-button button_green" type="button" href="'.base_url("post_qualification_report").'/'.$bids->bids_id.'">REPORT</a>
+                                    //     </td>';
+                                    // }
                     $table_data .='
                             </tbody>
                         </table>

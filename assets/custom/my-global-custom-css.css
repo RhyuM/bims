@@ -230,7 +230,7 @@ span.time {
     justify-content: center;
     align-items: center;
     background: #0a503e;
-    animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
+    animation: configure-clockwise 1.5s ease-in-out 0s infinite alternate;
 }
 
 .configure-core {
@@ -249,7 +249,7 @@ span.time {
     align-items: center;
     background: rgb(150 129 10);
     transform: rotate(45deg);
-    animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
+    animation: configure-xclockwise 1.5s ease-in-out 0s infinite alternate;
 }
 
 
