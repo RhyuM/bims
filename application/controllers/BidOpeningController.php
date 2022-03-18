@@ -587,14 +587,14 @@ class BidOpeningController extends CI_Controller
         $data =  $this->get_post_qualification($id) ;
 
         $sql3 ='SELECT projects_status FROM projects
-            where projects_id = "'.$id.'"'; 
+            where projects_id = "'.$session_projects_id.'"'; 
 
         $query3 = $this->db->query($sql3);
         $projects_data = $query3->row();
 
         if(!empty($projects_data) && $projects_data->projects_status == 'Bid-Opening' ){
             $this->db->set('projects_status','Post-Qualification');
-            $this->db->where('projects_id',$id);
+            $this->db->where('projects_id',$session_projects_id);
             $this->db->update('projects');
         }
 
@@ -869,6 +869,7 @@ class BidOpeningController extends CI_Controller
     {
     
         $session_user_id = $this->session->userdata("user_id");
+        $session_projects_id = $this->session->userdata("projects_id");
         $session_bids_id = $this->session->userdata("session_bids_id");
 
         $sql='SELECT * FROM post_qualification
@@ -885,7 +886,7 @@ class BidOpeningController extends CI_Controller
 
             // For updating the status
             $sql3 ='SELECT projects_status FROM projects
-            where projects_id = "'.$id.'"'; 
+            where projects_id = "'.$session_projects_id.'"'; 
 
             $query3 = $this->db->query($sql3);
             $projects_data = $query3->row();
