@@ -165,17 +165,19 @@ class ProjectManagementController extends CI_Controller
                 <td>'.$total_num_of_bids.'</td>
                 ';
                     
-                    if($usertype == "HEAD-BAC" || $usertype == "BAC-SECRETARIAT")
-                    {
+                    if($usertype == "HEAD-BAC" || $usertype == "BAC-SECRETARIAT"){
                         $table_data .= '
                             <td class="td_button">  
-                                <a class="btn evaluate-button button_green" type="button" href="'.base_url("projectmanagement/documents").'/'.$projects->projects_id.'">VIEW</a>
-                                <a href="javascript:void(0);"  data-projects_id="'.$projects->projects_id.'" data-projects_description="'.$projects->projects_description.'" data-projects_type="'.$projects->projects_type.'" data-opening_date="'. $projects->opening_date .'" data-submission_deadline="'. $projects->submission_deadline .'" data-project_location="'. $projects->project_location .'" data-approve_budget_cost="'. $projects->approve_budget_cost .'" class="editRecord btn btn-success" role="button">Update</a>';
-                        if($total_num_of_bids == 0){
-                            $table_data .= '
-                                <a href="javascript:void(0);" class="btn btn-danger deleteRecord" data-projects_id="'.$projects->projects_id.'">Delete</a>
-                            </td></tr>';
-                        }
+                                <a class="btn evaluate-button button_green" type="button" href="'.base_url("projectmanagement/documents").'/'.$projects->projects_id.'">VIEW</a>';
+                                if($usertype == "HEAD-BAC"){
+                                    $table_data .= '<a href="javascript:void(0);"  data-projects_id="'.$projects->projects_id.'" data-projects_description="'.$projects->projects_description.'" data-projects_type="'.$projects->projects_type.'" data-opening_date="'. $projects->opening_date .'" data-submission_deadline="'. $projects->submission_deadline .'" data-project_location="'. $projects->project_location .'" data-approve_budget_cost="'. $projects->approve_budget_cost .'" class="editRecord btn btn-success" role="button">Update</a>';
+                               
+                                    if($total_num_of_bids == 0){
+                                        $table_data .= '
+                                            <a href="javascript:void(0);" class="btn btn-danger deleteRecord" data-projects_id="'.$projects->projects_id.'">Delete</a>
+                                        </td></tr>';
+                                    }
+                                }
                         
                     }
             }

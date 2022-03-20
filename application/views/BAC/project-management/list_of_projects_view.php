@@ -187,10 +187,13 @@
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Approved Budget Cost</th>			
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Status</th>
 											<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" >Total Bids</th>
-											<?php if($usertype == "HEAD-BAC" || $usertype == "ADMIN")
-											{?>
+											<?php if($usertype == "HEAD-BAC"){?>
 												<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">View/Update/Delete</th>
-											<?php };?>
+											<?php }
+													else if($usertype == "BAC-SECRETARIAT"){ ?>
+														<th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Status" style="width: 267px;">View</th>
+													<?php
+													} ?>
 											
 										</tr>
 									</thead>
