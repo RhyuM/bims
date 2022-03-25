@@ -289,7 +289,7 @@ class BidOpeningController extends CI_Controller
         $sql='  SELECT bids.bids_id, bids.users_user_id, bids.bid_price, bids.rank, bids.status, bids.created_on, users.companyname FROM bids
         left join users on bids.users_user_id = users.user_id
         where projects_projects_id = "'.$id.'" 
-        and bids.status = 4'; 
+        and bids.status = 4 or bids.status = 5'; 
 
 
         $query = $this->db->query($sql);

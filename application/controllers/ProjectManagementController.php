@@ -97,8 +97,18 @@ class ProjectManagementController extends CI_Controller
 
         $sql='SELECT * FROM projects
         where projects_id="'.$session_projects_id.'"'; 
+        
 
         $query = $this->db->query($sql);
+
+        $sql2='  SELECT bids.bids_id, bids.users_user_id, bids.bid_price, bids.rank, bids.status, bids.created_on, users.companyname FROM bids
+        left join users on bids.users_user_id = users.user_id
+        where projects_projects_id = "'.$session_projects_id.'" 
+        and bids.status = 5'; 
+
+
+        $query2 = $this->db->query($sql2);
+        $bids = $query2->row();
 
         $table_data ="";
         
@@ -108,11 +118,16 @@ class ProjectManagementController extends CI_Controller
                                 
                 <td class="sorting_1 description_name">Invitation To Bid</td>
                 
-                </iframe>
                 <td>
                     <input type="hidden" name="images[]" class="docs_file" value="'.$documents->ITB_path.'" />
-                    <a class="btn img_button" data-description="'.$documents->projects_description.'" data-link='.base_url()."".$documents->ITB_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>
-                ';
+                    <a class="btn img_button" data-description="'.$documents->projects_description.'" data-link='.base_url()."".$documents->ITB_path.' rel="noopener noreferrer" target="_blank">CLICK TO VIEW</a></td>';
+
+                if($documents->projects_status == 'Awarding'){
+                    $table_data .= '<tr class="gradeX odd" role="row">
+                                        <td class="sorting_1 description_name">Post Qualification Report</td>
+                                        <td><a class="btn evaluate-button button_green" type="button" href="'.base_url("post_qualification_report").'/'.$bids->bids_id.'">VIEW REPORT</a></td>';
+                }
+
             }
 
         echo $table_data;
